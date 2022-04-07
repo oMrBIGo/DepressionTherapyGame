@@ -1,3 +1,5 @@
+Developer by Nathit Panrod
+
 ## <p align="center">Projects Depression Therapy Game</p>
 
 [<img src="https://play-lh.googleusercontent.com/XaAwRv6Duf9VR8YqaImypQu6SfVi5-HlRxnDGSyvQPzwfm-c-2DGu-iu2nMiOVbuqjY=s180-rw">]()
@@ -11,3 +13,5 @@
 Information Technology and Digital Business Faculty of Business Administration
 Rajamangala University of Technology Krungthep
 <br>
+
+[<img src="https://play-lh.googleusercontent.com/cNWYkwcEzM_K_wOdbRCv5BwcQ4gllhBwBBO6n83bGbPW9fOmC2xlz8ISSUqSGSaBva8=w3190-h1598-rw">]
