@@ -14,4 +14,4 @@ Information Technology and Digital Business Faculty of Business Administration
 Rajamangala University of Technology Krungthep
 <br>
 
-[<img src="https://play-lh.googleusercontent.com/cNWYkwcEzM_K_wOdbRCv5BwcQ4gllhBwBBO6n83bGbPW9fOmC2xlz8ISSUqSGSaBva8=w3190-h1598-rw">]
+[<img src="https://play-lh.googleusercontent.com/cNWYkwcEzM_K_wOdbRCv5BwcQ4gllhBwBBO6n83bGbPW9fOmC2xlz8ISSUqSGSaBva8=w3190-h1598-rw">]()
