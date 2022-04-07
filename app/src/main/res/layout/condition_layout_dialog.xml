@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <!-- LinearLayout: Group dialog -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- CardView: ViewGroup dialog -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            card_view:cardBackgroundColor="?attr/dialogbackgroundcolor"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="3dp">
+
+            <!-- LinearLayout: Group preliminary agreement -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <!-- TextView: show preliminary agreement  -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/chub"
+                    android:text="@string/agreement"
+                    android:textColor="@color/green"
+                    android:textSize="25sp" />
+
+                <!-- View: Line -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/green" />
+
+                <!-- TextView: show preliminary agreement [1.7.1]  -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/chub"
+                    android:paddingTop="15dp"
+                    android:text="@string/agreement_text_01"
+                    android:textColor="?attr/textdialog"
+                    android:textSize="15sp" />
+
+                <!-- TextView: show preliminary agreement [1.7.2]  -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/chub"
+                    android:text="@string/agreement_text_02"
+                    android:textColor="?attr/textdialog"
+                    android:textSize="15sp" />
+
+                <!-- TextView: show preliminary agreement [1.7.3]  -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/chub"
+                    android:text="@string/agreement_text_03"
+                    android:textColor="?attr/textdialog"
+                    android:textSize="15sp" />
+
+                <!-- TextView: show preliminary agreement [1.7.4]  -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/chub"
+                    android:text="@string/agreement_text_04"
+                    android:textColor="?attr/textdialog"
+                    android:textSize="15sp" />
+
+                <!-- LinearLayout: Group preliminary agreement accept and reject -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewBtnGame"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        card_view:cardBackgroundColor="@color/teal_200"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="1dp">
+
+                        <Button
+                            android:id="@+id/confirm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/chub"
+                            android:padding="5dp"
+                            android:text="ยอมรับเงื่อนไข"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:layout_weight="1"
+                        card_view:cardBackgroundColor="?attr/cardbackgroundtab"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="1dp">
+
+                        <Button
+                            android:id="@+id/cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/chub"
+                            android:padding="5dp"
+                            android:text="ไม่ยอมรับเงื่อนไข"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="16sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</ScrollView>

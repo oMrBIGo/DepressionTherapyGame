@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    tools:context=".Users.GameTetris.ActivityTetrisGame.GameActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingTop="30dp"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/level">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/chub"
+                    android:text="@string/level"
+                    android:textColor="@color/fontWhite"
+                    android:textSize="25sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/chub"
+                    android:textColor="@color/fontWhite"
+                    android:textSize="25sp"
+                    tools:text="1" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_no"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/no"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/exitBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/chub"
+                    android:gravity="center"
+                    android:text="@string/exit"
+                    android:layout_marginTop="2.00dp"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/fontWhite"
+                    android:textSize="17.00dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chub"
+                android:text="@string/score_game"
+                android:textColor="@color/fontWhite"
+                android:textSize="35sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chub"
+                android:textColor="@color/fontWhite"
+                android:textSize="30sp"
+                tools:text="115" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="@dimen/_272sdp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:background="@drawable/white_border"
+            android:padding="@dimen/_2sdp">
+
+
+            <LinearLayout
+                android:id="@+id/game_board"
+                android:layout_width="@dimen/_275sdp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_minus4sdp"
+                android:background="@color/box_color"
+                android:orientation="vertical" />
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/splash"
+    tools:context=".Users.GameTetris.ActivityTetrisGame.MainActivityGame">
+
+    <include layout="@layout/activity_game_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="400dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/logogametitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_select_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/b1"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/select_level"
+            android:textColor="@color/fontWhite"
+            android:textSize="@dimen/_13ssp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/play"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/play"
+            android:textColor="@color/fontWhite"
+            android:textSize="@dimen/_13ssp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/b3"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/exit"
+            android:textAlignment="center"
+            android:textColor="@color/fontWhite"
+            android:textSize="@dimen/_13ssp" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/settinggame" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_sound"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+
+                android:src="@drawable/volume" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- ProgressBar: Show Loading  -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_round"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

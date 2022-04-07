@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    tools:context=".Users.FirstUserProfileActivity">
+
+    <!-- RelativeLayout: Group [activity_user_profile.xml] -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ProgressBar: Show Loading  -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:elevation="10dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_round"/>
+
+        <!-- ScrollView: ViewGroup [activity_user_profile.xml] Swipe[up - down] -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <!-- LinearLayout: Group [activity_user_profile.xml] -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- include: Show layout Header [activity_user_profile.xml]  -->
+                <include layout="@layout/activity_firstquest_header" />
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <!-- TextView: Show LastName Profile -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/chub"
+                        android:gravity="center"
+                        android:text="สร้างรูปโปรไฟล์ของคุณ"
+                        android:textColor="?attr/textcolor"
+                        android:textColorHint="?attr/textcolor"
+                        android:textSize="25sp" />
+
+                    <!-- RelativeLayout: ViewGroup UploadProfile -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <!-- CircleImageView: Show Image Profile default -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="150dp"
+                            android:layout_height="158dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/teamwork"
+                            app:civ_border_color="?attr/cardbackground"
+                            app:civ_border_width="3dp" />
+
+                        <!-- CircleImageView: Show Image Profile Firebase Realtime -> ผู้ใช้งาน -> [ID] -> image/* -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imageView_Profile"
+                            android:layout_width="150dp"
+                            android:layout_height="158dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/man"
+                            app:civ_border_color="?attr/cardbackground"
+                            app:civ_border_width="3dp" />
+                    </RelativeLayout>
+
+                    <!-- TextView: Show upload profile -->
+                    <TextView
+                        android:id="@+id/Upload1_Profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/editProfile"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textColor="#DAC616"
+                        android:textSize="18sp" />
+
+                    <!-- TextView: Show LastName Profile -->
+                    <TextView
+                        android:id="@+id/textView_show_welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/chub"
+                        android:gravity="center"
+                        android:hint="@string/Loading"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textColor="?attr/textcolor"
+                        android:textColorHint="?attr/textcolor"
+                        android:textSize="28sp" />
+
+                </LinearLayout>
+
+                <!-- CardView: ViewGroup Show Profile text and button editProfile and go to [HomeActivity.java] -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_inner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    card_view:cardBackgroundColor="?attr/cardbackground"
+                    card_view:cardCornerRadius="20dp"
+                    card_view:cardElevation="3dp">
+
+                    <!-- LinearLayout: ViewGroup -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <!-- TextView: Show My Profile -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/chub"
+                            android:text="@string/setProfile"
+                            android:textAlignment="center"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="25sp" />
+
+                        <!-- CardView: ViewGroup Show My Profile LastName and Email and PhoneNUmber  -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card_view_inner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginEnd="35dp"
+                            android:layout_marginBottom="20dp"
+                            card_view:cardBackgroundColor="?attr/cardbackgroundtab"
+                            card_view:cardCornerRadius="20dp"
+                            card_view:cardElevation="2dp">
+
+                            <!-- LinearLayout: ViewGroup -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <!-- LinearLayout: ViewGroup Show LastName -->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <!-- ImageView: Show Icon LastName -->
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:src="@drawable/ic_lastname" />
+
+                                    <!-- TextView: Show My Lastname -->
+                                    <TextView
+                                        android:id="@+id/textView_show_lastname"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@font/chur"
+                                        android:hint="@string/Loading"
+                                        android:maxLines="5"
+                                        android:textColor="?attr/textcolor"
+                                        android:textColorHint="?attr/textcolor"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+                                <!-- View: Show Line -->
+                                <View
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:background="?cardbackground" />
+
+                                <!-- LinearLayout: ViewGroup Show Email -->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <!-- ImageView: Show Icon Email -->
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:src="@drawable/ic_email" />
+
+                                    <!-- TextView: Show My Lastname -->
+                                    <TextView
+                                        android:id="@+id/textView_show_email"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@font/chur"
+                                        android:hint="@string/Loading"
+                                        android:maxLines="5"
+                                        android:textColor="?attr/textcolor"
+                                        android:textColorHint="?attr/textcolor"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+                                <!-- View: Show Line -->
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:background="?cardbackground" />
+
+                                <!-- LinearLayout: ViewGroup Show PhoneNumber -->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <!-- ImageView: Show Icon PhoneNumber -->
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:src="@drawable/ic_phone" />
+
+                                    <!-- TextView: Show My phoneNumber -->
+                                    <TextView
+                                        android:id="@+id/textView_show_phone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@font/chur"
+                                        android:hint="@string/Loading"
+                                        android:maxLines="5"
+                                        android:textColor="?attr/textcolor"
+                                        android:textColorHint="?attr/textcolor"
+                                        android:textSize="15sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView: Button edit Profile -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            card_view:cardBackgroundColor="#FFC107"
+                            card_view:cardCornerRadius="10dp"
+                            card_view:cardElevation="2dp">
+
+                            <!-- Button: Click next to [UpdateProfileActivity.java] -->
+                            <Button
+                                android:id="@+id/button_editProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/flag_transparent"
+                                android:fontFamily="@font/chub"
+                                android:text="@string/edit_profile_text"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView: Button Upload Image Profile -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="30dp"
+                            card_view:cardBackgroundColor="@color/green"
+                            card_view:cardCornerRadius="10dp"
+                            card_view:cardElevation="2dp">
+
+                            <Button
+                                android:id="@+id/button_next"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/flag_transparent"
+                                android:fontFamily="@font/chub"
+                                android:text="ถัดไป"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

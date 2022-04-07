@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 19/10/2021 **]
+[** UPDATE : 31/01/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/cardbackground">
+
+    <!-- LinearLayout: Group [activity_home_header.xml] -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- RelativeLayout: Group [activity_home_header.xml] -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <!-- CircleImageView: Show profileIv -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:src="@drawable/man"
+                app:civ_border_color="@color/green"
+                app:civ_border_width="1dp" />
+
+            <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/icon_profile"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:src="@drawable/man"
+                app:civ_border_color="@color/green"
+                app:civ_border_width="1dp" />
+
+        </RelativeLayout>
+
+        <!-- LinearLayout: Group TextProfile -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
+            <TextView
+                android:id="@+id/lastname_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chub"
+                android:hint="@string/Loading"
+                android:maxLines="5"
+                android:textColor="?attr/textcolor"
+                android:textColorHint="?attr/tintcolor"
+                android:textSize="16sp" />
+
+            <!-- TextView: Show profileTv give from Firebase -> RealTime -> email -->
+            <TextView
+                android:id="@+id/email_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chub"
+                android:hint="@string/Loading"
+                android:maxLines="5"
+                android:textColor="?attr/textcolor"
+                android:textColorHint="?attr/tintcolor"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: Group menu -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right|center"
+            android:orientation="horizontal"
+            android:paddingEnd="10dp">
+
+            <!-- Button: click menu to [SettingActivity.java] -->
+            <Button
+                android:id="@+id/settingBtn"
+                android:layout_width="34dp"
+                android:gravity="center"
+                android:layout_height="34dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/ic_menu_menu" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

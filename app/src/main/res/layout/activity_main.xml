@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 18/10/2021 **]
+[** UPDATE : 27/01/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    tools:context=".Users.MainActivity">
+
+    <!-- ScrollView: ViewGroup [activity_main.xml] Swipe[up - down] -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <!-- LinearLayout: Group [activity_main.xml] -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- RelativeLayout: Group Logo Depression -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="218dp"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <!-- ImageView: kitty no.8 -->
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/kitty_8" />
+
+                <!-- ImageView: Logo Depression -->
+                <ImageView
+                    android:id="@+id/Logo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/logo_white" />
+
+            </RelativeLayout>
+
+            <!-- LinearLayout: Group Depression -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- TextView: title Depression no.1 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/digiffiti"
+                    android:text="@string/depression"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="?attr/textcolormain"
+                    android:textSize="65sp" />
+
+                <!-- TextView: title Depression no.2 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/digiffiti"
+                    android:text="@string/therapy_game"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="?attr/textcolormain"
+                    android:textSize="40sp" />
+
+                <!-- View: line -->
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="85dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="85dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="?attr/textcolormain" />
+
+                <!-- TextView: title Depression no.3 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chub"
+                    android:text="@string/game_dep"
+                    android:textColor="?attr/textcolormain"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <!-- LinearLayout: Group Button Next -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    card_view:cardBackgroundColor="@color/teal_200"
+                    card_view:cardCornerRadius="20dp"
+                    card_view:cardElevation="3dp">
+
+                    <Button
+                        android:id="@+id/ButtonLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/flag_transparent"
+                        android:fontFamily="@font/chub"
+                        android:text="LOGIN | เข้าสู่ระบบ"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    card_view:cardBackgroundColor="?attr/cardbackground"
+                    card_view:cardCornerRadius="20dp"
+                    card_view:cardElevation="3dp">
+
+                    <Button
+                        android:id="@+id/ButtonReg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/flag_transparent"
+                        android:fontFamily="@font/chub"
+                        android:text="REGISTER | สมัครสมาชิก"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="15sp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

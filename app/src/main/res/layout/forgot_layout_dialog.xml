@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 18/10/2021 **]
+[** UPDATE : 04/02/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_round"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                card_view:cardBackgroundColor="?attr/cardbackground"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+
+                        android:src="@drawable/icons_password" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/muli_bold"
+                        android:gravity="center"
+                        android:text="@string/forgot_password"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:fontFamily="@font/chur"
+                        android:gravity="center"
+                        android:text="@string/forgot_password_text"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="18sp" />
+
+                    <!-- TextView: show email -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/email_show"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <!-- TextInputLayout: input email -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxBackgroundColor="?attr/cardbackgroundtab"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#B4B4B4"
+                        app:hintEnabled="false">
+
+                        <!-- TextInputEdittext: input email -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editText_password_reset_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/custom_email_icon"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- btn updateProfile -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        card_view:cardBackgroundColor="@color/green"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="2dp">
+
+                        <Button
+                            android:id="@+id/ButtonPasswordReset"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/flag_transparent"
+                            android:fontFamily="@font/chub"
+                            android:text="ยืนยันการรีเซ็ตรหัสผ่าน"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:visibility="visible"
+                        card_view:cardBackgroundColor="#FFC107"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="2dp">
+
+                        <Button
+                            android:id="@+id/cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/chub"
+                            android:text="@string/cancel_forgot"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

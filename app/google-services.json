@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "190823378059",
+    "firebase_url": "https://depression-d0cf5-default-rtdb.firebaseio.com",
+    "project_id": "depression-d0cf5",
+    "storage_bucket": "depression-d0cf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190823378059:android:17fa3bf952918e388f388e",
+        "android_client_info": {
+          "package_name": "com.depressionAdmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190823378059-ks9cnt0d96d1rk1bvqs7nmhtkmgbn7dg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.depressionAdmin",
+            "certificate_hash": "9af2fb7e0ecab43cd52d1a624f4891824b253989"
+          }
+        },
+        {
+          "client_id": "190823378059-v3hdn3ds10sds8dnatk5uvo4lhbirco1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnUwqeVh8M_GM6pVQSerBZQLXK6xk4C8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190823378059-v3hdn3ds10sds8dnatk5uvo4lhbirco1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190823378059:android:c583d2dd0b1ff5aa8f388e",
+        "android_client_info": {
+          "package_name": "com.depressiongame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190823378059-02fc0f5sge02ikec2g8jaqgtb569mida.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.depressiongame",
+            "certificate_hash": "9af2fb7e0ecab43cd52d1a624f4891824b253989"
+          }
+        },
+        {
+          "client_id": "190823378059-v3hdn3ds10sds8dnatk5uvo4lhbirco1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnUwqeVh8M_GM6pVQSerBZQLXK6xk4C8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190823378059-v3hdn3ds10sds8dnatk5uvo4lhbirco1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190823378059:android:46620a4066f8a2ff8f388e",
+        "android_client_info": {
+          "package_name": "com.depressiontherapygame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190823378059-a6mlgacsi8i91r4mv0ca9kkueb6mf837.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.depressiontherapygame",
+            "certificate_hash": "9af2fb7e0ecab43cd52d1a624f4891824b253989"
+          }
+        },
+        {
+          "client_id": "190823378059-v3hdn3ds10sds8dnatk5uvo4lhbirco1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnUwqeVh8M_GM6pVQSerBZQLXK6xk4C8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190823378059-v3hdn3ds10sds8dnatk5uvo4lhbirco1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

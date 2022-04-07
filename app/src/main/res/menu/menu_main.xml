@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_add_consult"
+        android:icon="@drawable/ic_add_white"
+        android:title="@string/nav_add_consult"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/nav_back"
+        android:icon="@drawable/ic_back"
+        android:title="@string/nav_my_consult"
+        app:showAsAction="always"/>
+</menu>

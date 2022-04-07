@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 19/10/2021 **]
+[** UPDATE : 30/01/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background"
+    tools:context=".Users.LoginRegister.RegisterActivity">
+
+    <!-- ScrollView: ViewGroup [activity_register.xml] Swipe[up - down] -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <!-- LinearLayout: Group [activity_register.xml] -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- ImageView: buttonBack to [MainActivity.java] -->
+            <ImageView
+                android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_back_menu"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+            <!-- ImageView: Logo -->
+            <ImageView
+                android:id="@+id/Logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo_white"
+                tools:ignore="ContentDescription" />
+
+            <!-- TextView: Depression Logo [title1] -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/digiffiti"
+                android:text="@string/depression"
+                android:textAllCaps="true"
+                android:textColor="?attr/textcolormain"
+                android:textSize="60sp" />
+
+            <!-- TextView: Depression Logo [title2] -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/digiffiti"
+                android:text="@string/therapy_game"
+                android:textAllCaps="true"
+                android:textColor="?attr/textcolormain"
+                android:textSize="40sp" />
+
+            <!-- View: Line Logo [title3] -->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="5dp"
+                android:background="?attr/textcolormain" />
+
+            <!-- TextView: Depression Logo [title4] -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chub"
+                android:text="@string/game_dep"
+                android:textColor="?attr/textcolormain"
+                android:textSize="18sp" />
+
+            <!-- CardView: ViewGroup Register -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="18dp"
+                card_view:cardBackgroundColor="?attr/cardbackground"
+                card_view:cardCornerRadius="20dp"
+                card_view:cardElevation="3dp">
+
+                <!-- LinearLayout: ViewGroup Register -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingStart="15dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="15dp"
+                    tools:ignore="RtlSymmetry">
+
+                    <!-- TextView: Register [title] -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/register"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="20sp" />
+
+                    <!-- TextView: show lastname -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/last_name_show"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <!-- TextInputLayout: input lastname -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_lastname"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxBackgroundColor="?attr/cardbackgroundtab"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#B4B4B4"
+                        app:hintEnabled="false">
+
+                        <!-- TextInputEdittext: input lastname -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/lastname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/custom_lastname_icon"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/last_name"
+                            android:inputType="textPersonName"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- TextView: show email -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/email_show"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <!-- TextInputLayout: input email -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxBackgroundColor="?attr/cardbackgroundtab"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#B4B4B4"
+                        app:hintEnabled="false">
+
+                        <!-- TextInputEdittext: input email -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/custom_email_icon"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- TextView: show phone number -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/phone_number_show"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <!-- TextInputLayout: input phone number -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_phone"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxBackgroundColor="?attr/cardbackgroundtab"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#B4B4B4"
+                        app:hintEnabled="false">
+
+                        <!-- TextInputEdittext: input phone number -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/custom_phone_icon"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/phone_number"
+                            android:inputType="phone"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- TextView: show password -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/password_show"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <!-- TextInputLayout: input password -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_password"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxBackgroundColor="?attr/cardbackgroundtab"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:hintEnabled="false"
+                        app:passwordToggleDrawable="@drawable/show_password"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/gray">
+
+                        <!-- TextInputEdittext: input password -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/custom_password_icon"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- RelativeLayout: ViewGroup preliminary agreement -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp">
+
+                        <!-- CheckBow: [accept and reject] preliminary agreement -->
+                        <CheckBox
+                            android:id="@+id/agreement"
+                            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="?attr/textcolormain"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/agreement_pi"
+                            android:textColor="?attr/textcolormain"
+                            android:textSize="14sp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <!-- Button[transparent]: [accept and reject] preliminary agreement -->
+                        <Button
+                            android:id="@+id/btnCheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/flag_transparent"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                    </RelativeLayout>
+
+                    <!-- Button: register -->
+                    <Button
+                        android:id="@+id/ButtonReg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:background="@drawable/button_rego_new"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/register_btn"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- TextView: Click next to LoginActivity.java -->
+                    <TextView
+                        android:id="@+id/nextLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chur"
+                        android:text="@string/nextLogin"
+                        android:textColor="?attr/tintcolor"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- ProgressBar: Show Loading  -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_roundlr"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

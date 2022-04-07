@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 1/02/2022 **]
+[** UPDATE : 3/03/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <!-- LinearLayout: Group dialog -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- CardView: ViewGroup dialog -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:elevation="5dp"
+            card_view:cardBackgroundColor="#CC0C9294"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="1dp">
+
+            <!-- LinearLayout: ViewGroup -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center|top"
+                android:orientation="vertical"
+
+                android:padding="19dp">
+
+                <!-- TextView: show tetris  -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/chub"
+                    android:paddingTop="20dp"
+                    android:text="วิธีการเล่นเกมเททริส"
+                    android:textColor="@color/white"
+                    android:textSize="35sp" />
+
+                <!-- ImageView: show tetris  -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/htp_01" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/chub"
+                    android:text="คลิกที่บล็อคที่กำลังหล่นลงมา \nเพื่อเปลี่ยนองศาของบล็อค"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <!-- ImageView: show tetris  -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/htp_02" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/chub"
+                    android:text="ปัดบล็อคไปทางซ้าย หรือ ขวา เพื่อเลื่อนบล็อค"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <!-- ImageView: show tetris  -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/htp_03" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/chub"
+                    android:text="ปัดบล็อคลงมาเพื่อเร่งความเร็ว \nในการหล่นลงมาของบล็อค"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    card_view:cardBackgroundColor="?attr/cardbackground"
+                    card_view:cardCornerRadius="5dp">
+
+                    <Button
+                        android:id="@+id/cancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/flag_transparent"
+                        android:fontFamily="@font/chub"
+                        android:text="ย้อนกลับ"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="16sp" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
+
+

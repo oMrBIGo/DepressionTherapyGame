@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="13.00dp"
+    android:layout_marginEnd="13.00dp"
+    android:background="@drawable/popup"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="26.00dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/win" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8.00dp"
+        android:fontFamily="@font/chub"
+        android:gravity="center"
+        android:text="ปลดล็อคด่านเลเวล 12 เรียบร้อยแล้ว"
+        android:textColor="@color/fontWhite"
+        android:textSize="@dimen/_20sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="1.00dp"
+        android:fontFamily="@font/chub"
+        android:gravity="center"
+        android:text="สามารถทำแบบประเมินได้เลย"
+        android:textColor="@color/fontWhite"
+        android:textSize="@dimen/_17sdp" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/restart"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10.00dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5.00dp"
+            android:layout_marginTop="2.00dp"
+            android:layout_marginEnd="5.00dp"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:lines="2"
+            android:text="กลับไปที่หน้าเมนู"
+            android:textColor="@color/fontWhite"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
+

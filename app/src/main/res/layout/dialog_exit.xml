@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="13.00dp"
+    android:layout_marginEnd="13.00dp"
+    android:background="@drawable/popup"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="26.00dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/chub"
+        android:gravity="center"
+        android:lines="2"
+        android:text="@string/msg_do_you_want_to_exit"
+        android:textColor="@color/fontWhite"
+        android:textSize="21sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="26.00dp"
+        android:background="@drawable/exit"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2.00dp"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/action_exit"
+            android:textColor="@color/fontWhite"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="13.00dp"
+        android:background="@drawable/no"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2.00dp"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/action_no"
+            android:textColor="@color/fontWhite"
+            android:textSize="17sp" />
+    </LinearLayout>
+</LinearLayout>
+

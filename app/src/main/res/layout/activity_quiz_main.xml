@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    tools:context=".Users.QuizDepression.QuizMainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_quizdepression">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_round"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:visibility="gone" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- RelativeLayout: Group Logo Depression -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="218dp"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+
+                    <ImageView
+                        android:layout_width="165dp"
+                        android:layout_height="210dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/logo_white_quiz" />
+
+                </RelativeLayout>
+
+                <!-- LinearLayout: Group Depression -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <!-- TextView: title Depression no.1 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/digiffiti"
+                        android:text="@string/depression"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="?attr/textcolorquiz"
+                        android:textSize="60sp" />
+
+                    <!-- TextView: title Depression no.2 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/digiffiti"
+                        android:text="@string/therapy_game"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="?attr/textcolorquiz"
+                        android:textSize="40sp" />
+
+                    <!-- View: line -->
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="80dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="?attr/textcolorquiz" />
+
+                    <!-- TextView: title Depression no.3 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/game_dep"
+                        android:textColor="?attr/textcolorquiz"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="260dp"
+                        android:layout_height="230dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/show_quizdepression" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="55dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/btnQuizStart"
+                            android:layout_width="300dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/button_start_quizdepression"
+                            android:fontFamily="@font/chub"
+                            android:text="@string/start_depression"
+                            android:textColor="@color/white"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/btnDep"
+                            android:layout_width="210dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="18dp"
+                            android:background="@drawable/button_quizdepression"
+                            android:fontFamily="@font/chub"
+                            android:text="รายละเอียดแบบประเมิน"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btnQuizExit"
+                            android:layout_width="230dp"
+                            android:layout_height="110dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/button_end_quizdepression" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

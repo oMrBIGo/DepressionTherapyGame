@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 18/10/2021 **]
+[** UPDATE : 31/01/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    tools:context=".Users.HomeActivity">
+
+    <!-- LinearLayout: Group [activity_home.xml] -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- include: Show layout Header [activity_home_header.xml]  -->
+        <include layout="@layout/activity_home_header" />
+
+        <!-- include: Show layout Body [activity_home_custom.xml]  -->
+        <include
+            layout="@layout/activity_home_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- ProgressBar: Show Loading  -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_round"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="da">
+        <attr name="colorPrimary" format="color"/>
+        <attr name="backgroundcolor" format="color"/>
+        <attr name="background" format="reference"/>
+        <attr name="cardbackground" format="color"/>
+        <attr name="cardbackgroundtab" format="color"/>
+        <attr name="textcolor" format="color"/>
+        <attr name="textcolormain" format="color"/>
+        <attr name="textcolorquiz" format="color"/>
+        <attr name="tintcolor" format="color"/>
+        <attr name="buttoncolor" format="color"/>
+        <attr name="loginandregcolortext" format="color"/>
+        <attr name="loginandregcolorbg" format="color"/>
+        <attr name="backgroundcolorsetting" format="color"/>
+        <attr name="backgroundcolorconsult" format="color"/>
+        <attr name="backgroundcolorheader" format="color"/>
+        <attr name="nightmode" format="string"/>
+        <attr name="textdialog" format="color"/>
+        <attr name="dialogbackgroundcolor" format="color"/>
+        <attr name="dialogboxcolor" format="color"/>
+    </declare-styleable>
+</resources>

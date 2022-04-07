@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 19/10/2021 **]
+[** UPDATE : 31/01/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ScrollView: ViewGroup [activity_home_menu.xml] Swipe[up - down] -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        tools:ignore="UselessParent">
+
+        <!-- CardView: ViewGroup -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_inner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            card_view:cardBackgroundColor="?attr/cardbackground"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="1dp">
+
+            <!-- LinearLayout: ViewGroup -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <!-- ImageView: Show Line -->
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/tabtext" />
+
+                    <!-- ImageView: Show Kitty No.9 -->
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:src="@drawable/kitty_9" />
+
+                    <!-- TextView: Show Title Depression 01 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/depression_title_01"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="17.5sp" />
+
+                </LinearLayout>
+
+                <!-- LinearLayout: ViewGroup Depression Button show dialog [01] -->
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:weightSum="4">
+
+                    <!-- LinearLayout: ViewGroup Button Depression [01] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn1"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep01" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text01"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup Button Depression [02] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn2"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep02" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text02"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup Button Depression [03] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn3"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep03" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text03"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup Button Depression [04] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn4"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep04" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text04"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- LinearLayout: ViewGroup Depression Button show dialog [02] -->
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp"
+                    android:weightSum="4">
+
+                    <!-- LinearLayout: ViewGroup Button Depression [05] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn5"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep05" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text05"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup Button Depression [06] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn6"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep06" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text06"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup Button Depression [07] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn7"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep07" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text07"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup Button Depression [08] -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/depressionBtn8"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/dep08" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chur"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="@string/text08"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- CardView: ViewGroup Tetris -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_inner_game"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    card_view:cardBackgroundColor="?attr/cardbackgroundtab"
+                    card_view:cardElevation="2dp">
+
+                    <!-- LinearLayout: ViewGroup -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingStart="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                            <!-- ImageView: Show Logo Game Tetris -->
+                            <ImageView
+                                android:id="@+id/logo_tetris"
+                                android:layout_width="115dp"
+                                android:layout_height="115dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/logo_white" />
+
+
+                        </RelativeLayout>
+
+                        <!-- LinearLayout: ViewGroup Tetris -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <!-- LinearLayout: ViewGroup Text Tetris -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:orientation="horizontal"
+                                tools:ignore="RtlHardcoded">
+
+                                <!-- TextView: Show title tetris -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:fontFamily="@font/chub"
+                                    android:text="@string/tetris_show"
+                                    android:textColor="?attr/textcolor"
+                                    android:textSize="16sp" />
+
+                                <!-- ImageView: Show image kitty No.2 -->
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@drawable/kitty_2" />
+
+                            </LinearLayout>
+
+                            <!-- TextView: Show title tetris -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/chur"
+                                android:text="@string/tetris_game"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="13sp" />
+
+                            <!-- LinearLayout: ViewGroup Button -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_gravity="left"
+                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                tools:ignore="RtlHardcoded">
+
+                                <!-- Button: Click to [MainActivityGame.java] -->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardViewBtnGame"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="2dp"
+                                    android:layout_weight="1"
+                                    card_view:cardBackgroundColor="@color/teal_200"
+                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardElevation="1dp">
+
+                                    <Button
+                                        android:id="@+id/Button_play_Tetris"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:background="@android:color/transparent"
+                                        android:fontFamily="@font/chub"
+                                        android:padding="5dp"
+                                        android:text="เริ่มเกม"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="2dp"
+                                    android:layout_weight="1"
+                                    card_view:cardBackgroundColor="?attr/cardbackground"
+                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardElevation="1dp">
+
+                                    <Button
+                                        android:id="@+id/details_tetris_btn"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:background="@android:color/transparent"
+                                        android:fontFamily="@font/chub"
+                                        android:padding="5dp"
+                                        android:text="วิธีการเล่น"
+                                        android:textColor="?attr/textcolor"
+                                        android:textSize="12sp" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- ImageView: Show Line -->
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/tabtext" />
+
+                    <!-- TextView: Show Title Depression 02 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/depression_title_02"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="16sp" />
+
+                    <!-- ImageView: Show Kitty No.9 -->
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:src="@drawable/kitty_3" />
+
+                </LinearLayout>
+
+                <!-- CardView: ViewGroup Assessment Form -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_inner_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    card_view:cardBackgroundColor="?attr/cardbackgroundtab"
+                    card_view:cardCornerRadius="20dp"
+                    card_view:cardElevation="2dp">
+
+                    <!-- LinearLayout: ViewGroup Assessment Form -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
+
+                        <!-- LinearLayout: ViewGroup Title Assessment Form -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView: Show Title Assessment Form 01 -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chub"
+                                android:text="@string/assessment_form"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="30sp" />
+
+                            <!-- LinearLayout: ViewGroup Title Assessment Form -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                tools:ignore="UseCompoundDrawables">
+
+                                <!-- TextView: Show Title Assessment Form 02 -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/chub"
+                                    android:text="@string/depression_af"
+                                    android:textColor="?attr/textcolor"
+                                    android:textSize="14.5sp" />
+
+                                <!-- ImageView: Show check -->
+                                <pl.droidsonroids.gif.GifImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginStart="2dp"
+                                    android:src="@drawable/check_gif" />
+
+                            </LinearLayout>
+
+                            <!-- LinearLayout: ViewGroup Button Assessment Form -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="left"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="10dp"
+                                android:orientation="horizontal"
+                                tools:ignore="RtlHardcoded">
+
+                                <!-- Button: Click to [SplashQuizActivity.java] -->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardViewBtnDep"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="2dp"
+                                    android:layout_weight="1"
+                                    card_view:cardBackgroundColor="@color/gray"
+                                    card_view:cardCornerRadius="10dp">
+
+                                    <Button
+                                        android:id="@+id/btnQuizDep"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/flag_transparent"
+                                        android:fontFamily="@font/chub"
+                                        android:padding="5dp"
+                                        android:text="@string/level_12"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="13.5sp" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- ImageView: Show Assessment Form -->
+                        <ImageView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/form_icon" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <!-- ImageView: Show Line -->
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/tabtext" />
+
+                    <!-- TextView: Show Title Depression 03 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/depression_title_03"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="16sp" />
+
+                    <!-- ImageView: Show Kitty No.8 -->
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:src="@drawable/kitty_8" />
+
+                </LinearLayout>
+
+                <!-- CardView: ViewGroup Consultation -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    card_view:cardBackgroundColor="?attr/cardbackgroundtab"
+                    card_view:cardCornerRadius="20dp"
+                    card_view:cardElevation="2dp">
+
+                    <!-- LinearLayout: ViewGroup Consultation-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
+
+                        <!-- ImageView: Show Consultation -->
+                        <ImageView
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/consultation" />
+
+                        <!-- LinearLayout: ViewGroup Title Consultation 01-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView: Show Title Consultation 01 -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/chub"
+                                android:text="@string/Consultation_show"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="32sp" />
+
+                            <!-- LinearLayout: ViewGroup Title Consultation 02-->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <!-- TextView: Show Title Consultation 02 -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/chub"
+                                    android:text="@string/This_Consultation"
+                                    android:textColor="?attr/textcolor"
+                                    android:textSize="15sp" />
+
+                                <!-- ImageView: Show check -->
+                                <pl.droidsonroids.gif.GifImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginStart="2dp"
+                                    android:src="@drawable/check_gif" />
+                            </LinearLayout>
+
+                            <!-- LinearLayout: ViewGroup Title Consultation 02 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_gravity="left"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="20dp"
+                                android:orientation="horizontal"
+                                tools:ignore="RtlHardcoded">
+
+                                <!-- Button: Click to [SplashQuizActivity.java] -->
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="2dp"
+                                    android:layout_weight="1"
+                                    card_view:cardBackgroundColor="@color/teal_200"
+                                    card_view:cardCornerRadius="10dp">
+
+                                    <Button
+                                        android:id="@+id/btnConDep"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/flag_transparent"
+                                        android:fontFamily="@font/chub"
+                                        android:padding="5dp"
+                                        android:text="@string/Start_Consultation"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+</RelativeLayout>

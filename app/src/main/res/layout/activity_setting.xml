@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 22/10/2021 **]
+[** UPDATE : 01/02/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor"
+    android:orientation="vertical"
+    tools:context=".Users.Setting.SettingActivity">
+
+    <!-- LinearLayout: Group [activity_setting.xml] -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ScrollView: ViewGroup [activity_register.xml] Swipe[up - down] -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <!-- LinearLayout: ViewGroup -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- ImageView: buttonBack to [HomeActivity.java] -->
+                <ImageView
+                    android:id="@+id/buttonBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_back_menu"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+
+                <!-- RelativeLayout: ViewGroup Header -->
+                <RelativeLayout
+                    android:id="@+id/relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp">
+
+                    <!-- LinearLayout: ViewGroup -->
+                    <LinearLayout
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- TextView: Show Text Email-->
+                        <TextView
+                            android:id="@+id/textView_show_welcome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/Loading"
+                            android:maxLines="5"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textSize="17sp" />
+
+                        <!-- LinearLayout: ViewGroup -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView: Show Text LastName -->
+                            <TextView
+                                android:id="@+id/textView_show_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:hint="@string/Loading"
+                                android:maxLines="5"
+                                android:textAllCaps="true"
+                                android:textColor="?attr/textcolor"
+                                android:textColorHint="?attr/tintcolor"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout: ViewGroup -->
+                    <LinearLayout
+                        android:id="@+id/verifity_box"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/verifity_box"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <!-- ImageView: Show Check Verified -->
+                        <pl.droidsonroids.gif.GifImageView
+                            android:id="@+id/gif"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/check_gif" />
+
+                        <!-- TextView: Show Text Verified -->
+                        <TextView
+                            android:id="@+id/emailV_Tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/chub"
+                            android:text="@string/verified"
+                            android:textColor="#2EC18A"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <!-- depression show tab. onClick to depression form -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        card_view:cardBackgroundColor="?attr/cardbackground"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="2dp">
+
+                        <!-- RelativeLayout: ViewGroup -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent">
+
+                            <!-- LinearLayout: ViewGroup -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="vertical">
+
+                                <!-- TextView: show text Depression -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/chub"
+                                    android:text="ผลการทำแบบประเมินครั้งแรก"
+                                    android:textAlignment="center"
+                                    android:textColor="#F1AE10"
+                                    android:textSize="14sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <!-- ImageView: Show Icon -->
+                                    <ImageView
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:src="@drawable/ic_checklist" />
+
+                                    <!-- TextView: show text Depression -->
+                                    <TextView
+                                        android:id="@+id/firstdepression"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="5dp"
+                                        android:fontFamily="@font/chub"
+                                        android:maxLines="1"
+                                        android:text="@string/Loading"
+                                        android:textColor="#F1AE10"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- depression show tab. onClick to depression form -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_inner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        card_view:cardBackgroundColor="?attr/cardbackground"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="2dp">
+
+                        <!-- RelativeLayout: ViewGroup -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:gravity="center">
+
+                            <!-- LinearLayout: ViewGroup -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="vertical">
+
+                                <!-- TextView: show text Depression -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/chub"
+                                    android:text="ผลการทำแบบประเมินครั้งล่าสุด"
+                                    android:textAlignment="center"
+                                    android:textColor="#F1AE10"
+                                    android:textSize="14sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <!-- ImageView: Show Icon -->
+                                    <ImageView
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:src="@drawable/ic_checklist" />
+
+                                    <!-- TextView: show text Depression -->
+                                    <TextView
+                                        android:id="@+id/depression"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="5dp"
+                                        android:fontFamily="@font/chub"
+                                        android:maxLines="1"
+                                        android:text="@string/Loading"
+                                        android:textColor="#F1AE10"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!-- night / day mode setting -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_Night_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    card_view:cardBackgroundColor="?attr/cardbackground"
+                    card_view:cardElevation="3dp">
+
+                    <!-- RelativeLayout: ViewGroup -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <!-- TextView: Show text -->
+                        <TextView
+                            android:id="@+id/depression_NightMode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/chub"
+                            android:text="เลือกโหมดที่ต้องการ"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="16sp" />
+
+                        <!-- TextView: Show text -->
+                        <TextView
+                            android:id="@+id/textShDN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_toEndOf="@+id/depression_NightMode"
+                            android:fontFamily="@font/chur"
+                            android:text="?attr/nightmode"
+                            android:textColor="#F1982D"
+                            android:textSize="16sp" />
+
+                        <!-- Switch: Night day mode -->
+                        <Switch
+                            android:id="@+id/myswitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="5dp"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- btn profile -->
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/menu_vef"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/icon_vef"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_warn" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_vef"
+                            android:fontFamily="@font/chur"
+                            android:text="ยืนยันอีเมล"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+                    <!-- RelativeLayout: ViewGroup -->
+                    <RelativeLayout
+                        android:id="@+id/menu_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_home"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/homepage" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_home"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/home"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn profile -->
+                    <RelativeLayout
+                        android:id="@+id/menu_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_profile"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_user_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_profile"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/profile"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn update email -->
+                    <RelativeLayout
+                        android:id="@+id/menu_his_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_hisuser"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_history" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_hisuser"
+                            android:fontFamily="@font/chur"
+                            android:text="ประวัติการเข้าใช้งาน"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn change password -->
+                    <RelativeLayout
+                        android:id="@+id/menu_his_depression"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_hisdepression"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_history" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_hisdepression"
+                            android:fontFamily="@font/chur"
+                            android:text="ประวัติการทำแบบประเมิน"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn update email -->
+                    <RelativeLayout
+                        android:id="@+id/menu_update_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_updateemail"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_updateemail" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_updateemail"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/update_email"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn change password -->
+                    <RelativeLayout
+                        android:id="@+id/menu_change_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_change_pass"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_changepass" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_change_pass"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/change_password"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn setting -->
+                    <RelativeLayout
+                        android:id="@+id/menu_feedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_feedback"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/feedback" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_feedback"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/feedback"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="?attr/cardbackground" />
+
+                    <!-- btn delete profile -->
+                    <RelativeLayout
+                        android:id="@+id/menu_delete_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_delete"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_deleteprofile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_delete"
+                            android:fontFamily="@font/chur"
+                            android:text="@string/delete_profile"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_next" />
+
+                    </RelativeLayout>
+
+                    <!-- line bar -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="?attr/cardbackground" />
+
+                </LinearLayout>
+
+                <!-- btn logout -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    card_view:cardBackgroundColor="?attr/cardbackground"
+                    card_view:cardCornerRadius="5dp"
+                    card_view:cardElevation="2dp">
+
+                    <Button
+                        android:id="@+id/menu_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/flag_transparent"
+                        android:fontFamily="@font/chub"
+                        android:text="ออกจากระบบ"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="18sp" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_round"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>
