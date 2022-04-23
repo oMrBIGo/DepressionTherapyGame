@@ -47,7 +47,7 @@
                         android:fontFamily="@font/chub"
                         android:text="เกมบำบัดภาวะซึมเศร้าในวัยรุ่น"
                         android:textColor="?attr/textcolor"
-                        android:textSize="23sp" />
+                        android:textSize="20sp" />
 
                     <!-- View: Line -->
                     <View
