@@ -108,6 +108,8 @@
                     android:textSize="15sp" />
 
                 <!-- TextView: show tetris -->
+
+                <!-- TextView: show tetris -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,7 +119,6 @@
                     android:textColor="?attr/textdialog"
                     android:textSize="15sp" />
 
-                <!-- TextView: show tetris -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +42,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     ImageView profileIv;
     TextView lastnameTv, emailTv;
-
+    Dialog dialog;
     SharedPref sharedPref;
 
     @Override
@@ -51,6 +56,8 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         init_screen();
+
+        dialog = new Dialog(this);
 
         //init
         firebaseAuth = FirebaseAuth.getInstance();
@@ -77,6 +84,7 @@ public class DashboardActivity extends AppCompatActivity {
         //firebase auth instance
         firebaseAuth = FirebaseAuth.getInstance();
 
+        openNavDialog();
         showUserProfile();
 
     }
@@ -106,6 +114,25 @@ public class DashboardActivity extends AppCompatActivity {
                     return false;
                 }
             };
+
+    /* open Dialog Show Detail_tetris */
+    private void openNavDialog() {
+        /* set dialog [tetris_layout_dialog.xml] */
+        dialog.setContentView(R.layout.consult_dialog);
+        /* sey dialog background Transparent */
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        LinearLayout onClickLinear = (LinearLayout) dialog.findViewById(R.id.onClickLinear);
+        onClickLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        /* dialog show */
+        dialog.show();
+    }
 
     private void showUserProfile() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
