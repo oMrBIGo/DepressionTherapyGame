@@ -111,6 +111,15 @@ public class HomeActivity extends AppCompatActivity {
         cardViewBtnDep = findViewById(R.id.cardViewBtnDep);
         cardViewBtnGame = findViewById(R.id.cardViewBtnGame);
 
+        TextView Tetris_Description = (TextView) findViewById(R.id.Tetris_Description);
+        Tetris_Description.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTetrisDescriptionDialog();
+                Tetris_Description.startAnimation(animation);
+            }
+        });
+
         /* Button Click: Show dialog Tetris */
         Button DialogTetris = (Button) findViewById(R.id.details_tetris_btn);
         DialogTetris.setOnClickListener(new View.OnClickListener() {
@@ -490,6 +499,26 @@ public class HomeActivity extends AppCompatActivity {
     private void openTetrisDialog() {
         /* set dialog [tetris_layout_dialog.xml] */
         dialog.setContentView(R.layout.hwtopytetris_layout_dialog);
+        /* sey dialog background Transparent */
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        /* init view button in dialog */
+        Button cancelBtn = dialog.findViewById(R.id.cancel);
+
+        /* button click reject preliminary agreement */
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        /* dialog show */
+        dialog.show();
+    }
+
+    /* open Dialog Show Description_tetris */
+    private void openTetrisDescriptionDialog() {
+        /* set dialog [tetris_layout_dialog.xml] */
+        dialog.setContentView(R.layout.tetris_layout_dialog);
         /* sey dialog background Transparent */
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         /* init view button in dialog */

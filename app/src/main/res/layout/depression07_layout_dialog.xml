@@ -52,7 +52,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/chub"
-                        android:text="@string/depressionText01"
+                        android:text="@string/depressionText07"
                         android:textColor="?attr/textcolor"
                         android:textSize="23sp" />
 

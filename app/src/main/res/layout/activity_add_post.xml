@@ -134,7 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:background="@drawable/flag_transparent"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/chub"
                     android:text="เสร็จสิ้น"
                     android:textColor="@color/white"

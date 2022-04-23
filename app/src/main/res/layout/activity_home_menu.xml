@@ -379,10 +379,11 @@
 
                             <!-- TextView: Show title tetris -->
                             <TextView
+                                android:id="@+id/Tetris_Description"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/chur"
-                                android:text="@string/tetris_game"
+                                android:text="เกมเททริส(Tetris)เป็นเกมแก้ปัญหาจัดเรียงตัวบล็อกที่หล่นลงมาจัดเรียงให้เป็นแถว สามารถช่วยบำบัดอาการซึมเศร้าหรือโรคเครียดหลังเหตุการณ์ร้ายเเรง(PTSD)ได้ คลิกที่นี่เพื่ออ่านข้อมูลเพิ่มเติม..."
                                 android:textColor="?attr/textcolor"
                                 android:textSize="13sp" />
 
@@ -538,7 +539,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/chub"
-                                    android:text="@string/depression_af"
+                                    android:text="ทำแบบประเมินได้ที่นี่"
                                     android:textColor="?attr/textcolor"
                                     android:textSize="14.5sp" />
 

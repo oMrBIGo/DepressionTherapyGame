@@ -4,7 +4,7 @@
 
     <!-- Header -->
     <string name="app_name">เกมบำบัดซึมเศร้า</string>
-    <string name="tetris_game">เกมเททริส(Tetris)เป็นเกมแก้ปัญหาจัดเรียงตัวบล็อกที่หล่นลงมาจัดเรียงให้เป็นแถว สามารถช่วยบำบัดอาการซึมเศร้าหรือโรคเครียด(PTSD) ได้ </string>
+    <string name="tetris_game">เกมเททริส(Tetris)เป็นเกมแก้ปัญหาจัดเรียงตัวบล็อกที่หล่นลงมาจัดเรียงให้เป็นแถว สามารถช่วยบำบัดอาการซึมเศร้าได้ </string>
     <string name="create_acc">ลงทะเบียน สำหรับผู้ใช้ใหม่</string>
 
     <!-- Body Depression -->
@@ -180,7 +180,7 @@
     <string name="text04">ป้องกัน</string>
     <string name="text05">ปัจจัยเสี่ยง</string>
     <string name="text06">ผลข้างเคียง</string>
-    <string name="text07">วินิฉัย</string>
+    <string name="text07">วินิจฉัย</string>
     <string name="text08">ประเภทโรค</string>
 
     <!-- tetris home -->
@@ -198,10 +198,22 @@
     <string name="This_Consultation">ดูคำปรึกษาทั้งหมดได้ที่นี่</string>
     <string name="Start_Consultation">คำปรึกษา</string>
     <string name="tetris_details_01">เกมเททริส (Tetris) ช่วยให้ความเครียดและความวิตกกังวลหายไป Tetris Helps My Stress and Anxiety Fall Away.</string>
-    <string name="tetris_details_02">การทบทวนวรรณกรรม 28 เรื่องในปี 2564 ที่เกี่ยวข้องกับวิดีโอเกมเชิงพาณิชย์ที่วางขายทั่วไป พบว่ามีหลักฐานยืนยันประโยชน์ของเกมเหล่านี้ในการลดความเครียดและความวิตกกังวล และไม่เพียงแต่ในบุคคลที่มีสุขภาพดี แต่ยังรวมถึงในผู้ป่วยที่มีภาวะซึมเศร้า วิตกกังวล PTSD และภาวะอื่นๆ ด้วย Federica Pallavicini นักวิจัยจาก University of Milano-Bicocca ในมิลานและผู้เขียนคนแรกในการทบทวนกล่าวว่า "มีแนวคิดที่ว่าเกมต้องได้รับการออกแบบโดยนักจิตวิทยาโดยมีวัตถุประสงค์เพื่อปรับเปลี่ยนพฤติกรรมในทางใดทางหนึ่ง “แต่ฉันเชื่อในศักยภาพของวิดีโอเกมเชิงพาณิชย์เพื่อสุขภาพจิตของเรา พวกเขาเข้าถึงได้ง่าย เรียบง่าย และผู้คนนับล้านสามารถเล่นได้”</string>
-    <string name="tetris_details_03">A 2021 review of 28 studies related to commercial off-the-shelf video games found evidence of the benefits of these games for reducing stress and anxiety. And not only in healthy individuals, but also in patients with depression, anxiety, PTSD, and other conditions. “There is this idea that games must be designed by psychologists with the aim of modifying behavior in some way to be helpful,” says Federica Pallavicini, research fellow at the University of Milano-Bicocca in Milan and the first author on the review. “But I believe in the potential of commercial video games for our mental health. They are easy to access, simple, and they can be played by millions of people.”</string>
-    <string name="tetris_details_04">ที่มา : https://www.wired.com/story/tetris-helps-stress-anxiety/</string>
+    <string name="tetris_details_02">การทบทวนวรรณกรรม 28 เรื่องในปี 2564 ที่เกี่ยวข้องกับวิดีโอเกมเชิงพาณิชย์ที่วางขายทั่วไป พบว่ามีหลักฐานยืนยันประโยชน์ของเกมเหล่านี้ในการลดความเครียดและความวิตกกังวล และไม่เพียงแต่ในบุคคลที่มีสุขภาพดี แต่ยังรวมถึงในผู้ป่วยที่มีภาวะซึมเศร้า วิตกกังวล PTSD และภาวะอื่นๆ ด้วย</string>
+    <string name="tetris_details_03">โรคเครียดหลังผ่านเหตุการณ์ร้ายแรง (PTSD: Posttraumatic Stress Disorder)</string>
+    <string name="tetris_details_04">เป็นโรคจิตเภทชนิดหนึ่งที่เกิดจากสภาวะจิตใจของผู้ป่วยได้รับการกระทบกระเทือนอย่างรุนแรงจากเหตุการณ์เลวร้าย เช่น การก่อการร้าย สงคราม การถูกข่มขืน ประสบภัยพิบัติ ประสบอุบัติเหตุ เป็นต้น ซึ่งผู้ป่วยอาจจะเป็นผู้ที่ประสบเหตุการณ์โดยตรง หรือเป็นผู้ที่ได้รับการสูญเสียจากเหตุการณ์ทางอ้อม</string>
+    <string name="tetris_details_05">อาการของโรค PTSD</string>
+    <string name="tetris_details_06">อาการเริ่มแรกของผู้ที่ป่วยเป็นโรคนี้ คือ จะเห็นภาพเหตุการณ์นั้นซ้ำ ๆ ราวกับเครื่องเล่นวิดีโอที่ฉายแต่ภาพเดิม ๆ ซ้ำ ๆ ทำให้ผู้ป่วยเห็นภาพหลอน ฝันร้าย และเกิดความวิตกกังวลอย่างรุนแรง
 
+เกิดอาการ flash back คือ ผู้ป่วยจะรู้สึกเหมือนว่าตัวเองกำลังอยู่ในเหตุการณ์นั้นซ้ำ ๆ จนเกิดความตื่นกลัว บางคนอาจมีอาการใจสั่น มือสั่น และเหงื่อออกมาก
+
+มองโลกในแง่ลบ ผู้ป่วยจะรู้สึกไม่มีความสุข ชีวิตหม่นหมอง มีอาการไม่สนใจในสิ่งที่เคยชอบทำ รู้สึกแปลกแยก และอาจร้ายแรงถึงขั้นอยากฆ่าตัวตาย
+
+กลัวและพยายามหลีกเลี่ยง ไม่กล้าเผชิญเหตุการณ์ที่เคยประสบเหตุ หรือหลีกเลี่ยงสิ่งเร้าที่ทำให้คิดถึงเหตุการณ์นั้น ๆ</string>
+
+    <string name="tetris_details_07">ทำอย่างไรเมื่ออาจต้องเผชิญภาวะ PTSD</string>
+    <string name="tetris_details_08">หากจะกล่าวถึงการป้องกันภาวะดังกล่าวคงไม่สามารถทำได้อย่างเต็มที่ เนื่องจากเป็นภาวะที่มีต้นเหตุมาจากเหตุการณ์ที่ไม่อาจควบคุมได้ ดังนั้นเมื่อเราผ่านเหตุการณ์ที่กระทบต่อความรู้สึกของเราอย่างรุนแรงเราจึงควรเข้าพบแพทย์เพื่อวินิจฉัยและขอคำปรึกษา พูดคุยกับผู้ที่สามารถรับฟังปัญหาของเราได้ หากิจกรรมเพื่อบรรเทาความเครียด เป็นต้น ยิ่งเราเข้ากระบวนการรักษาเร็วเราก็มีโอกาสเป็นภาวะ PTSD น้อยลงตามไปด้วยนั่นเอง</string>
+    <string name="tetris_details_09">ที่มา : https://www.wired.com/story/tetris-helps-stress-anxiety</string>
+    <string name="tetris_details_10">ที่มา : https://www.petcharavejhospital.com/th/Article/article_detail/PTSD</string>
     <!-- UserProfile -->
     <string name="edit_profile_text">แก้ไขข้อมูลสมาชิก</string>
     <string name="back_to_home_text">กลับไปที่หน้าหลัก</string>

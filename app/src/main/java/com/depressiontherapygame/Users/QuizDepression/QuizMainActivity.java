@@ -174,7 +174,6 @@ public class QuizMainActivity extends AppCompatActivity {
     }
 
     int backPressed = 0;
-
     @Override
     public void onBackPressed() {
         backPressed++;

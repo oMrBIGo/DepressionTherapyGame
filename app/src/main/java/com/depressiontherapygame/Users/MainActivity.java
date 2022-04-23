@@ -6,12 +6,17 @@ package com.depressiontherapygame.Users;
  * Developer by Nathit Panrod
  */
 
+import android.app.Dialog;
 import android.content.Intent;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     SharedPref sharedPref;
     Button register, login;
+    Dialog dialog;
+    final String PREFS_NAME = "MyPrefsFile";
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -45,6 +52,21 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dialog = new Dialog(this);
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+
+        if (settings.getBoolean("my_first_time", true)) {
+
+            openNavDialog();
+
+            // record the fact that the app has been started at least once
+            settings.edit().putBoolean("my_first_time", false).commit();
+        }
+
+
 
         /* [Enable]init_screen */
         init_screen();
@@ -89,6 +111,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /* open Dialog Show Detail_tetris */
+    private void openNavDialog() {
+        /* set dialog [tetris_layout_dialog.xml] */
+        dialog.setContentView(R.layout.nav_dialog);
+        /* sey dialog background Transparent */
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.closeOptionsMenu();
+        /* init view button in dialog */
+        Button cancelBtn = dialog.findViewById(R.id.cancel);
+
+        /* button click reject preliminary agreement */
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        /* dialog show */
+        dialog.show();
     }
 
     /* Init Screen */

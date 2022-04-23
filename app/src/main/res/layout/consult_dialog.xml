@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 11/02/2022 **]
+[** UPDATE : 11/02/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <!-- LinearLayout: Group dialog -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- LinearLayout: Group Depression -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!-- CardView: ViewGroup dialog -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="?attr/dialogbackgroundcolor"
+                app:cardCornerRadius="15dp">
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- TextView: Show Title Depression -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/chub"
+                        android:text="เกมบำบัดภาวะซึมเศร้าในวัยรุ่น"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="23sp" />
+
+                    <!-- View: Line -->
+                    <View
+                        android:layout_width="250dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:background="@color/teal_200" />
+
+                    <!-- ScrollView: Show slide Description -->
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <!-- LinearLayout: Description -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/dialogboxcolor"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="     แอปพลิเคชันนี้เป็นเพียงการช่วยบำบัดภาวะซึมเศร้าเบื้องต้น อาจจะไม่สามารถช่วยบำบัดให้หายจากโรคซึมเศร้าได้ 100% แอปพลิเคชันนี้ยังมีแบบประเมินสำหรับเช็คระดับความซึมเศร้าของผู้ใช้งานหลังจากผู้ใช้งานเล่นเกมตัวต่อเททริส และยังมีคำปรึกษาสำหรับให้ผู้ใช้งานได้โพสต์เพื่อปรึกษากับแพทย์หรือผู้ใช้งานได้"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        card_view:cardBackgroundColor="?attr/cardbackgroundtab"
+                        card_view:cardCornerRadius="10dp">
+
+                        <Button
+                            android:id="@+id/cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/flag_transparent"
+                            android:fontFamily="@font/chub"
+                            android:padding="5dp"
+                            android:text="ตกลง"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="18sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
