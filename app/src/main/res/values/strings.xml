@@ -69,14 +69,14 @@
 
     <!-- New set Password Massage -->
     <string name="PasswordUpdated">Password Updated</string>
-    <string name="PasswordTextUpdated">รหัสผ่านของคุณได้รับการอัพเดตแล้ว!</string>
+    <string name="PasswordTextUpdated">รหัสผ่านของคุณได้รับการอัปเดตแล้ว!</string>
 
     <!-- Profile Setting -->
     <string name="setProfile">โปรไฟล์ของฉัน</string>
     <string name="Loading">กำลังโหลด…</string>
 
     <!-- Profile set -->
-    <string name="editProfile"><u>อัพโหลดรูปโปรไฟล์</u></string>
+    <string name="editProfile"><u>อัปโหลดรูปโปรไฟล์</u></string>
 
     <!-- setting list menu -->
     <string name="home">หน้าหลัก</string>
@@ -257,7 +257,7 @@
     <string name="password_show_te1">Current Password | รหัสผ่านปัจจุบัน</string>
     <string name="password_show_te2">Password...</string>
     <string name="check_password_sh">ตรวจสอบ</string>
-    <string name="check_password_show_te">ตราวจสอบยืนยันรหัสผ่าน</string>
+    <string name="check_password_show_te">ตรวจสอบยืนยันรหัสผ่าน</string>
     <string name="auth_check_pass">[กรุณาตรวจสอบเพื่อยืนยัน]</string>
     <string name="del_pass_te">ยกเลิกบัญชีผู้ใช้</string>
     <string name="love_show">0 กำลังใจ</string>

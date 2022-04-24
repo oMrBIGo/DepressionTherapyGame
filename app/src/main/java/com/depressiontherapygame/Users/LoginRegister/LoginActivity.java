@@ -26,6 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String FILE_EMAIL = "EmailSave";
     private TextInputEditText edittextEmail, edittextPassword;
     private ProgressBar progressBar;
-    ImageView backBtn;
+    ImageButton backBtn;
     private Button LoginBtn, forgotPass;
     private ImageView imageView;
     DatabaseReference databaseUsers;

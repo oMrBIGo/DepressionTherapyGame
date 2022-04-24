@@ -28,7 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
+                android:layout_margin="10dp"
                 app:cardBackgroundColor="?attr/dialogbackgroundcolor"
+                app:cardElevation="6dp"
                 app:cardCornerRadius="15dp">
 
                 <!-- LinearLayout: ViewGroup -->
@@ -38,37 +40,42 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo_white"/>
+
                     <!-- TextView: Show Title Depression -->
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/chub"
+                        android:textAlignment="center"
                         android:text="เกมบำบัดภาวะซึมเศร้าในวัยรุ่น"
                         android:textColor="?attr/textcolor"
-                        android:textSize="20sp" />
+                        android:textSize="22sp" />
 
-                    <!-- View: Line -->
                     <View
-                        android:layout_width="250dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:background="@color/teal_200" />
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/teal_200"/>
 
                     <!-- ScrollView: Show slide Description -->
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
+                        android:layout_marginTop="10dp">
 
                         <!-- LinearLayout: Description -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="?attr/dialogboxcolor"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            >
 
                             <!-- TextView: Show Title Description -->
                             <TextView
@@ -77,32 +84,26 @@
                                 android:fontFamily="@font/chur"
                                 android:text="     แอปพลิเคชันนี้เป็นเพียงทางเลือกหรือช่องทางในการดูแลตนเองอย่างถูกวิธีและเข้าถึงการบำบัดรักษาตามกระบวนการต่อไปได้ ดังนั้นแอปพลิเคชันนี้จึงไม่สามารถช่วยให้หายจากโรคซึมเศร้าได้ 100% แอปพลิเคชันนี้ยังมีแบบประเมินสำหรับเช็คระดับความซึมเศร้าของผู้ใช้งานหลังจากผู้ใช้งานเล่นเกมตัวต่อเททริส และยังมีคำปรึกษาสำหรับให้ผู้ใช้งานได้โพสต์เพื่อปรึกษากับแพทย์หรือผู้ใช้งานได้"
                                 android:textColor="?attr/textcolor"
+                                android:layout_gravity="center_vertical|end"
                                 android:textSize="18sp" />
 
                         </LinearLayout>
 
                     </ScrollView>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        card_view:cardBackgroundColor="?attr/cardbackgroundtab"
-                        card_view:cardCornerRadius="10dp">
-
                         <Button
                             android:id="@+id/cancel"
-                            android:layout_width="match_parent"
+                            android:layout_width="250dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:background="@drawable/flag_transparent"
+                            android:background="@drawable/button_state_list_animator"
                             android:fontFamily="@font/chub"
                             android:padding="5dp"
+                            android:elevation="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="ตกลง"
-                            android:textColor="?attr/textcolor"
+                            android:textColor="@color/white"
                             android:textSize="18sp" />
-
-                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 

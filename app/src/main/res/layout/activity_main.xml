@@ -82,11 +82,9 @@
 
                 <!-- View: line -->
                 <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_marginStart="85dp"
+                    android:layout_width="280dp"
+                    android:layout_height="3dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="85dp"
                     android:layout_marginBottom="5dp"
                     android:background="?attr/textcolormain" />
 
@@ -105,58 +103,35 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
+                android:padding="10dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    card_view:cardBackgroundColor="@color/teal_200"
-                    card_view:cardCornerRadius="20dp"
-                    card_view:cardElevation="3dp">
-
                     <Button
                         android:id="@+id/ButtonLogin"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/flag_transparent"
+                        android:background="@drawable/button_state_list_animator"
                         android:fontFamily="@font/chub"
+                        android:stateListAnimator="@null"
+                        android:elevation="2dp"
                         android:text="LOGIN | เข้าสู่ระบบ"
                         android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    card_view:cardBackgroundColor="?attr/cardbackground"
-                    card_view:cardCornerRadius="20dp"
-                    card_view:cardElevation="3dp">
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/ButtonReg"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/flag_transparent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:elevation="2dp"
+                        android:background="@drawable/button_state_list_animator_white"
                         android:fontFamily="@font/chub"
+                        android:stateListAnimator="@null"
                         android:text="REGISTER | สมัครสมาชิก"
                         android:textColor="?attr/textcolormain"
-                        android:textSize="15sp" />
-
-                </androidx.cardview.widget.CardView>
-
+                        android:textSize="16sp" />
 
             </LinearLayout>
 

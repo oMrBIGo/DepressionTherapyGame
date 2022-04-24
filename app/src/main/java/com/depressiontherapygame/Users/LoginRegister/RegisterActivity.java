@@ -24,6 +24,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -66,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
     String uid;
     Dialog dialog;
     private static final String TAG = "RegisterActivity";
-    ImageView backBtn;
+    ImageButton backBtn;
     Button ButtonReg;
     int score, firstscore;
     @SuppressLint("SetTextI18n")

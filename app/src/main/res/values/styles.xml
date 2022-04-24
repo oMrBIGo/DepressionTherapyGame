@@ -3,8 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimary">@color/teal_200</item>
-        <item name="colorPrimaryDark">#E33225</item>
+        <item name="colorPrimaryDark">@color/teal_200</item>
         <item name="colorAccent">@color/teal_200</item>
         <item name="colorControlNormal">#ffffff</item>
         <item name="backgroundcolor">#F5F5F5</item>
@@ -15,7 +16,7 @@
         <item name="textcolor">#252525</item>
         <item name="textcolormain">@color/teal_200</item>
         <item name="textcolorquiz">@color/teal_900</item>
-        <item name="tintcolor">#B6B6B6</item>
+        <item name="tintcolor">#6E6E6E</item>
         <item name="buttoncolor">#2196F3</item>
         <item name="loginandregcolortext">#ffffff</item>
         <item name="backgroundcolorsetting">#ffffff</item>
@@ -23,14 +24,15 @@
         <item name="nightmode">โหมดกลางวัน</item>
         <item name="textdialog">#686868</item>
         <item name="dialogbackgroundcolor">#FAFFFFFF</item>
-        <item name="dialogboxcolor">#F2EAEAEA</item>
+        <item name="dialogboxcolor">#F2F3F3F3</item>
 
     </style>
 
     <!-- Base application theme. night mode -->
     <style name="darkTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/teal_200</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorPrimary">#171E26</item>
         <item name="colorPrimaryDark">#171E26</item>
         <item name="colorAccent">@color/teal_200</item>
         <item name="colorControlNormal">#ffffff</item>

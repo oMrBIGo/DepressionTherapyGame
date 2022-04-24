@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPref.loadNightModeState() == true) {
             setTheme(R.style.darkTheme);
         } else setTheme(R.style.AppTheme);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -57,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
-
+        openNavDialog();
         if (settings.getBoolean("my_first_time", true)) {
 
-            openNavDialog();
+
 
             // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();

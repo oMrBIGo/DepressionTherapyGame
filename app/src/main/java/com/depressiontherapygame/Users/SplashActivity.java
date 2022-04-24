@@ -47,13 +47,6 @@ public class SplashActivity extends AppCompatActivity {
         imageView = findViewById(R.id.Logo);
         progressBar = findViewById(R.id.progressBar_splash);
         valueText = (TextView) findViewById(R.id.valueText);
-        /* Animation Show */
-        Animation animation = new AlphaAnimation(0.0f, 1.0f);
-        animation.setDuration(200);
-        animation.setStartOffset(50);
-        animation.setRepeatMode(Animation.REVERSE);
-        animation.setRepeatCount(Animation.INFINITE);
-        valueText.startAnimation(animation);
 
         /* Change ImageView NightMode [turn:off-on] */
         if (sharedPref.loadNightModeState() == true) {

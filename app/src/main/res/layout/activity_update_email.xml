@@ -233,7 +233,7 @@
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chub"
-                        android:text="ตราวจสอบยืนยันอีเมล"
+                        android:text="ตรวจสอบยืนยันอีเมล"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
                         android:textSize="20sp" />

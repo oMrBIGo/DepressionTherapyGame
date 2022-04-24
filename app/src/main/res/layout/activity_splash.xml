@@ -43,7 +43,7 @@
             android:fontFamily="@font/chub"
             android:text="0%"
             android:textColor="?attr/textcolormain"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

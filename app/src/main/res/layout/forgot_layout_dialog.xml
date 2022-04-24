@@ -1,60 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?><!--
 [** CREATE : 18/10/2021 **]
-[** UPDATE : 04/02/2022 **]
+[** UPDATE : 24/04/2022 **]
 [** DEVELOPER BY NATHIT PANROD  **]
   -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:scrollbars="none">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!-- LinearLayout: Group dialog -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
+        <!-- LinearLayout: Group Depression -->
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/bg_round"
-            android:elevation="10dp"
-            android:padding="10dp"
-            android:visibility="gone" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+        <!-- CardView: ViewGroup dialog -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_inner"
+                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                card_view:cardBackgroundColor="?attr/cardbackground"
-                card_view:cardCornerRadius="20dp"
-                card_view:cardElevation="1dp">
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="?attr/dialogbackgroundcolor"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="15dp"
-                    android:background="@android:color/transparent"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="15dp">
+                    android:padding="20dp">
 
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-
                         android:src="@drawable/icons_password" />
 
                     <TextView
@@ -70,11 +60,17 @@
                         android:textColor="?attr/textcolor"
                         android:textSize="25sp" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/teal_200" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/chur"
                         android:gravity="center"
                         android:text="@string/forgot_password_text"
@@ -93,8 +89,7 @@
                         android:text="@string/email_show"
                         android:textColor="?attr/textcolor"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        tools:ignore="RtlHardcoded" />
+                        android:textStyle="bold" />
 
                     <!-- TextInputLayout: input email -->
                     <com.google.android.material.textfield.TextInputLayout
@@ -103,11 +98,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        app:boxBackgroundColor="?attr/cardbackgroundtab"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxBackgroundColor="?attr/cardbackground"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxCornerRadiusBottomStart="20dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        app:boxCornerRadiusTopStart="20dp"
                         app:endIconMode="clear_text"
                         app:endIconTint="#B4B4B4"
                         app:hintEnabled="false">
@@ -125,60 +120,49 @@
                             android:textColor="?attr/textcolor"
                             android:textColorHint="?attr/tintcolor"
                             android:textCursorDrawable="@null"
-                            android:textSize="14sp"
-                            tools:ignore="RtlSymmetry" />
+                            android:textSize="14sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- btn updateProfile -->
-                    <androidx.cardview.widget.CardView
+                    <Button
+                        android:id="@+id/ButtonPasswordReset"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        card_view:cardBackgroundColor="@color/green"
-                        card_view:cardCornerRadius="10dp"
-                        card_view:cardElevation="2dp">
-
-                        <Button
-                            android:id="@+id/ButtonPasswordReset"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:background="@drawable/flag_transparent"
-                            android:fontFamily="@font/chub"
-                            android:text="ยืนยันการรีเซ็ตรหัสผ่าน"
-                            android:textColor="@color/white"
-                            android:textSize="15sp" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:visibility="visible"
-                        card_view:cardBackgroundColor="#FFC107"
-                        card_view:cardCornerRadius="10dp"
-                        card_view:cardElevation="2dp">
+                        android:background="@drawable/button_state_list_animator"
+                        android:fontFamily="@font/chub"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:padding="5dp"
+                        android:elevation="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="ยืนยันการรีเซ็ตรหัสผ่าน"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
 
-                        <Button
-                            android:id="@+id/cancel"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/chub"
-                            android:text="@string/cancel_forgot"
-                            android:textColor="@color/white"
-                            android:textSize="15sp" />
-
-                    </androidx.cardview.widget.CardView>
+                    <Button
+                        android:id="@+id/cancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_state_list_animator_white"
+                        android:fontFamily="@font/chub"
+                        android:padding="5dp"
+                        android:elevation="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/cancel_forgot"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
+        </RelativeLayout>
+
         </LinearLayout>
-    </RelativeLayout>
 
 </ScrollView>
