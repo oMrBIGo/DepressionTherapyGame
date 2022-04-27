@@ -158,8 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_roundlr"
-                        android:backgroundTint="?attr/cardbackground"
+
                         android:elevation="10dp"
                         android:fontFamily="@font/chub"
                         android:paddingStart="20dp"

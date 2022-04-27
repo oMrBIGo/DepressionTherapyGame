@@ -295,7 +295,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void openDepDialog01 () {
         dialog.setContentView(R.layout.depression01_layout_dialog);
-        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Button cancelBtn = dialog.findViewById(R.id.cancel);
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {

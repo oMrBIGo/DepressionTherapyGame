@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/activity_firstquest_header" />
+        <include layout="@layout/activity_quest_header" />
 
         <TextView
             android:layout_width="match_parent"
@@ -129,30 +129,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:orientation="vertical">
 
-            <!-- CardView: Button Upload Image Profile -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                card_view:cardBackgroundColor="@color/green"
-                card_view:cardCornerRadius="10dp"
-                card_view:cardElevation="2dp">
-
-                <Button
-                    android:id="@+id/button_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:background="@drawable/flag_transparent"
-                    android:fontFamily="@font/chub"
-                    android:text="@string/back_to_home_text"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-            </androidx.cardview.widget.CardView>
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_state_list_animator_white"
+                android:elevation="3dp"
+                android:fontFamily="@font/chub"
+                android:stateListAnimator="@null"
+                android:text="@string/back_to_home_text"
+                android:textColor="?attr/textcolor"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

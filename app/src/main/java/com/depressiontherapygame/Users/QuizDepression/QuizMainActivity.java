@@ -90,7 +90,7 @@ public class QuizMainActivity extends AppCompatActivity {
 
         init_screen();
 
-        final Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_bounce);
+
 
         ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +100,6 @@ public class QuizMainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 buttonBack.setEnabled(false);
-                buttonBack.setAnimation(animation);
 
             }
         });
@@ -222,6 +221,11 @@ public class QuizMainActivity extends AppCompatActivity {
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130, 130).into(imageView);
+
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
 
                 }
                 progressBar.setVisibility(View.GONE);

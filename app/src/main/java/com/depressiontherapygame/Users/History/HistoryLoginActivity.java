@@ -110,6 +110,7 @@ public class HistoryLoginActivity extends AppCompatActivity {
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(100,130).into(icon_profile);
+
                 }
             }
 

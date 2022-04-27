@@ -136,39 +136,52 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/linear_header"
-        app:layout_constraintBottom_toTopOf="@+id/fab"
+
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/linear_header" />
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/bg_round"
-        android:elevation="3dp"
-        app:itemIconSize="30dp"
-        app:itemIconTint="@drawable/item_selector"
-        app:itemRippleColor="@android:color/transparent"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_nav" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/app_name"
-        android:tint="?attr/textcolormain"
-        app:backgroundTint="?attr/buttonbackground"
-        app:layout_anchor="@id/navigation"
+        android:tint="@color/teal_200"
+        android:translationY="25dp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_add_white" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_post" />
+        app:layout_constraintStart_toStartOf="parent"
+        card_view:cardBackgroundColor="?attr/cardbackground"
+        card_view:cardElevation="3dp">
+
+        <!--Bottom Navigation : Show Menu-->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?attr/backgroundcolorconsult"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Widget.BottomNavigationView"
+            app:itemIconTint="@color/icons_color"
+            app:itemTextColor="@color/icons_color"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_nav" />
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

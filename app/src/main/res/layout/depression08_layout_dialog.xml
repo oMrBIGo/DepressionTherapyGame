@@ -3,135 +3,114 @@
 [** UPDATE : 1/02/2022 **]
 [** DEVELOPER BY NATHIT PANROD  **]
   -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- LinearLayout: Group Depression -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:layout_width="wrap_content"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content">
 
-    <!-- LinearLayout: Group dialog -->
+    <!-- ImageView: show Depression  -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dep08img"
+        app:shapeAppearanceOverlay="@style/roundImageView" />
+
+    <!-- LinearLayout: ViewGroup -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_home"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <!-- LinearLayout: Group Depression -->
-        <RelativeLayout
+        <!-- TextView: Show Title Depression -->
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/chub"
+            android:text="@string/depressionText08"
+            android:textColor="?attr/textcolor"
+            android:textSize="23sp" />
 
-            <!-- ImageView: show Depression  -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="315dp"
-                android:src="@drawable/dep08img" />
+        <!-- View: Line -->
+        <View
+            android:layout_width="250dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@color/teal_200" />
 
-            <!-- CardView: ViewGroup dialog -->
-            <androidx.cardview.widget.CardView
+        <!-- ScrollView: Show slide Description -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginTop="20dp">
+
+            <!-- LinearLayout: Description -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="250dp"
-                android:layout_marginBottom="5dp"
-                app:cardBackgroundColor="?attr/dialogbackgroundcolor"
-                app:cardCornerRadius="15dp">
+                android:background="?attr/dialogboxcolor"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <!-- LinearLayout: ViewGroup -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- TextView: Show Title Description -->
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:fontFamily="@font/chur"
+                    android:text="@string/depressionBody08"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp" />
 
-                    <!-- TextView: Show Title Depression -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/chub"
-                        android:text="@string/depressionText08"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="25sp" />
+                <!-- TextView: Show Title Description -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/chur"
+                    android:text="@string/depressionBody08_01"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp" />
 
-                    <!-- View: Line -->
-                    <View
-                        android:layout_width="250dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:background="@color/teal_200" />
+                <!-- TextView: Show Title Description -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/chur"
+                    android:text="@string/depressionBody08_02"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp" />
 
-                    <!-- ScrollView: Show slide Description -->
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:layout_marginTop="20dp">
+            </LinearLayout>
 
-                        <!-- LinearLayout: Description -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="?attr/dialogboxcolor"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+        </ScrollView>
 
-                            <!-- TextView: Show Title Description -->
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/chur"
-                                android:text="@string/depressionBody08"
-                                android:textColor="?attr/textcolor"
-                                android:textSize="18sp" />
-
-                            <!-- TextView: Show Title Description -->
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/chur"
-                                android:text="@string/depressionBody08_01"
-                                android:textColor="?attr/textcolor"
-                                android:textSize="18sp" />
-
-                            <!-- TextView: Show Title Description -->
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/chur"
-                                android:text="@string/depressionBody08_02"
-                                android:textColor="?attr/textcolor"
-                                android:textSize="18sp" />
-
-                        </LinearLayout>
-
-                    </ScrollView>
-
-                    <Button
-                        android:id="@+id/cancel"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/button_state_list_animator_white"
-                        android:elevation="5dp"
-                        android:fontFamily="@font/chub"
-                        android:text="@string/more_game"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </RelativeLayout>
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_state_list_animator_white"
+            android:elevation="2dp"
+            android:fontFamily="@font/chub"
+            android:padding="5dp"
+            android:text="ย้อนกลับ"
+            android:textColor="?attr/textcolor"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
+</RelativeLayout>
 
-</ScrollView>

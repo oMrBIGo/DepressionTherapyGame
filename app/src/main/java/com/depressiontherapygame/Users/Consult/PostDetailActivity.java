@@ -419,7 +419,7 @@ public class PostDetailActivity extends AppCompatActivity {
                     //set data
                     try {
                         //fire image is received then set
-                        Picasso.get().load(myDp).placeholder(R.drawable.man).resize(100,130).into(cAvatarIv);
+                        Picasso.get().load(myDp).placeholder(R.drawable.profile_image).resize(100,130).into(cAvatarIv);
                     } catch (Exception e) {
                         Picasso.get().load(R.drawable.man).resize(100,130).into(cAvatarIv);
                     }

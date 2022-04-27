@@ -100,6 +100,15 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
+        Button button_home = (Button) findViewById(R.id.button_home);
+        button_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FirstScoreActivity.this, HomeActivity.class));
+                finish();
+                button_home.setEnabled(false);
+            }
+        });
 
         ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -152,15 +161,19 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String image = ""+snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewLv.setText("ปัจจุบัน "+email);
+                    textViewLv.setText("ปัจจุบัน "+level);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130,130).into(imageView);
 
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
             }

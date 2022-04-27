@@ -50,15 +50,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:background="@drawable/bg_round"
-                    android:elevation="6dp"
+                    android:elevation="5dp"
                     android:fontFamily="@font/chub"
-                    android:padding="10dp"
+
                     android:src="@drawable/ic_back_menu"
                     android:text="ประวัติการทำแบบประเมิน"
                     android:textAlignment="center"
                     android:textColor="?attr/textcolor"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     card_view:tint="?attr/tintcolor" />
 
             </LinearLayout>

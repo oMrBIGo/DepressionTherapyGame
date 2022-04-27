@@ -166,6 +166,10 @@ public class MainActivityGame extends AppBaseActivity {
 
                     //set image, using Picasso
                     Picasso.get().load(image).into(imageView);
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
 
                 }
                 progressBar.setVisibility(View.GONE);
@@ -255,11 +259,6 @@ public class MainActivityGame extends AppBaseActivity {
      * Show level up dialog
      */
     private void showLevelUpDialog() {
-      /*  if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
-            if (mNetworkUtils.isConnected()) {
-                mInterstitialAd.show();
-            }
-        }*/
 
         Dialog mLevelUpDialog = new Dialog(MainActivityGame.this);
 

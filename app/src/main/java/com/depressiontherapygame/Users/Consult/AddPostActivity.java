@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -140,24 +141,6 @@ public class AddPostActivity extends AppCompatActivity {
         descriptionEt = findViewById(R.id.pDescriptionEt);
         uploadBtn = findViewById(R.id.pUploadBtn);
 
-        titleEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                TextView titleFull = (TextView) findViewById(R.id.titleFull);
-                titleFull.setText(50 - s.toString().length() + "/50");
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         //Upload button click listener
         uploadBtn.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +151,8 @@ public class AddPostActivity extends AppCompatActivity {
                 String description = descriptionEt.getText().toString().trim();
                 
                 if (TextUtils.isEmpty(title)) {
-                    Toast.makeText(AddPostActivity.this, "ใส่ชื่อหัวเรื่อง...", Toast.LENGTH_SHORT).show();
+                    titleEt.setError("ใส่ชื่อหัวเรื่อง...");
+                    titleEt.requestFocus();
                     return;
                 }
 
@@ -329,6 +313,7 @@ public class AddPostActivity extends AppCompatActivity {
                     Picasso.get().load(image).resize(100,130).into(icon_profile);
                 }
                 progressBar.setVisibility(View.GONE);
+
             }
 
             @Override

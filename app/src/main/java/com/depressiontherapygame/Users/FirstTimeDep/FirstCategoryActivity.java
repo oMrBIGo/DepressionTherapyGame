@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,6 +58,16 @@ public class FirstCategoryActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
+        ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FirstCategoryActivity.this, FirstMainActivity.class));
+                finish();
+                ButtonBack.setEnabled(false);
+            }
+        });
+
         if (firebaseUser == null) {
             Toast.makeText(FirstCategoryActivity.this, "มีอะไรบางอย่างผิดปกติ! ไม่มีรายละเอียดของผู้ใช้ในขณะนี้",
                     Toast.LENGTH_LONG).show();
@@ -87,8 +98,13 @@ public class FirstCategoryActivity extends AppCompatActivity {
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130, 130).into(imageView);
 
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
+
             }
 
             @Override

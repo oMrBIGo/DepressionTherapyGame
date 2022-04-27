@@ -150,7 +150,6 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/button_end_quizdepression" />
 
-
                     </LinearLayout>
 
                 </RelativeLayout>

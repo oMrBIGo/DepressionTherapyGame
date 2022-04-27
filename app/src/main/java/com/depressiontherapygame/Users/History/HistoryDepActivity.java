@@ -34,7 +34,6 @@ import java.util.List;
 public class HistoryDepActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    String myUid;
     List<ModelHD> HdList;
     SharedPref sharedPref;
     AdapterHD adapterHd;

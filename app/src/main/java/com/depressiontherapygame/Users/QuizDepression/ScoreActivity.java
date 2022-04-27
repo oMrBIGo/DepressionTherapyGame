@@ -225,6 +225,11 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130, 130).into(imageView);
 
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
+
                 }
                 progressBar.setVisibility(View.GONE);
             }

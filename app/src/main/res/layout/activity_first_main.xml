@@ -30,17 +30,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:orientation="vertical">
+
+                <include layout="@layout/activity_quest_header" />
 
                 <!-- RelativeLayout: Group Logo Depression -->
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="218dp"
+                    android:layout_marginTop="40dp"
                     android:layout_gravity="center"
                     android:gravity="center">
-
 
                     <ImageView
                         android:layout_width="165dp"
@@ -107,18 +107,18 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="170dp"
-                        android:layout_height="140dp"
+                        android:layout_width="260dp"
+                        android:layout_height="230dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
-                        android:src="@drawable/show_quizdepression_main" />
+                        android:src="@drawable/show_quizdepression" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="55dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -136,12 +136,20 @@
                             android:id="@+id/btnDep"
                             android:layout_width="210dp"
                             android:layout_height="50dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="18dp"
                             android:background="@drawable/button_quizdepression"
                             android:fontFamily="@font/chub"
                             android:text="รายละเอียดแบบประเมิน"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/btnQuizExit"
+                            android:layout_width="230dp"
+                            android:layout_height="110dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/button_end_quizdepression" />
+
 
                     </LinearLayout>
 

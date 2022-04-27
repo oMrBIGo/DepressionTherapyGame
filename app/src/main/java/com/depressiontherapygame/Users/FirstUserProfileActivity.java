@@ -530,6 +530,11 @@ public class FirstUserProfileActivity extends AppCompatActivity {
                     Picasso.get().load(image).into(imageView);
                     Picasso.get().load(image).into(icProfile);
 
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
+
                 } else {
                     Toast.makeText(FirstUserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!", Toast.LENGTH_LONG).show();
                 }

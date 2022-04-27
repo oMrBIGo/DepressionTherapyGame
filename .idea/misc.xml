@@ -11,6 +11,7 @@
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/bg_roundbtn.xml" value="0.4445" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/bg_roundlr.xml" value="0.145" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/black_border.xml" value="0.4445" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/box_verf.xml" value="0.435" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/button_state_list_animator.xml" value="0.154" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/button_state_list_animator_gray.xml" value="0.427" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/button_state_list_animator_white.xml" value="0.3695" />
@@ -20,15 +21,17 @@
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/show_password.xml" value="0.1" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/drawable/text_color_button.xml" value="0.306" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_add_post.xml" value="0.5" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_change_password.xml" value="0.33" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_change_password.xml" value="0.5" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_delete_profile.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_first_category.xml" value="0.27276613937580163" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_first_main.xml" value="0.35741769987174005" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_first_question.xml" value="0.35741769987174005" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_first_score.xml" value="0.27276613937580163" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_first_sets.xml" value="0.3274903805044891" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_first_user_profile.xml" value="0.2569474134245404" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_firstquest_header.xml" value="0.4420692603676785" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_game.xml" value="0.354424967935015" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_game_header.xml" value="0.4420692603676785" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_history_dep.xml" value="0.3274903805044891" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_history_login.xml" value="0.4420692603676785" />
@@ -38,16 +41,18 @@
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_home_horn.xml" value="0.5" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_home_menu.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_home_viewpager.xml" value="0.5" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_level.xml" value="0.354424967935015" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_main_game.xml" value="0.4420692603676785" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_post_detail.xml" value="0.33" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quest_header.xml" value="0.4420692603676785" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quiz.xml" value="0.5" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quest_header.xml" value="0.5" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quiz.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quiz_category.xml" value="0.29101019462465244" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quiz_main.xml" value="0.35185976913210776" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_quiz_score.xml" value="0.35185976913210776" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_register.xml" value="0.5252074026802808" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_sets.xml" value="0.4077849860982391" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_setting.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_setting_game.xml" value="0.4420692603676785" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/activity_splash.xml" value="0.32119914346895073" />
@@ -59,24 +64,31 @@
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/condition_layout_dialog.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/consult_dialog.xml" value="0.5" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/consult_layout_dialog.xml" value="0.4420692603676785" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/custom_layout.xml" value="0.354424967935015" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/custom_toolbar.xml" value="0.354424967935015" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/dep_dialog.xml" value="0.25" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression01_layout_dialog.xml" value="0.5" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression02_layout_dialog.xml" value="0.4420692603676785" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depq01_dialog.xml" value="0.2391102873030584" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression01_layout_dialog.xml" value="0.33" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression02_layout_dialog.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression03_layout_dialog.xml" value="0.4420692603676785" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression04_layout_dialog.xml" value="0.4420692603676785" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression04_layout_dialog.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression05_layout_dialog.xml" value="0.4420692603676785" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression06_layout_dialog.xml" value="0.4420692603676785" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression07_layout_dialog.xml" value="0.35741769987174005" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/depression08_layout_dialog.xml" value="0.4420692603676785" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/dialog_exit.xml" value="0.354424967935015" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/dialog_game_over.xml" value="0.4077849860982391" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/dialog_level_completed.xml" value="0.354424967935015" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/dialog_level_end.xml" value="0.354424967935015" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/edit_layout_dialog.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/forgot_layout_dialog.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/fragment_my_consult.xml" value="0.4420692603676785" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/fragment_show_consult.xml" value="0.29713552800342025" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/fragment_show_consult.xml" value="0.5" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/hwtopytetris_layout_dialog.xml" value="0.29713552800342025" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/nav_dialog.xml" value="0.33" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/row_comments.xml" value="0.5" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/row_his_depression.xml" value="0.29713552800342025" />
-        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/row_his_login.xml" value="0.29713552800342025" />
+        <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/row_his_login.xml" value="0.67" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/row_level.xml" value="0.29713552800342025" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/row_posts.xml" value="0.30597014925373134" />
         <entry key="..\:/DepressionTherapyGame/app/src/main/res/layout/set_item_layout.xml" value="0.35185976913210776" />

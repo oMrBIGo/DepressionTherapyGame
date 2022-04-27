@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
 import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
@@ -36,8 +37,12 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -54,6 +59,8 @@ public class DeleteProfileActivity extends AppCompatActivity {
     private static final String TAG = "DeleteProfileActivity";
     private CardView buttonDeleteCardView;
     SharedPref sharedPref;
+
+    ImageView icon_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +88,10 @@ public class DeleteProfileActivity extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
+
+        showUserProfile(firebaseUser);
+
+        icon_profile = findViewById(R.id.icon_profile);
 
         ImageView imageView = findViewById(R.id.buttonBack);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -274,6 +285,31 @@ public class DeleteProfileActivity extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+
+    private void showUserProfile(FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
+
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
+
+                    String image = ""+snapshot.child("image").getValue();
+
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(100,130).into(icon_profile);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(DeleteProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void init_screen() {

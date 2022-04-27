@@ -29,16 +29,86 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- ImageView: buttonBack to [MainActivity.java] -->
-            <ImageView
-                android:id="@+id/buttonBack"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="10dp"
-                android:padding="5dp"
-                android:src="@drawable/ic_back_menu"
-                tools:ignore="ContentDescription,RtlHardcoded" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Button: click menu to [SettingActivity.java] -->
+                <ImageButton
+                    android:id="@+id/buttonBack"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bg_round"
+                    android:backgroundTint="?attr/cardbackground"
+                    android:elevation="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_back_menu"
+                    card_view:tint="?attr/tintcolor" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/chub"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_back_menu"
+                        android:text="ยกเลิกบัญชีผู้ใช้"
+                        android:textAlignment="center"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="24sp"
+                        card_view:tint="?attr/tintcolor" />
+
+                </LinearLayout>
+
+                <!-- RelativeLayout: Group [activity_home_header.xml] -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <!-- CircleImageView: Show profileIv -->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:elevation="5dp"
+                        android:src="@drawable/profile_image"
+                        app:civ_border_color="?attr/cardbackground"
+                        app:civ_border_width="3dp" />
+
+                    <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/icon_profile"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="5dp"
+                        android:src="@drawable/profile_image"
+                        app:civ_border_color="?attr/cardbackground"
+                        app:civ_border_width="3dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <!-- delete user  -->
             <androidx.cardview.widget.CardView
@@ -71,7 +141,7 @@
                         android:text="@string/delete_Account"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
-                        android:textSize="25sp" />
+                        android:textSize="24sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -80,7 +150,7 @@
                         android:text="@string/delete_Acc_text"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
-                        android:textSize="15sp" />
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -95,7 +165,7 @@
                             android:fontFamily="@font/chub"
                             android:text="@string/password_show_te1"
                             android:textColor="?attr/textcolor"
-                            android:textSize="13sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -104,10 +174,10 @@
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
                             app:boxBackgroundColor="?attr/cardbackgroundtab"
-                            app:boxCornerRadiusBottomEnd="10dp"
-                            app:boxCornerRadiusBottomStart="10dp"
-                            app:boxCornerRadiusTopEnd="10dp"
-                            app:boxCornerRadiusTopStart="10dp"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxCornerRadiusBottomStart="20dp"
+                            app:boxCornerRadiusTopEnd="20dp"
+                            app:boxCornerRadiusTopStart="20dp"
                             app:hintEnabled="false"
                             app:passwordToggleDrawable="@drawable/show_password"
                             app:passwordToggleEnabled="true"
@@ -127,33 +197,25 @@
                                 android:paddingEnd="12dp"
                                 android:textColor="?attr/textcolor"
                                 android:textColorHint="?attr/tintcolor"
-                                android:textSize="13sp" />
+                                android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
-
-                    <!-- btn authenticate delete user -->
-
-                    <androidx.cardview.widget.CardView
+                    <Button
+                        android:id="@+id/Button_delete_user_authenticate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        card_view:cardBackgroundColor="@color/teal_200"
-                        card_view:cardCornerRadius="10dp"
-                        card_view:cardElevation="2dp">
-
-                        <Button
-                            android:id="@+id/Button_delete_user_authenticate"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/chub"
-                            android:text="@string/check_password_sh"
-                            android:textColor="@color/white"
-                            android:textSize="15sp" />
-
-                    </androidx.cardview.widget.CardView>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/button_state_list_animator"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/chub"
+                        android:text="ตรวจสอบ"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -185,17 +247,17 @@
                         android:text="@string/check_password_show_te"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
-                        android:textSize="20sp" />
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/textView_Delete_User_Authenticated"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chur"
-                        android:text="@string/auth_check_pass"
+                        android:text="กรุณาตรวจสอบรหัสผ่านปัจจุบันของคุณ เพื่อยกเลิกบัญชีผู้ใช้"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
-                        android:textSize="15sp" />
+                        android:textSize="18sp" />
 
 
                     <!-- btn confirm delete user -->
@@ -218,7 +280,7 @@
                             android:fontFamily="@font/chub"
                             android:text="@string/del_pass_te"
                             android:textColor="@color/white"
-                            android:textSize="15sp" />
+                            android:textSize="18sp" />
                     </androidx.cardview.widget.CardView>
 
 
