@@ -5,31 +5,277 @@
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <!-- LinearLayout: Group [activity_home_header.xml] -->
+    <!-- LinearLayout: ViewGroup -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
-        <!-- Imageview: Show Image horn -->
+        <!-- ImageView: Show Line -->
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/horn" />
+            android:layout_width="7dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/tabtext" />
 
-        <!-- TextView: show horn -->
+        <!-- ImageView: Show Kitty No.9 -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="2dp"
+            android:src="@drawable/kitty_9" />
+
+        <!-- TextView: Show Title Depression 01 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="15dp"
             android:fontFamily="@font/chub"
-            android:text="@string/horn01"
+            android:text="@string/depression_title_01"
             android:textColor="?attr/textcolor"
-            android:textSize="12sp" />
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <!-- LinearLayout: ViewGroup Depression Button show dialog [01] -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingEnd="30dp"
+        android:weightSum="4">
+
+        <!-- LinearLayout: ViewGroup Button Depression [01] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn1"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep01" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text01"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: ViewGroup Button Depression [02] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn2"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep02" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text02"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: ViewGroup Button Depression [03] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn3"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep03" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text03"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: ViewGroup Button Depression [04] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn4"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep04" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text04"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- LinearLayout: ViewGroup Depression Button show dialog [02] -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:weightSum="4">
+
+        <!-- LinearLayout: ViewGroup Button Depression [05] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn5"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep05" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text05"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: ViewGroup Button Depression [06] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn6"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep06" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text06"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: ViewGroup Button Depression [07] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn7"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep07" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text07"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- LinearLayout: ViewGroup Button Depression [08] -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/depressionBtn8"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dep08" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chur"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/text08"
+                android:textColor="?attr/tintcolor"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

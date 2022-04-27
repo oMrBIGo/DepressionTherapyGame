@@ -23,7 +23,6 @@
 
         <!-- CardView: ViewGroup dialog -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -93,7 +92,6 @@
 
                     <!-- TextInputLayout: input email -->
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_email"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

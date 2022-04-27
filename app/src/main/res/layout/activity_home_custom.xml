@@ -8,26 +8,30 @@
     android:layout_height="wrap_content"
     android:scrollbars="none">
 
+
     <!-- RelativeLayout: Group [activity_home_custom.xml] -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- include: Show layout Header [activity_home_header.xml]  -->
+        <include
+            android:id="@+id/header"
+            layout="@layout/activity_home_header" />
+
         <!-- LinearLayout: Group [activity_home_custom.xml] -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
             android:orientation="vertical">
 
             <!-- include: Show layout ViewPager [activity_home_viewpager.xml] -->
-            <include
-                android:id="@+id/viewPager_include"
-                layout="@layout/activity_home_viewpager" />
 
             <!-- include: Show layout horn [activity_home_horn.xml] -->
-            <include
-                android:id="@+id/horn_include"
-                layout="@layout/activity_home_horn" />
+            <include layout="@layout/activity_home_viewpager" />
+
+            <include layout="@layout/activity_home_horn" />
 
             <!-- include: Show layout Menu [activity_home_menu.xml] -->
             <include layout="@layout/activity_home_menu" />

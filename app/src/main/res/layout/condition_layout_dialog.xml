@@ -20,7 +20,6 @@
 
             <!-- CardView: ViewGroup dialog -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -143,16 +142,16 @@
                         <Button
                             android:id="@+id/cancel"
                             android:layout_width="match_parent"
-                            android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/button_state_list_animator_white"
+                            android:elevation="2dp"
                             android:fontFamily="@font/chub"
                             android:padding="5dp"
-                            android:elevation="2dp"
-                            android:layout_margin="5dp"
                             android:text="ไม่ยอมรับ"
-                            android:textColor="@color/black"
+                            android:textColor="?attr/textcolor"
                             android:textSize="16sp" />
 
                     </LinearLayout>

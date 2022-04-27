@@ -23,13 +23,14 @@
 
             <!-- CardView: ViewGroup dialog -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:layout_marginBottom="5dp"
                 app:cardBackgroundColor="?attr/dialogbackgroundcolor"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="6dp">
 
                 <!-- LinearLayout: ViewGroup -->
                 <LinearLayout
@@ -38,37 +39,41 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo_white" />
+
                     <!-- TextView: Show Title Depression -->
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/chub"
-                        android:text="แบบประเมินตนเอง"
+                        android:text="แบบประเมินด้วยตนเอง"
+                        android:textAlignment="center"
                         android:textColor="?attr/textcolor"
-                        android:textSize="23sp" />
+                        android:textSize="22sp" />
 
-                    <!-- View: Line -->
                     <View
-                        android:layout_width="250dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="5dp"
                         android:background="@color/teal_200" />
 
                     <!-- ScrollView: Show slide Description -->
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
+                        android:layout_marginTop="10dp">
 
                         <!-- LinearLayout: Description -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="?attr/dialogboxcolor"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                            android:orientation="vertical">
 
                             <!-- TextView: Show Title Description -->
                             <TextView
@@ -96,30 +101,25 @@
                                 android:text="      เราขอแนะนำให้คุณตอบตามความเป็นจริง เพื่อให้ผลออกมาใกล้เคียงกับความเป็นจริงมากที่สุด"
                                 android:textColor="?attr/textcolor"
                                 android:textSize="18sp" />
+
+
                         </LinearLayout>
 
                     </ScrollView>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        card_view:cardBackgroundColor="?attr/cardbackgroundtab"
-                        card_view:cardCornerRadius="10dp">
-
-                        <Button
-                            android:id="@+id/cancel"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:background="@drawable/flag_transparent"
-                            android:fontFamily="@font/chub"
-                            android:padding="5dp"
-                            android:text="@string/more_game"
-                            android:textColor="?attr/textcolor"
-                            android:textSize="12sp" />
-
-                    </androidx.cardview.widget.CardView>
+                    <Button
+                        android:id="@+id/cancel"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_state_list_animator"
+                        android:elevation="5dp"
+                        android:fontFamily="@font/chub"
+                        android:padding="5dp"
+                        android:text="ตกลง"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 

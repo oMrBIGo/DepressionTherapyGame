@@ -20,7 +20,6 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_inner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -47,9 +46,9 @@
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="200dp"
                             android:layout_height="200dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:src="@drawable/teamwork"
+                            android:layout_margin="20dp"
+                            android:src="@drawable/profile_image"
+                            android:elevation="10dp"
                             app:civ_border_color="?attr/cardbackground"
                             app:civ_border_width="3dp" />
 
@@ -57,16 +56,15 @@
                             android:id="@+id/imageView_Profile"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:src="@drawable/upload_boder"
+                            android:layout_margin="20dp"
+                            android:src="@drawable/profile_image"
+                            android:elevation="10dp"
                             app:civ_border_color="?attr/cardbackground"
                             app:civ_border_width="3dp" />
 
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/textView_upload_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chub"
@@ -85,7 +83,7 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="5dp"
                         app:cardBackgroundColor="#C1C1C1"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
                         <Button
@@ -99,7 +97,6 @@
                             android:textSize="15sp" />
 
                         <ProgressBar
-                            android:id="@+id/ProB"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="end|center"
@@ -117,8 +114,8 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="5dp"
                         android:visibility="visible"
-                        app:cardBackgroundColor="#FFC107"
-                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="?attr/cardbackground"
+                        app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
                         <Button
@@ -128,7 +125,7 @@
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/chub"
                             android:text="ย้อนกลับ"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/textcolor"
                             android:textSize="15sp" />
 
                     </androidx.cardview.widget.CardView>
@@ -151,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chub"
                         android:text="กำลังอัปโหลดรูปโปรไฟล์ กรุณารอสักครู่... 0%"
-                        android:textColor="?attr/textcolormain"
+                        android:textColor="?attr/textcolor"
                         android:textSize="12sp" />
 
                 </LinearLayout>

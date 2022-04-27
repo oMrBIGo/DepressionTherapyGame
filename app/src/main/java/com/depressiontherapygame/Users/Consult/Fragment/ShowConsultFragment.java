@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.depressiontherapygame.R;
@@ -35,6 +36,7 @@ public class ShowConsultFragment extends Fragment {
     RecyclerView recyclerView;
     List<ModelPost> postList;
     AdapterPosts adapterPosts;
+    TextView non_text;
 
     private SearchView searchView;
 
@@ -53,6 +55,7 @@ public class ShowConsultFragment extends Fragment {
 
         //recycler view and its properties
         recyclerView = view.findViewById(R.id.postsRecyclerview);
+        non_text = view.findViewById(R.id.non_text);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         //show newest post first, for this load from last
         layoutManager.setStackFromEnd(true);
@@ -140,6 +143,11 @@ public class ShowConsultFragment extends Fragment {
                     if (modelPost.getpTitle().toLowerCase().contains(searchQuery.toLowerCase()) ||
                             modelPost.getpDescr().toLowerCase().contains(searchQuery.toLowerCase())) {
                         postList.add(modelPost);
+                        non_text.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                    } else {
+                        non_text.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
                     }
 
 
@@ -153,8 +161,6 @@ public class ShowConsultFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //in case of error
-                Toast.makeText(getActivity(), "" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

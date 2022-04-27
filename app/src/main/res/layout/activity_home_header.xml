@@ -7,94 +7,122 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/cardbackground">
+    android:background="@android:color/transparent">
 
-    <!-- LinearLayout: Group [activity_home_header.xml] -->
     <LinearLayout
-        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <!-- Button: click menu to [SettingActivity.java] -->
+        <ImageButton
+            android:id="@+id/settingBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_round"
+            android:backgroundTint="?attr/cardbackground"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_grid_view"
+            app:tint="?attr/tintcolor" />
+
+        <!-- LinearLayout: Group TextProfile -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
+
+            <TextView
+                android:id="@+id/lastname_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableEnd="@drawable/waving_hand"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/chub"
+                android:hint="@string/Loading"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="?attr/textcolor"
+                android:textColorHint="?attr/tintcolor"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
+                <TextView
+                    android:id="@+id/lv_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/chub"
+                    android:hint="@string/Loading"
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    android:textColor="?attr/textcolor"
+                    android:textColorHint="?attr/tintcolor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/level"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/level_up"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <!-- RelativeLayout: Group [activity_home_header.xml] -->
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center">
 
             <!-- CircleImageView: Show profileIv -->
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="37dp"
-                android:layout_height="37dp"
-                android:src="@drawable/man"
-                app:civ_border_color="@color/green"
-                app:civ_border_width="1dp" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:elevation="5dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp"/>
 
             <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/icon_profile"
-                android:layout_width="37dp"
-                android:layout_height="37dp"
-                android:src="@drawable/man"
-                app:civ_border_color="@color/green"
-                app:civ_border_width="1dp" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
 
         </RelativeLayout>
-
-        <!-- LinearLayout: Group TextProfile -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="5"
-            android:orientation="vertical">
-
-            <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
-            <TextView
-                android:id="@+id/lastname_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/chub"
-                android:hint="@string/Loading"
-                android:maxLines="5"
-                android:textColor="?attr/textcolor"
-                android:textColorHint="?attr/tintcolor"
-                android:textSize="16sp" />
-
-            <!-- TextView: Show profileTv give from Firebase -> RealTime -> email -->
-            <TextView
-                android:id="@+id/email_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/chub"
-                android:hint="@string/Loading"
-                android:maxLines="5"
-                android:textColor="?attr/textcolor"
-                android:textColorHint="?attr/tintcolor"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <!-- LinearLayout: Group menu -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right|center"
-            android:orientation="horizontal"
-            android:paddingEnd="10dp">
-
-            <!-- Button: click menu to [SettingActivity.java] -->
-            <Button
-                android:id="@+id/settingBtn"
-                android:layout_width="34dp"
-                android:gravity="center"
-                android:layout_height="34dp"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/ic_menu_menu" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

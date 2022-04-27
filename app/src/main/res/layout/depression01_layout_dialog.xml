@@ -25,11 +25,11 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="315dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/dep01img" />
 
             <!-- CardView: ViewGroup dialog -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

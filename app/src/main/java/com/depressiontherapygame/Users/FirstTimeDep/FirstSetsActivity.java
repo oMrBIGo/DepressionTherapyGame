@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.FirstTimeDep.Adapter.FirstSetsAdapter;
+import com.depressiontherapygame.Users.HomeActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,7 +43,7 @@ public class FirstSetsActivity extends AppCompatActivity {
     public static List<String> setsIDs = new ArrayList<>();
     SharedPref sharedPref;
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
 
     @Override
@@ -60,7 +64,7 @@ public class FirstSetsActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
@@ -73,6 +77,20 @@ public class FirstSetsActivity extends AppCompatActivity {
         }
 
         loadSets();
+
+        final Animation animation = AnimationUtils.loadAnimation(FirstSetsActivity.this, R.anim.button_bounce_home);
+
+        ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FirstSetsActivity.this, HomeActivity.class);
+                startActivity(intent);
+                buttonBack.startAnimation(animation);
+                finish();
+                buttonBack.setEnabled(false);
+            }
+        });
 
 
     }
@@ -88,11 +106,11 @@ public class FirstSetsActivity extends AppCompatActivity {
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String image = ""+snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+ level);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130,130).into(imageView);

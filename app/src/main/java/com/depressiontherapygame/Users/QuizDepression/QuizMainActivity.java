@@ -9,18 +9,32 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.depressiontherapygame.Users.HomeActivity;
 import com.depressiontherapygame.R;
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.Users.QuizDepression.Model.CategoryModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +55,12 @@ public class QuizMainActivity extends AppCompatActivity {
     public static int selected_cat_index = 0;
     private FirebaseFirestore firestore;
 
+
+    private ImageView imageView;
+    private TextView textViewWelcome;
+    private TextView textViewLv;
+    private ProgressBar progressBar;
+
     Dialog dialog;
 
     @Override
@@ -54,14 +74,38 @@ public class QuizMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_main);
 
+
+        FirebaseAuth authProfile = FirebaseAuth.getInstance();
+        final FirebaseUser firebaseUser = authProfile.getCurrentUser();
+
+        textViewWelcome = findViewById(R.id.lastname_home);
+        textViewLv = findViewById(R.id.lv_home);
+        progressBar = findViewById(R.id.progressBar);
+        imageView = findViewById(R.id.icon_profile);
+
+        showUserProfile(firebaseUser);
+
         /* dialog show */
         dialog = new Dialog(this);
 
         init_screen();
 
-        firestore = FirebaseFirestore.getInstance();
+        final Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_bounce);
 
-        authProfile = FirebaseAuth.getInstance();
+        ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizMainActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+                buttonBack.setEnabled(false);
+                buttonBack.setAnimation(animation);
+
+            }
+        });
+
+        firestore = FirebaseFirestore.getInstance();
 
         btnQuizStart = (Button) findViewById(R.id.btnQuizStart);
         btnQuizStart.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +201,38 @@ public class QuizMainActivity extends AppCompatActivity {
         });
         /* dialog show */
         dialog.show();
+    }
+
+    private void showUserProfile(final FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
+
+        //Extracting USer Reference from Database for "Register Users"
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
+                    String lastname = "" + snapshot.child("lastname").getValue();
+                    String level = "" + snapshot.child("level").getValue();
+                    String image = "" + snapshot.child("image").getValue();
+
+                    textViewWelcome.setText(lastname);
+                    textViewLv.setText("ปัจจุบัน "+level);
+
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(130, 130).into(imageView);
+
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(QuizMainActivity.this, "มีอะไรบางอย่างผิดปกติ!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void init_screen() {

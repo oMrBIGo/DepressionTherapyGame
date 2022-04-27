@@ -16,6 +16,7 @@
         <attr name="backgroundcolorsetting" format="color"/>
         <attr name="backgroundcolorconsult" format="color"/>
         <attr name="backgroundcolorheader" format="color"/>
+        <attr name="buttonbackground" format="color"/>
         <attr name="nightmode" format="string"/>
         <attr name="textdialog" format="color"/>
         <attr name="dialogbackgroundcolor" format="color"/>

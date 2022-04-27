@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -46,7 +47,7 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
 
     private ImageView imageView;
     private TextView textViewWelcome;
-    private TextView textViewEmail;
+    private TextView textViewLv;
     private TextView firstdep;
     private TextView firstsco;
     private ProgressBar progressBar;
@@ -120,19 +121,19 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
         resultfirst.setText(messageFirst);
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
-        ImageView imageView = findViewById(R.id.BtnBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScoreActivity.this, QuizMainActivity.class);
                 startActivity(intent);
-                imageView.startAnimation(animation);
+                buttonBack.startAnimation(animation);
                 finish();
-                imageView.setEnabled(false);
+                buttonBack.setEnabled(false);
             }
         });
 
@@ -210,12 +211,12 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
                 if (modelUserShow != null) {
                     firstDepression = modelUserShow.getFirstdepression();
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String firstDepression = "" + snapshot.child("firstdepression").getValue();
                     String firstscore = "" + snapshot.child("firstscore").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+level);
                     firstdep.setText(firstDepression);
                     firstsco.setText(firstscore + " คะแนน");
 

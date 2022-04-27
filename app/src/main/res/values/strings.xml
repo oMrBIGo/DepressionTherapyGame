@@ -1,11 +1,8 @@
 <resources>
 
-    <string name="pref_previously_started">true</string>
-
     <!-- Header -->
     <string name="app_name">เกมบำบัดซึมเศร้า</string>
     <string name="tetris_game">เกมเททริส(Tetris)เป็นเกมแก้ปัญหาจัดเรียงตัวบล็อกที่หล่นลงมาจัดเรียงให้เป็นแถว สามารถช่วยบำบัดอาการซึมเศร้าได้ </string>
-    <string name="create_acc">ลงทะเบียน สำหรับผู้ใช้ใหม่</string>
 
     <!-- Body Depression -->
     <string name="depressionText01">สาเหตุของภาวะโรคซึมเศร้า</string>
@@ -49,9 +46,7 @@
     <string name="forgot_password_header">เปลี่ยนรหัสผ่านของคุณ</string>
     <string name="forgot_password">FORGOT PASSWORD</string>
     <string name="forgot_password_text">ระบุอีเมลที่ต้องการรีเซ็ตรหัสผ่าน</string>
-    <string name="email_email">ส่งทาง Email :</string>
     <string name="cancel_forgot">ยกเลิกการรีเซ็ตรหัสผ่าน</string>
-    <string name="email_detail">support@gmail.com</string>
     <string name="forgot_pass_show">กรอกรหัสผ่านปัจจุบัน…</string>
     <string name="forgot_pass_new_show">กรอกรหัสผ่านใหม่...</string>
     <string name="forgot_pass_new_again_show">กรอกรหัสผ่านใหม่อีกครั้ง...</string>
@@ -64,12 +59,8 @@
     <string name="forgot_text_show">กรุณาป้อนรหัสผ่านปัจจุบันของคุณ เพื่อเปลี่ยนรหัสผ่านใหม่</string>
 
     <!-- New set Password -->
-    <string name="new_credentials">ตั้งรหัสผ่านใหม่</string>
-    <string name="new_credentials_text">ยืนยันตัวตนของคุณแล้ว ตั้งรหัสผ่านใหม่ของคุณ</string>
 
     <!-- New set Password Massage -->
-    <string name="PasswordUpdated">Password Updated</string>
-    <string name="PasswordTextUpdated">รหัสผ่านของคุณได้รับการอัปเดตแล้ว!</string>
 
     <!-- Profile Setting -->
     <string name="setProfile">โปรไฟล์ของฉัน</string>
@@ -85,7 +76,6 @@
     <string name="update_email">แก้ไขอีเมล</string>
     <string name="change_password">เปลี่ยนรหัสผ่าน</string>
     <string name="setting">ตั้งค่า</string>
-    <string name="Sound">เสียงดนตรี</string>
     <string name="delete_profile">ยกเลิกบัญชีผู้ใช้</string>
 
     <!-- Register -->
@@ -95,11 +85,6 @@
 
     <!-- Tetris game -->
     <string name="ad_mob_id" translatable="false">ca-app-pub-7897516872608980~7992869737</string>
-    <string name="share_description">ลองเล่นเกมใหม่อีกครั้ง</string>
-    <bool name="full_screen">true</bool>
-    <string name="sure_quit">คุณแน่ใจหรือว่าต้องการออกจากเกม?</string>
-    <bool name="need_connection">false</bool>
-    <integer name="splash_delay">0</integer>
     <string name="select_level">เลเวลด่านปัจจุบัน</string>
     <string name="play">เล่นเกม</string>
     <string name="exit">ออกจากเกม</string>
@@ -107,7 +92,6 @@
     <string name="action_sound">เสียงดนตรี</string>
     <string name="action_music">เสียงเอฟเฟค</string>
     <string name="action_vibrate">โหมดสั่น</string>
-    <string name="msg_web_view">รอสักครู่…</string>
     <string name="msg_do_you_want_to_exit">คุณต้องการออกจากเกมใช่ไหม?</string>
     <string name="action_no">กลับไปเล่นเกม</string>
     <string name="action_exit">ออก</string>
@@ -115,14 +99,8 @@
     <string name="action_restart">เล่นเกมอีกครั้ง</string>
     <string name="msg_complete">เสร็จสิ้น</string>
     <string name="continue_game">ไปด่านเลเวล:</string>
-    <string name="score_title">คะแนน</string>
-    <string name="level_title">เลเวล</string>
-    <string name="time_title">เวลา</string>
-    <string name="apm_title">APM</string>
-    <string name="fps_title">FPS</string>
     <string name="level">เลเวล</string>
     <string name="score_game">คะแนน</string>
-    <string name="homeGame">หน้าหลัก</string>
 
     <!-- preliminary agreement -->
     <string name="agreement">ข้อตกลงเบื้องต้น</string>
@@ -130,16 +108,11 @@
     <string name="agreement_text_02">2. ผู้ใช้งานตกลงยินยอมให้ทางคณะผู้จัดทำจัดเก็บข้อมูลสมาชิกและผลกระประเมินของผู้ใช้งาน</string>
     <string name="agreement_text_03">3. ทางคณะผู้จัดทำขอสงวนสิทธิ์ไม่รับผิดชอบในความเสียหายใดๆ หรือการไม่สามารถทำงานได้ตามปกติของอุปกรณ์ของผู้เข้าร่วมโครงการที่เกิดขึ้นจากการติดตั้งแอปพลิเคชันหรือการใช้งานใด ๆ บนแอปพลิเคชัน</string>
     <string name="agreement_text_04">4. ทางคณะผู้จัดทำตระหนักและให้ความสำคัญสูงสุดถึงความปลอดภัยในข้อมูลของผู้ใช้งานแอปพลิเคชัน และพร้อมยึดถือปฏิบัติตามข้อบังคับของกฎหมายด้านการดูแลรักษาข้อมูลทั้งนี้ผู้เข้าใช้งาน มีสิทธิในการเลือกที่จะให้หรือปฏิเสธการให้ข้อมูลส่วนบุคคลตามที่คณะผู้จัดทำร้องขอ</string>
-    <string name="accept_a">ยอมรับเงื่อนไข</string>
-    <string name="reject_a">ไม่ยอมรับ</string>
 
     <!-- Menu nav-->
     <string name="nav_show_consult">คำปรึกษาทั้งหมด</string>
     <string name="nav_add_consult">สร้างคำปรึกษา</string>
-    <string name="nav_search">ค้นหา</string>
     <string name="nav_my_consult">คำปรึกษาของฉัน</string>
-    <string name="nav_doc_chat">แชท</string>
-    <string name="nav_list_chat">ประวัติการแชท</string>
 
     <!-- Logo -->
     <string name="depression">Depression</string>
@@ -163,15 +136,11 @@
     <string name="login">LOGIN | เข้าสู่ระบบ</string>
     <string name="SaveEmPs">บันทึกอีเมลและรหัสผ่าน</string>
     <string name="forgotPs">ลืมรหัสผ่าน</string>
-    <string name="login_show">เข้าสู่ระบบ</string>
 
     <!-- horn -->
-    <string name="horn01">แอปพลิเคชันเกมบำบัดภาวะโรคซึมเศร้าเปิดให้ใช้งานแล้ววันนี้…</string>
 
     <!-- home -->
-    <string name="depression_title_01">ภาวะโรคซึมเศร้า Depression</string>
-    <string name="depression_title_02">แบบประเมิน Assessment form</string>
-    <string name="depression_title_03">คำปรึกษา Consultation</string>
+    <string name="depression_title_01">ภาวะโรคซึมเศร้าคืออะไร?</string>
 
     <!-- Depression -->
     <string name="text01">สาเหตุ</string>
@@ -184,20 +153,12 @@
     <string name="text08">ประเภทโรค</string>
 
     <!-- tetris home -->
-    <string name="tetris_show">เกมเททริส (Tetris)</string>
-    <string name="play_tetris">เล่นเกม</string>
     <string name="more_game">ย้อนกลับ</string>
 
     <!-- assessment form -->
-    <string name="assessment_form">แบบประเมิน</string>
-    <string name="depression_af">ทำแบบประเมินได้ที่นี่ </string>
-    <string name="start_af">ทำแบบประเมิน</string>
+    <string name="assessment_form">แบบประเมินภาวะซึมเศร้า</string>
 
     <!-- Consultation -->
-    <string name="Consultation_show">คำปรึกษา</string>
-    <string name="This_Consultation">ดูคำปรึกษาทั้งหมดได้ที่นี่</string>
-    <string name="Start_Consultation">คำปรึกษา</string>
-    <string name="tetris_details_01">เกมเททริส (Tetris) ช่วยให้ความเครียดและความวิตกกังวลหายไป Tetris Helps My Stress and Anxiety Fall Away.</string>
     <string name="tetris_details_02">การทบทวนวรรณกรรม 28 เรื่องในปี 2564 ที่เกี่ยวข้องกับวิดีโอเกมเชิงพาณิชย์ที่วางขายทั่วไป พบว่ามีหลักฐานยืนยันประโยชน์ของเกมเหล่านี้ในการลดความเครียดและความวิตกกังวล และไม่เพียงแต่ในบุคคลที่มีสุขภาพดี แต่ยังรวมถึงในผู้ป่วยที่มีภาวะซึมเศร้า วิตกกังวล PTSD และภาวะอื่นๆ ด้วย</string>
     <string name="tetris_details_03">โรคเครียดหลังผ่านเหตุการณ์ร้ายแรง (PTSD: Posttraumatic Stress Disorder)</string>
     <string name="tetris_details_04">เป็นโรคจิตเภทชนิดหนึ่งที่เกิดจากสภาวะจิตใจของผู้ป่วยได้รับการกระทบกระเทือนอย่างรุนแรงจากเหตุการณ์เลวร้าย เช่น การก่อการร้าย สงคราม การถูกข่มขืน ประสบภัยพิบัติ ประสบอุบัติเหตุ เป็นต้น ซึ่งผู้ป่วยอาจจะเป็นผู้ที่ประสบเหตุการณ์โดยตรง หรือเป็นผู้ที่ได้รับการสูญเสียจากเหตุการณ์ทางอ้อม</string>
@@ -220,22 +181,15 @@
     <string name="verified">verified</string>
 
     <!-- Calculator Depression -->
-    <string name="Cal_Dep_01">ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าระดับน้อยมาก</string>
-    <string name="Cal_Dep_02">มีอาการของโรคซึมเศร้า ระดับน้อย</string>
-    <string name="Cal_Dep_03">มีอาการของโรคซึมเศร้า ระดับปานกลาง</string>
-    <string name="Cal_Dep_04">มีอาการของโรคซึมเศร้า ระดับรุนแรง</string>
 
     <!-- Upload Profile -->
     <string name="upload_show">เลือกรูปโปรไฟล์ที่ต้องการ</string>
     <string name="upload_set">อัปโหลดรูปโปรไฟล์</string>
-    <string name="upload_cancel">ยกเลิกการเปลี่ยนรูปโปรไฟล์</string>
     <string name="update_cancel">ย้อนกลับ</string>
     <string name="update_profile_show">แก้ไขข้อมูลสมาชิกของคุณ</string>
     <string name="update_profile">ยืนยันการแก้ไขข้อมูลสมาชิก</string>
 
     <!-- preliminary -->
-    <string name="preliminary">ความรู้สึกของคุณตอนนี้</string>
-    <string name="email_nathit_panrod1_gmail_com">Email: nathit.panrod1@gmail.com</string>
 
     <!-- Introduction -->
     <string name="depq_body_01">หัดยอมรับตัวเอง</string>
@@ -255,7 +209,6 @@
     <string name="delete_Account">ยกเลิกบัญชีผู้ใช้</string>
     <string name="delete_Acc_text">คุณแน่ใจแล้วใช่มั้ยว่าจะยกเลิกบัญชี หากคุณยกเลิกบัญชีแล้วข้อมูลทุกอย่างของคุณจะถูกลบและไม่สามารถกู้คืนได้</string>
     <string name="password_show_te1">Current Password | รหัสผ่านปัจจุบัน</string>
-    <string name="password_show_te2">Password...</string>
     <string name="check_password_sh">ตรวจสอบ</string>
     <string name="check_password_show_te">ตรวจสอบยืนยันรหัสผ่าน</string>
     <string name="auth_check_pass">[กรุณาตรวจสอบเพื่อยืนยัน]</string>
@@ -267,13 +220,16 @@
     <string name="anwer_click">กรุณาเลือกคำตอบ :</string>
     <string name="start_depression">เริ่มทำแบบประเมิน</string>
     <string name="depression_show_answer">ผลการทำแบบประเมิน</string>
-    <string name="answer_depression">ผลประเมินระดับภาวะโรคซึมเศร้า</string>
     <string name="Introduction">คำแนะนำเบื้องต้น</string>
     <string name="again_depression">ทำแบบประเมินอีกครั้ง</string>
     <string name="onethreetwothree">สายด่วนสุขภาพจิต</string>
     <string name="Con_show_all">คำปรึกษาทั้งหมด</string>
     <string name="level_12">กรุณาปลดล็อค\nเกมเททริสเลเวล12</string>
-    <string name="level_show_before">เริ่มทำแบบประเมิน\nปลดล็อคเลเวล12แล้ว</string>
+    <string name="level_show_before">เริ่มทำแบบประเมิน</string>
     <string name="firstdepression">ทำแบบประเมินครั้งแรก</string>
+    <string name="more"><u>อ่านรายละเอียดเพิ่มเติม...</u></string>
+    <string name="_0">0%</string>
+    <string name="login_home">LOGIN | เข้าสู่ระบบ</string>
+    <string name="register_home">REGISTER | สมัครสมาชิก</string>
 
 </resources>

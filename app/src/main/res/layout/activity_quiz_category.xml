@@ -15,9 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/activity_quest_header" />
+        <include layout="@layout/activity_quest_header" />
 
         <GridView
             android:id="@+id/depGridview"

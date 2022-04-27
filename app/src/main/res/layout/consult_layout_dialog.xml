@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <!-- LinearLayout: Group dialog -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- LinearLayout: Group Depression -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!-- CardView: ViewGroup dialog -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="?attr/dialogbackgroundcolor"
+                app:cardCornerRadius="15dp">
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:id="@+id/onClickLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo_white" />
+
+                    <!-- TextView: Show Title Depression -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/chub"
+                        android:text="กฏ กติกา มารยาท ในการใช้งานคำปรึกษา"
+                        android:textAlignment="center"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="22sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/teal_200" />
+
+                    <!-- ScrollView: Show slide Description -->
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <!-- LinearLayout: Description -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text=" เรียนผู้ใช้งานแอปพลิเคชันเกมบำบัดภาวะซึมเศร้าในวัยรุ่น เนื่องจาก แอปพลิเคชันเกมบำบัดภาวะซึมเศร้าในวัยรุ่น มีวัตถุประสงค์เพื่อให้ผู้ใช้งานโพสต์คำปรึกษาเกี่ยวกับภาวะซึมเศร้าเท่านั้น"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="ข้อห้ามในการโพสต์และคอมเม้นต์คำปรึกษา"
+                                android:textAlignment="center"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="1. ห้ามใช้คำพูดที่ก่อให้เกิดผลกระทบต่อความรู้สึกหรือจิตใจ ของผู้อื่น (ซึ่งอาจไปกระตุ้นภาวะซึมเศร้าหรือทำให้บุคคลนั้นรู้สึกแย่ลงได้)"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="2. หลีกเลี่ยงการแชท กล่าวดูหมิ่น หรือพูดให้เกิดภาพลบ ต่อสถาบันชาติ ศาสนา และ พระมหากษัตริย์"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="3. หลีกเลี่ยงการพูดในเรื่องการเมือง"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="4. ห้ามโพสต์ URL, E-mail, เบอร์โทรศํพท์, และชื่อเฟสบุ๊ค ในโพสต์และคอมเม้นต์"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="5. ห้ามประกาศซื้อ-ขาย-รับ-ขอ-แลก ใดๆทั้งสิ้น"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="มารยาทในการโพสต์และคอมเม้นต์คำปรึกษา"
+                                android:textAlignment="center"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="1. ไม่พูดจาดูถูก ดูแคลน เพื่อนสมาชิกด้วยกัน ควรให้เกียรติซึ่งกันและกัน"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/chur"
+                                android:text="2. ไม่ก้าวก่ายซึ่งกันและกัน เคารพสิทธิซึ่งกันและกัน"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/confirm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_state_list_animator"
+                            android:elevation="2dp"
+                            android:fontFamily="@font/chub"
+                            android:padding="5dp"
+                            android:text="ยอมรับเงื่อนไข"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

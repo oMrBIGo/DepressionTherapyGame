@@ -9,10 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.depressiontherapygame.Users.History.Adapter.AdapterHD;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.History.Model.ModelHD;
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
+import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.Users.Setting.SettingActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,10 @@ public class HistoryDepActivity extends AppCompatActivity {
     SharedPref sharedPref;
     AdapterHD adapterHd;
     private FirebaseAuth authProfile;
+
+    FirebaseAuth firebaseAuth;
+    ImageView icon_profile;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,22 @@ public class HistoryDepActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
+        showUserProfile(firebaseUser);
+
+        icon_profile = findViewById(R.id.icon_profile);
+
+        //Progressbar
+        progressBar = findViewById(R.id.progressBar);
+
+        icon_profile = findViewById(R.id.icon_profile);
+        icon_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HistoryDepActivity.this, UserProfileActivity.class));
+                finish();
+            }
+        });
+
         loadHisDep();
 
         ImageView buttonBack = (ImageView) findViewById(R.id.buttonBack);
@@ -69,6 +94,32 @@ public class HistoryDepActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showUserProfile(FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
+
+        //Extracting USer Reference from Database for "Register Users"
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
+
+                    String image = ""+snapshot.child("image").getValue();
+
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(100,130).into(icon_profile);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HistoryDepActivity.this, "มีอะไรบางอย่างผิดปกติ!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void loadHisDep() {

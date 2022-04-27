@@ -65,7 +65,6 @@
                         android:src="@drawable/delete_user" />
 
                     <TextView
-                        android:id="@+id/textView_Delete_User_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chub"
@@ -75,7 +74,6 @@
                         android:textSize="25sp" />
 
                     <TextView
-                        android:id="@+id/textView_Delete_User_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chur"
@@ -92,7 +90,6 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView_Delete_User_password"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/chub"
@@ -102,7 +99,6 @@
                             android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_password_Auth"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.Users.QuizDepression.Adapter.CatGridAdapter;
 import com.depressiontherapygame.R;
+import com.depressiontherapygame.Users.Setting.SettingActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +34,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     SharedPref sharedPref;
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
 
     @Override
@@ -46,6 +50,8 @@ public class CategoryActivity extends AppCompatActivity {
 
         init_screen();
 
+        final Animation animation = AnimationUtils.loadAnimation(CategoryActivity.this, R.anim.button_bounce_home);
+
         GridView catGrid = findViewById(R.id.depGridview);
         CatGridAdapter adapter = new CatGridAdapter(QuizMainActivity.catList);
         catGrid.setAdapter(adapter);
@@ -54,19 +60,20 @@ public class CategoryActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
 
-        ImageView imageView = findViewById(R.id.BtnBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, QuizMainActivity.class);
                 startActivity(intent);
                 finish();
-                imageView.setEnabled(false);
+                buttonBack.setEnabled(false);
+                buttonBack.setAnimation(animation);
             }
         });
 
@@ -91,11 +98,11 @@ public class CategoryActivity extends AppCompatActivity {
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+level);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130, 130).into(imageView);

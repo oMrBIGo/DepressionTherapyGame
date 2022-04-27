@@ -2,7 +2,7 @@ package com.depressiontherapygame.Users;
 
 /**
  * Created on 18-10-21.
- * Update on 27-01-22.
+ * Update on 26-04-22.
  * Developer by Nathit Panrod
  */
 
@@ -24,9 +24,8 @@ import com.depressiontherapygame.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    /* View */
     ProgressBar progressBar;
-    private ImageView imageView;
+    ImageView imageView;
     SharedPref sharedPref;
     TextView valueText;
     int value;
@@ -34,29 +33,23 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /* NightMode [SharedPref.java] */
         sharedPref = new SharedPref(this);
         if (sharedPref.loadNightModeState() == true) {
             setTheme(R.style.darkTheme);
         } else setTheme(R.style.AppTheme);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        /* init View */
         imageView = findViewById(R.id.Logo);
         progressBar = findViewById(R.id.progressBar_splash);
-        valueText = (TextView) findViewById(R.id.valueText);
+        valueText = findViewById(R.id.valueText);
 
-        /* Change ImageView NightMode [turn:off-on] */
         if (sharedPref.loadNightModeState() == true) {
             imageView.setImageResource(R.drawable.logo_black);
         }
 
-        /* [Enable]init_screen */
         init_screen();
 
-        /* [Enable]Start ProgressBar */
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -67,7 +60,6 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    /* Start Progress Bar */
     public void startProgress() {
         for (value = 0; value <= 99; value = value + 1) {
             try {
@@ -87,7 +79,6 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 
-    /* Init Screen */
     private void init_screen() {
         final int flags = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         getWindow().getDecorView().setSystemUiVisibility(flags);
@@ -102,7 +93,6 @@ public class SplashActivity extends AppCompatActivity {
         });
     }
 
-    /* onBackPressed */
     int backPressed = 0;
     @Override
     public void onBackPressed() {

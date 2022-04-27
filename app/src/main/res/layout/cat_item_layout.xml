@@ -10,7 +10,6 @@
     android:gravity="center">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_inner_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

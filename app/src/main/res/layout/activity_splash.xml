@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
 [** CREATE : 18/10/2021 **]
-[** UPDATE : 03/03/2022 **]
+[** UPDATE : 26/04/2022 **]
 [** DEVELOPER BY NATHIT PANROD  **]
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,21 +10,18 @@
     android:background="?attr/backgroundcolor"
     tools:context=".Users.SplashActivity">
 
-    <!-- LinearLayout: Group View Logo and ProgressBar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
-        <!-- ImageView: Show"res/drawable" -->
         <ImageView
             android:id="@+id/Logo"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/logo_white" />
 
-        <!-- ProgressBar: Show"progressBar" Loading[%] -->
         <ProgressBar
             android:id="@+id/progressBar_splash"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -35,15 +32,14 @@
             android:progressBackgroundTint="#A6A6A6"
             android:progressTint="@color/teal_200" />
 
-        <!-- TextView: Show"TextView" -->
         <TextView
             android:id="@+id/valueText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/chub"
-            android:text="0%"
-            android:textColor="?attr/textcolormain"
-            android:textSize="16sp" />
+            android:text="@string/_0"
+            android:textColor="?attr/textcolor"
+            android:textSize="15sp" />
 
     </LinearLayout>
 

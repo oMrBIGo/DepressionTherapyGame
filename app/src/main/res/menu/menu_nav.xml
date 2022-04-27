@@ -5,6 +5,7 @@
         android:id="@+id/nav_show_consult"
         android:icon="@drawable/ic_home"
         android:title="@string/nav_show_consult" />
+
     <item
         android:id="@+id/nav_my_consult"
         android:icon="@drawable/ic_account"

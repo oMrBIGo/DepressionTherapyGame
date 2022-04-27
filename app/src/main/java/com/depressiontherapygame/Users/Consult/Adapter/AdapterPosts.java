@@ -100,7 +100,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
 
         //set user dp
         try {
-            Picasso.get().load(uDp).resize(100,130).placeholder(R.drawable.man).into(myHolder.uPictureIv);
+            Picasso.get().load(uDp).resize(100,130).placeholder(R.drawable.profile_image).into(myHolder.uPictureIv);
         } catch (Exception e) {
 
         }

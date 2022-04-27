@@ -33,6 +33,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
@@ -73,13 +74,14 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView textViewLastname;
     private TextView textViewEmail;
     private TextView textViewPhone;
-    private TextView textViewWelcomeH, textViewEmailH;
+    private TextView textViewWelcomeH, textViewLvH;
     private ProgressBar progressBar, progressBar1;
     private ImageView imageView, icProfile;
     private FirebaseAuth authProfile;
     private Button Update;
     SharedPref sharedPref;
-    Button buttonSetting, buttonEditProfile, buttonUploadProfile;
+    Button buttonEditProfile, buttonUploadProfile;
+    private ImageButton buttonBack;
     Dialog dialog;
     TextView valueText;
     private EditText editTextUpdateName, editTExtUpdatePhone;
@@ -104,8 +106,6 @@ public class UserProfileActivity extends AppCompatActivity {
         /* dialog show */
         dialog = new Dialog(this);
 
-
-
         /* init Screen */
         init_screen();
         /* init view */
@@ -116,8 +116,14 @@ public class UserProfileActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         TextView textProfile = findViewById(R.id.Upload1_Profile);
         textViewWelcomeH = findViewById(R.id.lastname_home); // show header
-        textViewEmailH = findViewById(R.id.email_home); // show header
+        textViewLvH = findViewById(R.id.lv_home); // show header
         icProfile = findViewById(R.id.icon_profile); // show header
+        icProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserProfileActivity.this, "คุณอยู่หน้าโปรไฟล์แล้ว", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         /* Button Click: next to [UploadActivity.java] */
         textProfile.setOnClickListener(new View.OnClickListener() {
@@ -136,15 +142,18 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
+        final Animation animation = AnimationUtils.loadAnimation(UserProfileActivity.this, R.anim.button_bounce_home);
+
         /* Button Click: next to [SettingActivity.java] */
-        buttonSetting = findViewById(R.id.settingBtn);
-        buttonSetting.setOnClickListener(new View.OnClickListener() {
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfileActivity.this, SettingActivity.class);
                 startActivity(intent);
                 finish();
-                buttonSetting.setEnabled(false);
+                buttonBack.setAnimation(animation);
+                buttonBack.setEnabled(false);
             }
         });
 
@@ -194,6 +203,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
@@ -202,11 +212,16 @@ public class UserProfileActivity extends AppCompatActivity {
                     textViewEmail.setText(email);
                     textViewPhone.setText(phone);
                     textViewWelcomeH.setText(lastname);
-                    textViewEmailH.setText(email);
+                    textViewLvH.setText("ปัจจุบัน "+level);
 
                     /* set image, using Picasso */
                     Picasso.get().load(image).into(imageView);
                     Picasso.get().load(image).into(icProfile);
+
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                        }
 
                 } else {
                     Toast.makeText(UserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
@@ -349,7 +364,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 progressBar1.setProgress((int) progress);
                 Update.setEnabled(false);
                 cardView.setBackgroundTintList(ContextCompat.getColorStateList(
-                        UserProfileActivity.this, R.color.dark_green));
+                        UserProfileActivity.this, R.color.teal_200));
                 Update.setText("กำลังอัปโหลด...");
                 valueText.setText("กำลังอัปโหลดรูปโปรไฟล์ กรุณารอสักครู่... " + progress + " %");
             }
@@ -490,8 +505,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
     /* open Dialog Show Update Profile */
     private void openUpdateProfileDialog() {
-        /* animation Button */
-        final Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_bounce);
         /* set dialog [edit_layout_dialog.xml] */
         dialog.setContentView(R.layout.edit_layout_dialog);
         /* sey dialog background Transparent */
@@ -553,7 +566,6 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                cancelBtn.startAnimation(animation);
             }
         });
         //Show Profile Data

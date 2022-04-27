@@ -7,95 +7,121 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_Night_mode"
+    <!-- include: Show layout Header [activity_user_profile.xml]  -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="1dp"
-        card_view:cardBackgroundColor="?attr/cardbackground"
-        card_view:cardElevation="3dp">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
 
+        <!-- Button: click menu to [SettingActivity.java] -->
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_round"
+            android:backgroundTint="?attr/cardbackground"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back_menu"
+            card_view:tint="?attr/tintcolor" />
+
+        <!-- LinearLayout: Group TextProfile -->
         <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/cardbackground"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="37dp"
-                android:layout_height="37dp">
+            <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="37dp"
-                    android:layout_height="37dp"
-                    android:src="@drawable/man" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/icon_profile"
-                    android:layout_width="37dp"
-                    android:layout_height="37dp"
-                    android:src="@drawable/man" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/lastname_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableEnd="@drawable/waving_hand"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/chub"
+                android:hint="@string/Loading"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="?attr/textcolor"
+                android:textColorHint="?attr/tintcolor"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lastname_home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:fontFamily="@font/chub"
-                        android:hint="@string/Loading"
-                        android:textColor="?attr/textcolor"
-                        android:textColorHint="?attr/textcolor"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
+                <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
                 <TextView
-                    android:id="@+id/email_home"
+                    android:id="@+id/lv_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/chub"
                     android:hint="@string/Loading"
+                    android:maxLines="1"
+                    android:textAlignment="center"
                     android:textColor="?attr/textcolor"
-                    android:textColorHint="?attr/textcolor"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:orientation="horizontal"
-                android:paddingEnd="10dp"
-                tools:ignore="RtlHardcoded,RtlSymmetry">
-
+                    android:textColorHint="?attr/tintcolor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
 
                 <ImageView
-                    android:id="@+id/BtnBack"
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/ic_back_menu" />
+                    android:id="@+id/level"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/level_up"
+                    android:visibility="visible" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        <!-- RelativeLayout: Group [activity_home_header.xml] -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <!-- CircleImageView: Show profileIv -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:elevation="5dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
+
+            <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/icon_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

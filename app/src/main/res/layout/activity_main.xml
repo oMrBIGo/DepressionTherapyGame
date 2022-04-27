@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?><!--
 [** CREATE : 18/10/2021 **]
-[** UPDATE : 27/01/2022 **]
+[** UPDATE : 26/04/2022 **]
 [** DEVELOPER BY NATHIT PANROD  **]
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/background"
     tools:context=".Users.MainActivity">
 
-    <!-- ScrollView: ViewGroup [activity_main.xml] Swipe[up - down] -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true">
 
-        <!-- LinearLayout: Group [activity_main.xml] -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
-            <!-- RelativeLayout: Group Logo Depression -->
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="218dp"
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <!-- ImageView: kitty no.8 -->
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/kitty_8" />
 
-                <!-- ImageView: Logo Depression -->
                 <ImageView
                     android:id="@+id/Logo"
                     android:layout_width="150dp"
@@ -48,7 +42,6 @@
 
             </RelativeLayout>
 
-            <!-- LinearLayout: Group Depression -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +51,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TextView: title Depression no.1 -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,7 +61,6 @@
                     android:textColor="?attr/textcolormain"
                     android:textSize="65sp" />
 
-                <!-- TextView: title Depression no.2 -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,7 +71,6 @@
                     android:textColor="?attr/textcolormain"
                     android:textSize="40sp" />
 
-                <!-- View: line -->
                 <View
                     android:layout_width="280dp"
                     android:layout_height="3dp"
@@ -88,7 +78,6 @@
                     android:layout_marginBottom="5dp"
                     android:background="?attr/textcolormain" />
 
-                <!-- TextView: title Depression no.3 -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,7 +88,6 @@
 
             </LinearLayout>
 
-            <!-- LinearLayout: Group Button Next -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +103,7 @@
                         android:fontFamily="@font/chub"
                         android:stateListAnimator="@null"
                         android:elevation="2dp"
-                        android:text="LOGIN | เข้าสู่ระบบ"
+                        android:text="@string/login_home"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
@@ -129,7 +117,7 @@
                         android:background="@drawable/button_state_list_animator_white"
                         android:fontFamily="@font/chub"
                         android:stateListAnimator="@null"
-                        android:text="REGISTER | สมัครสมาชิก"
+                        android:text="@string/register_home"
                         android:textColor="?attr/textcolormain"
                         android:textSize="16sp" />
 

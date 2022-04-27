@@ -161,7 +161,6 @@
             android:enabled="true"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <service android:name="com.depressiontherapygame.Users.MyServiceMusic" />
 
         <receiver
             android:name="com.depressiontherapygame.Users.GameTetris.services.MusicIntentReceiver"

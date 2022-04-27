@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.depressiontherapygame.Users.Consult.Adapter.AdapterComments;
 import com.depressiontherapygame.Users.Consult.Model.ModelComment;
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
@@ -74,6 +75,10 @@ public class PostDetailActivity extends AppCompatActivity {
     ImageButton sendBtn;
     ImageView cAvatarIv;
 
+    FirebaseAuth firebaseAuth;
+
+    ImageView profileIv;
+    TextView lastnameTv, levelTv;
 
     SharedPref sharedPref;
 
@@ -87,15 +92,15 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         //get id of post using intent
         Intent intent = getIntent();
         postId = intent.getStringExtra("postId");
 
         init_screen();
+        firebaseAuth = FirebaseAuth.getInstance();
+        profileIv = findViewById(R.id.icon_profile);
+        lastnameTv = findViewById(R.id.lastname_home);
+        levelTv = findViewById(R.id.lv_home);
 
         //init views
         uPictureIv = findViewById(R.id.uPictureIv);
@@ -115,16 +120,17 @@ public class PostDetailActivity extends AppCompatActivity {
         sendBtn = findViewById(R.id.sendBtn);
         cAvatarIv = findViewById(R.id.cAvatarIv);
 
-        Button commentBtn = (Button) findViewById(R.id.commentBtn);
-        commentBtn.setOnClickListener(new View.OnClickListener() {
+        ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PostDetailActivity.this, DashboardActivity.class));
                 finish();
-                commentBtn.setEnabled(false);
+                ButtonBack.setEnabled(false);
             }
         });
 
+        showUserProfile();
 
         loadPostInfo();
 
@@ -463,7 +469,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
                     //set user image in comment part
                     try {
-                        Picasso.get().load(hisDp).placeholder(R.drawable.man).resize(100,130).into(uPictureIv);
+                        Picasso.get().load(hisDp).placeholder(R.drawable.profile_image).resize(100,130).into(uPictureIv);
                     } catch (Exception e) {
                         Picasso.get().load(R.drawable.man).resize(100,130).into(uPictureIv);
                     }
@@ -479,6 +485,43 @@ public class PostDetailActivity extends AppCompatActivity {
 
     }
 
+
+    private void showUserProfile() {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String userID = firebaseUser.getUid();
+        //Extracting USer Reference from Database for "Register Users"
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
+                    String lastname = "" + snapshot.child("lastname").getValue();
+                    String level = "" + snapshot.child("level").getValue();
+                    String image = ""+snapshot.child("image").getValue();
+
+                    lastnameTv.setText(lastname);
+                    levelTv.setText("ปัจจุบัน "+level);
+
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(100,130).into(profileIv);
+
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(PostDetailActivity.this, "มีอะไรบางอย่างผิดปกติ!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     private void checkUserStatus() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user!= null) {
@@ -490,32 +533,6 @@ public class PostDetailActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        menu.findItem(R.id.nav_add_consult).setVisible(false);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //get item id
-        int id = item.getItemId();
-        if (id == R.id.nav_back) {
-            Intent intent = new Intent(PostDetailActivity.this, DashboardActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void init_screen() {

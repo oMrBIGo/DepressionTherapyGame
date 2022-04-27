@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_weight="1"
     android:background="?attr/backgroundcolor"
     tools:context=".Users.History.HistoryLoginActivity">
@@ -13,46 +14,88 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_Night_mode"
+        <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="1dp"
-            card_view:cardBackgroundColor="?attr/cardbackground"
-            card_view:cardElevation="3dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
 
+            <!-- Button: click menu to [SettingActivity.java] -->
+            <ImageButton
+                android:id="@+id/buttonBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_round"
+                android:backgroundTint="?attr/cardbackground"
+                android:elevation="10dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_back_menu"
+                card_view:tint="?attr/tintcolor" />
+
+            <!-- LinearLayout: Group TextProfile -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/cardbackground"
-                android:orientation="horizontal">
-
-                <!-- ImageView: buttonBack to [HomeActivity.java] -->
-                <ImageView
-                    android:id="@+id/buttonBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_back_menu"
-                    tools:ignore="ContentDescription,RtlHardcoded" />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/toolbar_title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_round"
+                    android:elevation="6dp"
                     android:fontFamily="@font/chub"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_back_menu"
                     android:text="ประวัติการเข้าสู่ระบบ"
                     android:textAlignment="center"
-                    android:textColor="?attr/tintcolor"
-                    android:textSize="23sp" />
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp"
+                    card_view:tint="?attr/tintcolor" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <!-- RelativeLayout: Group [activity_home_header.xml] -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <!-- CircleImageView: Show profileIv -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:elevation="5dp"
+                    android:src="@drawable/profile_image"
+                    app:civ_border_color="?attr/cardbackground"
+                    app:civ_border_width="3dp" />
+
+                <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/icon_profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:src="@drawable/profile_image"
+                    app:civ_border_color="?attr/cardbackground"
+                    app:civ_border_width="3dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hisRecyclerview"

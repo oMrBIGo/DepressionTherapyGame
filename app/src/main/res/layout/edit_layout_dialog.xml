@@ -32,13 +32,12 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_inner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                card_view:cardBackgroundColor="?attr/cardbackground"
+                card_view:cardBackgroundColor="?attr/cardbackgroundtab"
                 card_view:cardCornerRadius="30dp"
                 card_view:cardElevation="1dp">
 
@@ -59,7 +58,6 @@
                         android:src="@drawable/userperspective" />
 
                     <TextView
-                        android:id="@+id/textView_update_profile_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/chub"
@@ -91,11 +89,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
-                            app:boxBackgroundColor="?attr/cardbackgroundtab"
-                            app:boxCornerRadiusBottomEnd="10dp"
-                            app:boxCornerRadiusBottomStart="10dp"
-                            app:boxCornerRadiusTopEnd="10dp"
-                            app:boxCornerRadiusTopStart="10dp"
+                            app:boxBackgroundColor="?attr/cardbackground"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxCornerRadiusBottomStart="20dp"
+                            app:boxCornerRadiusTopEnd="20dp"
+                            app:boxCornerRadiusTopStart="20dp"
                             app:endIconMode="clear_text"
                             app:endIconTint="#B4B4B4"
                             app:hintEnabled="false"
@@ -116,7 +114,7 @@
                                 android:textColor="?attr/textcolor"
                                 android:textColorHint="?attr/tintcolor"
                                 android:textCursorDrawable="@null"
-                                android:textSize="13sp" />
+                                android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -141,11 +139,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
-                            app:boxBackgroundColor="?attr/cardbackgroundtab"
-                            app:boxCornerRadiusBottomEnd="10dp"
-                            app:boxCornerRadiusBottomStart="10dp"
-                            app:boxCornerRadiusTopEnd="10dp"
-                            app:boxCornerRadiusTopStart="10dp"
+                            app:boxBackgroundColor="?attr/cardbackground"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxCornerRadiusBottomStart="20dp"
+                            app:boxCornerRadiusTopEnd="20dp"
+                            app:boxCornerRadiusTopStart="20dp"
                             app:endIconMode="clear_text"
                             app:endIconTint="#B4B4B4"
                             app:hintEnabled="false">
@@ -165,7 +163,7 @@
                                 android:textColor="?attr/textcolor"
                                 android:textColorHint="?attr/tintcolor"
                                 android:textCursorDrawable="@null"
-                                android:textSize="13sp" />
+                                android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -176,47 +174,31 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical">
 
-                        <!-- btn updateProfile -->
-                        <androidx.cardview.widget.CardView
+                        <Button
+                            android:id="@+id/ButtonUpdateProfile"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            card_view:cardBackgroundColor="@color/green"
-                            card_view:cardCornerRadius="10dp"
-                            card_view:cardElevation="1dp">
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:elevation="2dp"
+                            android:background="@drawable/button_state_list_animator"
+                            android:fontFamily="@font/chub"
+                            android:stateListAnimator="@null"
+                            android:text="@string/update_profile"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
-                            <Button
-                                android:id="@+id/ButtonUpdateProfile"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:background="@android:color/transparent"
-                                android:fontFamily="@font/chub"
-                                android:text="@string/update_profile"
-                                android:textColor="@color/white"
-                                android:textSize="15sp" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cardViewBtn1"
+                        <Button
+                            android:id="@+id/cancel"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            card_view:cardBackgroundColor="#FFC107"
-                            card_view:cardCornerRadius="10dp"
-                            card_view:cardElevation="1dp">
-
-                            <Button
-                                android:id="@+id/cancel"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:fontFamily="@font/chub"
-                                android:text="@string/update_cancel"
-                                android:textColor="@color/white"
-                                android:textSize="15sp" />
-
-                        </androidx.cardview.widget.CardView>
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:elevation="2dp"
+                            android:background="@drawable/button_state_list_animator_white"
+                            android:fontFamily="@font/chub"
+                            android:stateListAnimator="@null"
+                            android:text="ย้อนกลับ"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
                 </LinearLayout>

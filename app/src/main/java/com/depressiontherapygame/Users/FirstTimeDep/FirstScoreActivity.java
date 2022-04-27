@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
 
     private TextView score;
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail, result, resultfirst;
+    private TextView textViewWelcome, textViewLv, result, resultfirst;
     private ProgressBar progressBar;
     private String lastname, email;
     private FirebaseAuth authProfile;
@@ -95,20 +96,20 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
 
-        Button BtnClickCon = (Button) findViewById(R.id.button_home);
-        BtnClickCon.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FirstScoreActivity.this, HomeActivity.class);
                 startActivity(intent);
-                imageView.startAnimation(animation);
+                buttonBack.startAnimation(animation);
                 finish();
-                BtnClickCon.setEnabled(false);
+                buttonBack.setEnabled(false);
             }
         });
 
@@ -155,7 +156,7 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
                     String image = ""+snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+email);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130,130).into(imageView);

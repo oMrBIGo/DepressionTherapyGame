@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,75 +7,211 @@
     android:background="?attr/backgroundcolor"
     tools:context=".Users.Consult.ThereProfileActivity">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linear_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="?attr/backgroundcolorconsult">
+        <!-- Button: click menu to [SettingActivity.java] -->
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_round"
+            android:backgroundTint="?attr/cardbackground"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back_menu"
+            app:tint="?attr/tintcolor" />
 
-        </RelativeLayout>
 
+        <!-- LinearLayout: Group TextProfile -->
         <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="100dp"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
+
+            <TextView
+                android:id="@+id/lastname_home"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:padding="5dp"
-                android:src="@drawable/man"
-                app:civ_border_color="?attr/cardbackground"
-                app:civ_border_width="3dp" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profileIv"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:padding="5dp"
-                    android:src="@drawable/man"
-                    app:civ_border_color="?attr/cardbackground"
-                    app:civ_border_width="3dp" />
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableEnd="@drawable/waving_hand"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/chub"
+                android:hint="@string/Loading"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="?attr/textcolor"
+                android:textColorHint="?attr/tintcolor"
+                android:textSize="22sp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
+                <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
                 <TextView
-                    android:id="@+id/lastnameTv"
-                    android:layout_width="match_parent"
+                    android:id="@+id/lv_home"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/chub"
                     android:hint="@string/Loading"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="20sp" />
+                    android:maxLines="1"
+                    android:textAlignment="center"
+                    android:textColor="?attr/textcolor"
+                    android:textColorHint="?attr/tintcolor"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/level"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/level_up"
+                    android:visibility="visible" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- RecyclerView: User specific posts-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_posts"
+        <!-- RelativeLayout: Group [activity_home_header.xml] -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <!-- CircleImageView: Show profileIv -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:elevation="6dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
+
+            <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/icon_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="6dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_header"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_roundlr"
+            android:backgroundTint="?attr/cardbackground"
+            android:elevation="10dp"
+            android:fontFamily="@font/chub"
+            android:paddingStart="20dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="5dp"
+            android:text="คำปรึกษาของผู้ใช้คนอื่น"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="24sp" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/header" />
+            android:layout_marginTop="10dp">
 
-    </RelativeLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="158dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="20dp"
+                android:elevation="10dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
 
-</ScrollView>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileIv"
+                android:layout_width="150dp"
+                android:layout_height="158dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                android:src="@drawable/profile_image"
+                app:civ_border_color="?attr/cardbackground"
+                app:civ_border_width="3dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/lastnameTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/chub"
+            android:gravity="center"
+            android:hint="@string/Loading"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="?attr/textcolor"
+            android:textColorHint="?attr/textcolor"
+            android:textSize="26sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/recycler_posts1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/non_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/chub"
+            android:text="ไม่พบข้อมูล"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

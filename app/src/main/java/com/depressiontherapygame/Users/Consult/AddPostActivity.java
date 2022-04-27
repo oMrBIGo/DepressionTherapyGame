@@ -6,19 +6,25 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
+import com.depressiontherapygame.Users.Setting.SettingActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -41,6 +48,11 @@ public class AddPostActivity extends AppCompatActivity {
     //views
     EditText titleEt, descriptionEt;
     Button uploadBtn;
+
+    ImageButton buttonBack;
+    FirebaseAuth authProfile;
+
+    ImageView icon_profile;
 
     //user info
     private String lastname, email, uid, dp;
@@ -64,17 +76,29 @@ public class AddPostActivity extends AppCompatActivity {
 
         init_screen();
 
+        authProfile = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+
+        showUserProfile(firebaseUser);
+
         //Progressbar
         progressBar = findViewById(R.id.progressBar);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AddPostActivity.this, DashboardActivity.class));
+                finish();
+            }
+        });
 
         TextView title = findViewById(R.id.toolbar_title);
 
         firebaseAuth = FirebaseAuth.getInstance();
         checkUserStatus();
+
+        icon_profile = findViewById(R.id.icon_profile);
 
         //get data through intent from previous activities adapter
         Intent intent = getIntent();
@@ -115,6 +139,25 @@ public class AddPostActivity extends AppCompatActivity {
         titleEt = findViewById(R.id.pTitleEt);
         descriptionEt = findViewById(R.id.pDescriptionEt);
         uploadBtn = findViewById(R.id.pUploadBtn);
+
+        titleEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                TextView titleFull = (TextView) findViewById(R.id.titleFull);
+                titleFull.setText(50 - s.toString().length() + "/50");
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         //Upload button click listener
         uploadBtn.setOnClickListener(new View.OnClickListener() {
@@ -269,32 +312,31 @@ public class AddPostActivity extends AppCompatActivity {
         }
     }
 
+    private void showUserProfile(FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed(); // go to previous activity
-        return super.onSupportNavigateUp();
-    }
+        //Extracting USer Reference from Database for "Register Users"
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        menu.findItem(R.id.nav_add_consult).setVisible(false);
-        return super.onCreateOptionsMenu(menu);
-    }
+                    String image = ""+snapshot.child("image").getValue();
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //get item id
-        int id = item.getItemId();
-        if (id == R.id.nav_back) {
-            Intent intent = new Intent(AddPostActivity.this, DashboardActivity.class);
-            startActivity(intent);
-            finish();
-            item.setEnabled(false);
-        }
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(100,130).into(icon_profile);
+                }
+                progressBar.setVisibility(View.GONE);
+            }
 
-        return super.onOptionsItemSelected(item);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddPostActivity.this, "มีอะไรบางอย่างผิดปกติ!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void init_screen() {

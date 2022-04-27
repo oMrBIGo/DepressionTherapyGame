@@ -39,14 +39,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/chub"
-                    android:text="รายละเอียด"
-                    android:textColor="@color/teal_200"
-                    android:textSize="25sp" />
+                    android:text="รายละเอียดเกมตัวต่อเททริส"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="24sp" />
 
                 <!-- View: Line -->
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="4dp"
                     android:background="@color/teal_200" />
 
                 <!-- ImageView: show tetris  -->
@@ -65,7 +65,7 @@
                     android:paddingTop="15dp"
                     android:text="@string/tetris_game"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
@@ -75,17 +75,17 @@
                     android:fontFamily="@font/chur"
                     android:text="@string/tetris_details_02"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/chur"
+                    android:fontFamily="@font/chub"
                     android:text="@string/tetris_details_03"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
@@ -95,17 +95,17 @@
                     android:fontFamily="@font/chur"
                     android:text="@string/tetris_details_04"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/chur"
+                    android:fontFamily="@font/chub"
                     android:text="@string/tetris_details_05"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
 
@@ -117,16 +117,16 @@
                     android:fontFamily="@font/chur"
                     android:text="@string/tetris_details_06"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/chur"
+                    android:fontFamily="@font/chub"
                     android:text="@string/tetris_details_07"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
@@ -136,48 +136,44 @@
                     android:fontFamily="@font/chur"
                     android:text="@string/tetris_details_08"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/chur"
+                    android:fontFamily="@font/chub"
                     android:text="@string/tetris_details_09"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <!-- TextView: show tetris -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/chur"
+                    android:fontFamily="@font/chub"
                     android:text="@string/tetris_details_10"
                     android:textColor="?attr/textdialog"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
-                <!-- LinearLayout: ViewGroup button -->
-                <LinearLayout
+                <!-- Button: register -->
+                <Button
+                    android:id="@+id/cancel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <!-- Button: check preliminary agreement [reject] -->
-                    <Button
-                        android:id="@+id/cancel"
-                        android:layout_width="120dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button_lower_white"
-                        android:fontFamily="@font/chub"
-                        android:text="ย้อนกลับ"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/button_state_list_animator_white"
+                    android:elevation="5dp"
+                    android:fontFamily="@font/chub"
+                    android:text="ย้อนกลับ"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

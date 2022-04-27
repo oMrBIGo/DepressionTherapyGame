@@ -81,7 +81,7 @@ public class AdapterComments extends RecyclerView.Adapter<AdapterComments.MyHold
         myHolder.timeTv.setText("โพสต์เมื่อ " + pTime + " น.");
         //set user dp
         try {
-            Picasso.get().load(image).placeholder(R.drawable.man).into(myHolder.avatarIv);
+            Picasso.get().load(image).placeholder(R.drawable.profile_image).into(myHolder.avatarIv);
         } catch (Exception e) {}
 
         //comment click listener

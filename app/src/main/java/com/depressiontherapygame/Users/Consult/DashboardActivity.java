@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,9 +43,11 @@ public class DashboardActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
 
     ImageView profileIv;
-    TextView lastnameTv, emailTv;
+    TextView lastnameTv, levelTv;
     Dialog dialog;
     SharedPref sharedPref;
+
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,18 +63,10 @@ public class DashboardActivity extends AppCompatActivity {
 
         dialog = new Dialog(this);
 
-        //init
-        firebaseAuth = FirebaseAuth.getInstance();
 
-        //init toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("");
-
-        profileIv = findViewById(R.id.profileIv);
-        lastnameTv = findViewById(R.id.lastnameTv);
-        emailTv = findViewById(R.id.emailTv);
-
+        profileIv = findViewById(R.id.icon_profile);
+        lastnameTv = findViewById(R.id.lastname_home);
+        levelTv = findViewById(R.id.lv_home);
         //init views
         BottomNavigationView navigationView = findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(selectedListener);
@@ -84,8 +80,26 @@ public class DashboardActivity extends AppCompatActivity {
         //firebase auth instance
         firebaseAuth = FirebaseAuth.getInstance();
 
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, AddPostActivity.class));
+                finish();
+            }
+        });
+
         openNavDialog();
         showUserProfile();
+
+        ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, HomeActivity.class));
+                finish();
+            }
+        });
 
     }
 
@@ -115,11 +129,8 @@ public class DashboardActivity extends AppCompatActivity {
                 }
             };
 
-    /* open Dialog Show Detail_tetris */
     private void openNavDialog() {
-        /* set dialog [tetris_layout_dialog.xml] */
-        dialog.setContentView(R.layout.consult_dialog);
-        /* sey dialog background Transparent */
+        dialog.setContentView(R.layout.consult_layout_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         LinearLayout onClickLinear = (LinearLayout) dialog.findViewById(R.id.onClickLinear);
@@ -130,7 +141,14 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        /* dialog show */
+        Button confirm = dialog.findViewById(R.id.confirm);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
         dialog.show();
     }
 
@@ -145,14 +163,19 @@ public class DashboardActivity extends AppCompatActivity {
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String image = ""+snapshot.child("image").getValue();
 
                     lastnameTv.setText(lastname);
-                    emailTv.setText(email);
+                    levelTv.setText("ปัจจุบัน "+level);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(100,130).into(profileIv);
+
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
 
                 }
             }
@@ -189,32 +212,6 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //get item id
-        int id = item.getItemId();
-        if (id == R.id.nav_back) {
-            Intent intent = new Intent(DashboardActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-            item.setEnabled(false);
-        }
-        if (id == R.id.nav_add_consult) {
-            Intent intent = new Intent(DashboardActivity.this, AddPostActivity.class);
-            startActivity(intent);
-            finish();
-            item.setEnabled(false);
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
 }

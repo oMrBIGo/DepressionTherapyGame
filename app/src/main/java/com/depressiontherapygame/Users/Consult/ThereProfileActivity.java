@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +18,10 @@ import android.widget.Toast;
 import com.depressiontherapygame.Users.Consult.Adapter.AdapterPosts;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.Consult.Model.ModelPost;
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,8 +46,13 @@ public class ThereProfileActivity extends AppCompatActivity {
     String uid;
 
     //view from xml
+    ImageView profile_icon;
+    TextView nameTv;
+
+
+
     ImageView profileIv;
-    TextView lastnameTv;
+    TextView lastnameTv, levelTv;
 
     SharedPref sharedPref;
 
@@ -60,16 +68,33 @@ public class ThereProfileActivity extends AppCompatActivity {
         init_screen();
 
         //init view
-        profileIv = findViewById(R.id.profileIv);
-        lastnameTv = findViewById(R.id.lastnameTv);
-
-        postsRecyclerView = findViewById(R.id.recycler_posts);
+        profile_icon = findViewById(R.id.profileIv);
+        nameTv = findViewById(R.id.lastnameTv);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        profileIv = findViewById(R.id.icon_profile);
+        lastnameTv = findViewById(R.id.lastname_home);
+        levelTv = findViewById(R.id.lv_home);
+
+        postsRecyclerView = findViewById(R.id.recycler_posts1);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        showUserProfile();
 
         //get uid of clicked user to retrieve his posts
         Intent intent = getIntent();
         uid = intent.getStringExtra("uid");
+
+        ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ThereProfileActivity.this, DashboardActivity.class));
+                finish();
+                ButtonBack.setEnabled(false);
+            }
+        });
 
         Query query = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน").orderByChild("uid").equalTo(uid);
         query.addValueEventListener(new ValueEventListener() {
@@ -83,14 +108,14 @@ public class ThereProfileActivity extends AppCompatActivity {
                     String image = ""+ds.child("image").getValue();
 
                     //set data
-                    lastnameTv.setText(lastname);
+                    nameTv.setText(lastname);
 
                     try {
                         //if image is received then set
-                        Picasso.get().load(image).into(profileIv);
+                        Picasso.get().load(image).into(profile_icon);
                     } catch (Exception e) {
                         //if there is any exception while getting image then set default
-                        Picasso.get().load(R.drawable.man).into(profileIv);
+                        Picasso.get().load(R.drawable.profile_image).into(profile_icon);
                     }
                 }
 
@@ -114,14 +139,14 @@ public class ThereProfileActivity extends AppCompatActivity {
                     String image = ""+ds.child("image").getValue();
 
                     //set data
-                    lastnameTv.setText(lastname);
+                    nameTv.setText(lastname);
 
                     try {
                         //if image is received then set
-                        Picasso.get().load(image).into(profileIv);
+                        Picasso.get().load(image).into(profile_icon);
                     } catch (Exception e) {
                         //if there is any exception while getting image then set default
-                        Picasso.get().load(R.drawable.man).into(profileIv);
+                        Picasso.get().load(R.drawable.profile_image).into(profile_icon);
                     }
                 }
 
@@ -137,6 +162,42 @@ public class ThereProfileActivity extends AppCompatActivity {
 
         loadHistPosts();
 
+    }
+
+    private void showUserProfile() {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String userID = firebaseUser.getUid();
+        //Extracting USer Reference from Database for "Register Users"
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
+                    String lastname = "" + snapshot.child("lastname").getValue();
+                    String level = "" + snapshot.child("level").getValue();
+                    String image = ""+snapshot.child("image").getValue();
+
+                    lastnameTv.setText(lastname);
+                    levelTv.setText("ปัจจุบัน "+level);
+
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(100,130).into(profileIv);
+
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ThereProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void loadHistPosts() {
@@ -174,30 +235,6 @@ public class ThereProfileActivity extends AppCompatActivity {
                 Toast.makeText(ThereProfileActivity.this, ""+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        menu.findItem(R.id.nav_add_consult).setVisible(false);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_back) {
-            Intent intent = new Intent(ThereProfileActivity.this, DashboardActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void init_screen() {

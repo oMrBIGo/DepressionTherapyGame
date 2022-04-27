@@ -31,7 +31,7 @@ public class FirstCategoryActivity extends AppCompatActivity {
     SharedPref sharedPref;
 
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
 
     @Override
@@ -53,7 +53,7 @@ public class FirstCategoryActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
@@ -78,11 +78,11 @@ public class FirstCategoryActivity extends AppCompatActivity {
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+level);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130, 130).into(imageView);

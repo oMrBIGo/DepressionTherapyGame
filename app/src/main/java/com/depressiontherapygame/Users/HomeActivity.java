@@ -2,7 +2,7 @@ package com.depressiontherapygame.Users;
 
 /**
  * Created on 18-10-21.
- * Update on 01-02-22.
+ * Update on 26-04-22.
  * Developer by Nathit Panrod
  */
 
@@ -11,18 +11,20 @@ import android.app.Dialog;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -53,20 +55,19 @@ import java.util.TimerTask;
 
 public class HomeActivity extends AppCompatActivity {
 
-    /* View */
     ViewPager viewPager;
     LinearLayout sliderDotsPanel;
     private int dotsCount;
     private ImageView[] dots;
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
-    private CardView cardViewBtnDep, cardViewBtnGame;
     private Button btnQuizDep, Tetris;
     SharedPref sharedPref;
     ImageView depressionBtn1, depressionBtn2, depressionBtn3, depressionBtn4, depressionBtn5, depressionBtn6, depressionBtn7, depressionBtn8;
-    Button settingBtn, menu;
+    ImageView settingBtn;
     Dialog dialog;
+    Button DialogTetris;
     private long backPressedTime;
 
     @SuppressLint("CutPasteId")
@@ -83,33 +84,20 @@ public class HomeActivity extends AppCompatActivity {
 
         init_screen();
 
-        /* dialog show */
         dialog = new Dialog(this);
 
-        /* Change ImageView NightMode [turn:off-on] */
-        menu = (Button) findViewById(R.id.settingBtn);
-        ImageView logo = (ImageView) findViewById(R.id.logo_tetris);
+        settingBtn = findViewById(R.id.settingBtn);
 
-        if (sharedPref.loadNightModeState() == true) {
-            menu.setBackgroundResource(R.drawable.ic_menu_menu_white);
-            logo.setImageResource(R.drawable.logo_black);
-        }
-
-        /* animation Button */
         final Animation animation = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.button_bounce_home);
 
-        /* ViewPagerShow */
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        /* sliderDots ViewPager */
         sliderDotsPanel = (LinearLayout) findViewById(R.id.SliderDots);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         btnQuizDep = findViewById(R.id.btnQuizDep);
         Tetris = findViewById(R.id.Button_play_Tetris);
         viewPager.setAdapter(viewPagerAdapter);
-        cardViewBtnDep = findViewById(R.id.cardViewBtnDep);
-        cardViewBtnGame = findViewById(R.id.cardViewBtnGame);
 
         TextView Tetris_Description = (TextView) findViewById(R.id.Tetris_Description);
         Tetris_Description.setOnClickListener(new View.OnClickListener() {
@@ -120,13 +108,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Tetris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, MainActivityGame.class));
+                finish();
+                Tetris.setEnabled(false);
+            }
+        });
+
         /* Button Click: Show dialog Tetris */
-        Button DialogTetris = (Button) findViewById(R.id.details_tetris_btn);
+        DialogTetris = findViewById(R.id.details_tetris_btn);
         DialogTetris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openTetrisDialog();
-                DialogTetris.startAnimation(animation);
             }
         });
 
@@ -135,45 +131,29 @@ public class HomeActivity extends AppCompatActivity {
         btnConDep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, DashboardActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(HomeActivity.this, DashboardActivity.class));
                 finish();
-                btnConDep.startAnimation(animation);
                 btnConDep.setEnabled(false);
             }
         });
 
-        /* ImageView Click: next to [UserProfileActivity.java] */
         imageView = findViewById(R.id.icon_profile);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
-                startActivity(intent);
-                finish();
-                imageView.startAnimation(animation);
-                imageView.setEnabled(false);
-            }
-        });
 
-        /* init view */
-        depressionBtn1 = (ImageView) findViewById(R.id.depressionBtn1);
-        depressionBtn2 = (ImageView) findViewById(R.id.depressionBtn2);
-        depressionBtn3 = (ImageView) findViewById(R.id.depressionBtn3);
-        depressionBtn4 = (ImageView) findViewById(R.id.depressionBtn4);
-        depressionBtn5 = (ImageView) findViewById(R.id.depressionBtn5);
-        depressionBtn6 = (ImageView) findViewById(R.id.depressionBtn6);
-        depressionBtn7 = (ImageView) findViewById(R.id.depressionBtn7);
-        depressionBtn8 = (ImageView) findViewById(R.id.depressionBtn8);
+        depressionBtn1 = findViewById(R.id.depressionBtn1);
+        depressionBtn2 = findViewById(R.id.depressionBtn2);
+        depressionBtn3 = findViewById(R.id.depressionBtn3);
+        depressionBtn4 = findViewById(R.id.depressionBtn4);
+        depressionBtn5 = findViewById(R.id.depressionBtn5);
+        depressionBtn6 = findViewById(R.id.depressionBtn6);
+        depressionBtn7 = findViewById(R.id.depressionBtn7);
+        depressionBtn8 = findViewById(R.id.depressionBtn8);
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
 
-        /* Initialize Firebase */
         FirebaseAuth authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
-        /* Check user sign in and check email verified*/
         if (firebaseUser == null) {
             Toast.makeText(HomeActivity.this, "มีอะไรบางอย่างผิดปกติ! ไม่มีรายละเอียดของผู้ใช้ในขณะนี้",
                     Toast.LENGTH_LONG).show();
@@ -183,12 +163,12 @@ public class HomeActivity extends AppCompatActivity {
 
         }
 
-        /* Button Click: next to [SettingActivity.java] */
-        settingBtn = (Button) findViewById(R.id.settingBtn);
+        settingBtn = (ImageView) findViewById(R.id.settingBtn);
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, SettingActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
                 settingBtn.startAnimation(animation);
@@ -196,7 +176,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,7 +184,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,7 +192,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,7 +200,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,7 +208,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,7 +216,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -250,7 +224,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -259,7 +232,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* Button Click: Show Dialog */
         depressionBtn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -268,24 +240,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /* slider Dots Panel */
         dotsCount = viewPagerAdapter.getCount();
         dots = new ImageView[dotsCount];
 
         for (int i = 0; i < dotsCount; i++) {
-
             dots[i] = new ImageView(this);
             dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
-
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
             params.setMargins(0, 0, 0, 0);
-
             sliderDotsPanel.addView(dots[i], params);
         }
         dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
 
-        /* viewPager slider Dots */
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -297,17 +263,13 @@ public class HomeActivity extends AppCompatActivity {
                 for (int i = 0; i < dotsCount; i++) {
                     dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
                 }
-
                 dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
-
             }
 
             @Override
             public void onPageScrollStateChanged(int i) {
-
             }
         });
-
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 3000);
 
@@ -315,63 +277,47 @@ public class HomeActivity extends AppCompatActivity {
 
 
     public class MyTimerTask extends TimerTask {
-
         @Override
         public void run() {
-
             HomeActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-
                     if (viewPager.getCurrentItem() == 0) {
                         viewPager.setCurrentItem(1);
                     } else {
                         viewPager.setCurrentItem(0);
                     }
-
                 }
             });
 
         }
     }
 
-    /* open Dialog Show Dep01 */
     private void openDepDialog01 () {
-        /* set dialog [dep01_layout_dialog.xml] */
         dialog.setContentView(R.layout.depression01_layout_dialog);
-        /* sey dialog background Transparent */
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        /* init view button in dialog */
+        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Button cancelBtn = dialog.findViewById(R.id.cancel);
 
-        /* button click reject preliminary agreement */
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
-        /* dialog show */
         dialog.show();
     }
 
-    /* open Dialog Show Dep02 */
     private void openDepDialog02 () {
-        /* set dialog [dep02_layout_dialog.xml] */
         dialog.setContentView(R.layout.depression02_layout_dialog);
-        /* sey dialog background Transparent */
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        /* init view button in dialog */
         Button cancelBtn = dialog.findViewById(R.id.cancel);
 
-        /* button click reject preliminary agreement */
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
-        /* dialog show */
         dialog.show();
     }
 
@@ -553,12 +499,11 @@ public class HomeActivity extends AppCompatActivity {
                     String level = "" + snapshot.child("level").getValue();
                     String image = "" + snapshot.child("image").getValue();
                     String firstdepression = "" + snapshot.child("firstdepression").getValue();
-                    textViewWelcome.setText(lastname+"("+level+")");
-                    textViewEmail.setText(email);
+                    textViewWelcome.setText(lastname);
+                    textViewLv.setText("ปัจจุบัน " + level);
 
                     if (firstdepression.toString().equals("ยังไม่ได้ทำแบบประเมิน")) {
-                        cardViewBtnDep.setCardBackgroundColor(Color.parseColor("#00BC00"));
-                        cardViewBtnGame.setCardBackgroundColor(Color.GRAY);
+                        btnQuizDep.setBackgroundDrawable(ContextCompat.getDrawable(HomeActivity.this,R.drawable.button_state_list_animator));
                         Tetris.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -566,8 +511,9 @@ public class HomeActivity extends AppCompatActivity {
                             }
                         });
                         Toast.makeText(HomeActivity.this, "กรุณาทำแบบประเมินครั้งแรกก่อนเล่นเกมเททริส", Toast.LENGTH_SHORT).show();
-                        Tetris.setText("กรุณาทำแบบประเมิน");
-                        Tetris.setTextSize(10);
+                        Tetris.setText("กรุณาทำแบบประเมินครั้งแรก");
+                        DialogTetris.setVisibility(View.GONE);
+                        Tetris.setBackgroundDrawable(ContextCompat.getDrawable(HomeActivity.this,R.drawable.button_state_list_animator_gray));
                         btnQuizDep.setText(R.string.firstdepression);
                         /* Button Click: next to [SplashQuizActivity.java] */
                         btnQuizDep.setOnClickListener(new View.OnClickListener() {
@@ -581,7 +527,8 @@ public class HomeActivity extends AppCompatActivity {
                             }
                         });
                     } else if (level.toString().equals("เลเวล12")) {
-                        cardViewBtnDep.setCardBackgroundColor(Color.parseColor("#F44336"));
+
+                        btnQuizDep.setBackgroundDrawable(ContextCompat.getDrawable(HomeActivity.this,R.drawable.button_state_list_animator));
                         btnQuizDep.setText(R.string.level_show_before);
                         /* Button Click: next to [SplashQuizActivity.java] */
                         Tetris.setOnClickListener(new View.OnClickListener() {
@@ -590,22 +537,20 @@ public class HomeActivity extends AppCompatActivity {
                                 Intent intent = new Intent(HomeActivity.this, MainActivityGame.class);
                                 startActivity(intent);
                                 finish();
-                                Tetris.startAnimation(animation);
                                 Tetris.setEnabled(false);
                             }
                         });
                         btnQuizDep.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                    Intent intent = new Intent(HomeActivity.this, QuizMainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    btnQuizDep.startAnimation(animation);
-                                    btnQuizDep.setEnabled(false);
+                                Intent intent = new Intent(HomeActivity.this, QuizMainActivity.class);
+                                startActivity(intent);
+                                finish();
+                                btnQuizDep.setEnabled(false);
                             }
                         });
                     } else {
-                        cardViewBtnDep.setCardBackgroundColor(Color.GRAY);
+                        btnQuizDep.setBackgroundDrawable(ContextCompat.getDrawable(HomeActivity.this,R.drawable.button_state_list_animator_gray));
                         btnQuizDep.setText(R.string.level_12);
                         /* Button Click: next to [MainActivityGame.java] */
                         Tetris.setOnClickListener(new View.OnClickListener() {
@@ -614,7 +559,6 @@ public class HomeActivity extends AppCompatActivity {
                                 Intent intent = new Intent(HomeActivity.this, MainActivityGame.class);
                                 startActivity(intent);
                                 finish();
-                                Tetris.startAnimation(animation);
                                 Tetris.setEnabled(false);
                             }
                         });
@@ -625,6 +569,11 @@ public class HomeActivity extends AppCompatActivity {
                             }
                         });
                         Toast.makeText(HomeActivity.this, "กรุณาปลดล็อคเลเวล 12 เกมเททริส คุณถึงสามารถทำแบบประเมินได้", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (level.toString().equals("เลเวล1")) {
+                        ImageView levelUp = (ImageView) findViewById(R.id.level);
+                        levelUp.setVisibility(View.GONE);
                     }
 
                     //set image, using Picasso

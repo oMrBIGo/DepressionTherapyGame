@@ -17,13 +17,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -32,6 +37,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.Consult.DashboardActivity;
 import com.depressiontherapygame.Users.History.HistoryDepActivity;
 import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.HomeActivity;
@@ -50,6 +56,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -65,15 +72,12 @@ public class SettingActivity extends AppCompatActivity {
     private TextView dep, firstdep;
     private FirebaseAuth authProfile;
     private FirebaseUser firebaseUser;
+    ImageView profileIv;
     LinearLayout ver_box;
-    ImageView back;
+    ImageButton back;
     Dialog dialog;
     TextView emailV_Tv;
-    DatabaseReference userDbRef;
-    EditText titleEt, descriptionEt;
-    Button uploadBtn;
     GifImageView gifImageView;
-    String uid,depression, firstdepression;
     Switch mySwitch;
     private RelativeLayout btnvef;
 
@@ -96,6 +100,20 @@ public class SettingActivity extends AppCompatActivity {
         /* Save Email */
         SharedPreferences sharedPreferences = getSharedPreferences(FILE_NAME,MODE_PRIVATE);
         String textEmail = sharedPreferences.getString("textEmail", "ไม่พบข้อมูล");
+
+        final Animation animation = AnimationUtils.loadAnimation(SettingActivity.this, R.anim.button_bounce_home);
+
+        profileIv = findViewById(R.id.icon_profile);
+        profileIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+                finish();
+                profileIv.startAnimation(animation);
+                profileIv.setEnabled(false);
+            }
+        });
 
         init_screen();
 
@@ -141,9 +159,9 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingActivity.this, HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                SettingActivity.this.startActivity(intent);
+                startActivity(intent);
                 finish();
+                back.startAnimation(animation);
                 back.setEnabled(false);
             }
         });
@@ -161,6 +179,7 @@ public class SettingActivity extends AppCompatActivity {
         /* Button Click: next to [HomeActivity.java] */
         RelativeLayout btnhome = (RelativeLayout) findViewById(R.id.menu_home);
         btnhome.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingActivity.this, HomeActivity.class);
@@ -270,12 +289,9 @@ public class SettingActivity extends AppCompatActivity {
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                authProfile.signOut();
-                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-                buttonLogout.setEnabled(false);
-                Toast.makeText(SettingActivity.this, "คุณได้ออกจากระบบแล้ว", Toast.LENGTH_SHORT).show();
+
+                showAlertDialogLogout();
+
             }
         });
 
@@ -324,6 +340,39 @@ public class SettingActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    //Users coming to UserProfileActivity after successful registration
+    private void showAlertDialogLogout() {
+        //Setup the Alert Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);
+        builder.setTitle("ออกจากระบบ");
+        builder.setMessage("คุณต้องการออกจากระบบใช่หรือไม่?");
+
+        //Open Email Apps if User clicks/taps Continue button
+        builder.setPositiveButton("ออกจากระบบ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                authProfile.signOut();
+                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(SettingActivity.this, "คุณได้ออกจากระบบแล้ว", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //Return to User Profile Activity if USer presses Cancel Button
+        builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        //Create the AlertDialog
+        final AlertDialog alertDialog = builder.create();
+
+        //Show the AlertDialog
+        alertDialog.show();
+    }
+
     /* restartApp on Click Switch Change */
     public void restartApp() {
         new Handler().postDelayed(new Runnable() {
@@ -360,12 +409,17 @@ public class SettingActivity extends AppCompatActivity {
                     String email = "" + snapshot.child("email").getValue();
                     String depression = "" + snapshot.child("depression").getValue();
                     String firstdepression = "" + snapshot.child("firstdepression").getValue();
+                    String image = ""+snapshot.child("image").getValue();
 
                     textViewEmail.setText(email);
                     textViewWelcome.setText("ชื่อผู้ใช้: " + lastname);
                     dep.setText(depression);
                     firstdep.setText(firstdepression);
 
+
+
+                    //set image, using Picasso
+                    Picasso.get().load(image).resize(100,130).into(profileIv);
                 }
                 progressBar.setVisibility(View.GONE);
             }
@@ -377,107 +431,6 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
-
-    /* open Dialog Show Detail_tetris
-    /*private void openFeedBackDialog() {
-
-        dialog.setContentView(R.layout.feedback_layout_dialog);
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        Button cancelBtn = dialog.findViewById(R.id.cancel);
-
-        //init view
-        titleEt = dialog.findViewById(R.id.pTitleEt);
-        descriptionEt = dialog.findViewById(R.id.pDescriptionEt);
-        uploadBtn = dialog.findViewById(R.id.pUploadBtn);
-
-        authProfile = FirebaseAuth.getInstance();
-        checkUserStatus();
-
-
-        //get some info of current user to include in Feedback
-        userDbRef = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
-        Query query = userDbRef.orderByChild("email").equalTo(email);
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()){
-                    lastname = ""+ds.child("lastname").getValue();
-                    email = ""+ds.child("email").getValue();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //Upload button click listener
-        uploadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //get data(title, description) from EditTexts
-                String title = titleEt.getText().toString().trim();
-                String description = descriptionEt.getText().toString().trim();
-
-                if (TextUtils.isEmpty(title)) {
-                    Toast.makeText(getApplicationContext(), "ใส่ชื่อหัวเรื่อง...", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                uploadData(title, description);
-
-                dialog.dismiss();
-
-            }
-        });
-
-
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-    }
-
-    private void uploadData(String title, String description) {
-        //for post-image name, post-id, post-publish-time
-        String timeStamp = String.valueOf(System.currentTimeMillis());
-
-        HashMap<Object, String> hashMap = new HashMap<>();
-        hashMap.put("uid", uid);
-        hashMap.put("lastname", lastname);
-        hashMap.put("email", email);
-        hashMap.put("Title", title);
-        hashMap.put("Descr", description);
-        hashMap.put("Time", timeStamp);
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน").child(uid).child("ข้อเสนอแนะ");
-
-        //put data in this ref
-        ref.child(timeStamp).setValue(hashMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        //added in database
-                        Toast.makeText(getApplicationContext(), "ขอขอบคุณสำหรับข้อเสนอแนะครับ!!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //failed adding post in database
-                        Toast.makeText(getApplicationContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-     */
 
     /* checkIfEmailVerified */
     @SuppressLint("ResourceAsColor")

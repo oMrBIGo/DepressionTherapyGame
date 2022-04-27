@@ -12,6 +12,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_roundlr"
+            android:backgroundTint="?attr/cardbackground"
+            android:elevation="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/chub"
+            android:paddingStart="20dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="5dp"
+            android:text="คำปรึกษาทั้งหมด"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="24sp" />
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
@@ -27,8 +45,21 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/postsRecyclerview"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/non_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ไม่พบข้อมูล"
+            android:textAlignment="center"
+            android:fontFamily="@font/chub"
+            android:textColor="?attr/textcolor"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:textSize="22sp"/>
 
     </LinearLayout>
 

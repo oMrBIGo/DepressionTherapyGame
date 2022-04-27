@@ -21,6 +21,7 @@ import android.util.ArrayMap;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -52,7 +53,7 @@ import java.util.Map;
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
     private List<QuizQuest> quizQuestsList;
@@ -113,18 +114,18 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         BeforeDepression = "";
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
-        ImageView imageView = findViewById(R.id.BtnBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(QuestionActivity.this, SetsActivity.class);
                 startActivity(intent);
                 finish();
-                imageView.setEnabled(false);
+                buttonBack.setEnabled(false);
             }
         });
 
@@ -443,10 +444,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     firstscore = (int) +snapshot.child("firstscore").getValue(Integer.class);
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+level);
 
                     String image = "" + snapshot.child("image").getValue();
 

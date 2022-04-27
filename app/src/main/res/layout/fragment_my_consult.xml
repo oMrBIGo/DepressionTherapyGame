@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/backgroundcolor"
     tools:context=".Users.Consult.Fragment.MyConsultFragment">
 
@@ -10,73 +11,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_roundlr"
+                android:backgroundTint="?attr/cardbackground"
+                android:elevation="10dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/chub"
+                android:paddingStart="20dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="5dp"
+                android:text="คำปรึกษาของฉัน"
+                android:textAlignment="center"
+                android:textColor="?attr/textcolor"
+                android:textSize="24sp" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="?attr/backgroundcolorconsult"
-                android:gravity="center">
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="100dp"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:padding="5dp"
-                        android:src="@drawable/man" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profileIv"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:padding="5dp"
-                        android:src="@drawable/man" />
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/lastnameTv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:fontFamily="@font/chub"
-                        android:hint="@string/Loading"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        android:textSize="25sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/search_bg"
+                app:iconifiedByDefault="false"
+                app:queryHint="ค้นหาคำปรึกษาของฉัน..."
+                app:searchIcon="@drawable/ic_search" />
 
             <!-- RecyclerView: User specific posts-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_posts1"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/header" />
 
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/non_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ไม่พบข้อมูล"
+                android:textAlignment="center"
+                android:fontFamily="@font/chub"
+                android:textColor="?attr/textcolor"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:textSize="22sp"/>
+
+
+        </LinearLayout>
 
     </ScrollView>
 

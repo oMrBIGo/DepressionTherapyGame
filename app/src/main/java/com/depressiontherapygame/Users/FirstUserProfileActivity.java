@@ -27,6 +27,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
@@ -101,7 +102,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
         init_screen();
         /* init view */
         textViewHeaderL = findViewById(R.id.lastname_home);
-        textViewHeaderE = findViewById(R.id.email_home);
+        textViewHeaderE = findViewById(R.id.lv_home);
         textViewWelcome = findViewById(R.id.textView_show_welcome);
         textViewLastname = findViewById(R.id.textView_show_lastname);
         textViewEmail = findViewById(R.id.textView_show_email);
@@ -110,7 +111,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
         TextView textProfile = findViewById(R.id.Upload1_Profile);
         icProfile = findViewById(R.id.icon_profile); // show header
 
-        Button button_next = (Button) findViewById(R.id.button_next);
+        Button button_next = (Button) findViewById(R.id.button_home);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,7 +229,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
                         //set image, using Picasso
                         Picasso.get()
                                 .load(image)
-                                .placeholder(R.drawable.man)
+                                .placeholder(R.drawable.profile_image)
                                 .into(Upload);
                     }
 
@@ -515,13 +516,14 @@ public class FirstUserProfileActivity extends AppCompatActivity {
 
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewHeaderL.setText(lastname);
                     textViewWelcome.setText(lastname);
                     textViewLastname.setText(lastname);
-                    textViewHeaderE.setText(email);
+                    textViewHeaderE.setText(level);
                     textViewEmail.setText(email);
                     textViewPhone.setText(phone);
 

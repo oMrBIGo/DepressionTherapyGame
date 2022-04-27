@@ -4,7 +4,7 @@
 [** DEVELOPER BY NATHIT PANROD  **]
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,27 +30,87 @@
                 android:orientation="vertical">
 
                 <!-- ImageView: buttonBack to [HomeActivity.java] -->
-                <ImageView
-                    android:id="@+id/buttonBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_back_menu"
-                    tools:ignore="ContentDescription,RtlHardcoded" />
 
-                <!-- RelativeLayout: ViewGroup Header -->
-                <RelativeLayout
-                    android:id="@+id/relative"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <!-- Button: click menu to [SettingActivity.java] -->
+                    <ImageButton
+                        android:id="@+id/buttonBack"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bg_round"
+                        android:backgroundTint="?attr/cardbackground"
+                        android:elevation="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_back_menu"
+                        app:tint="?attr/tintcolor" />
+
+
+                    <!-- LinearLayout: Group TextProfile -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout>
+
+                    <!-- RelativeLayout: Group [activity_home_header.xml] -->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <!-- CircleImageView: Show profileIv -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="10dp"
+                            android:elevation="6dp"
+                            android:src="@drawable/profile_image"
+                            app:civ_border_color="?attr/cardbackground"
+                            app:civ_border_width="3dp" />
+
+                        <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/icon_profile"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:elevation="6dp"
+                            android:src="@drawable/profile_image"
+                            app:civ_border_color="?attr/cardbackground"
+                            app:civ_border_width="3dp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     android:paddingStart="10dp">
 
                     <!-- LinearLayout: ViewGroup -->
                     <LinearLayout
-                        android:layout_width="270dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1.5"
                         android:orientation="vertical">
 
                         <!-- TextView: Show Text Email-->
@@ -60,43 +120,34 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/chub"
                             android:hint="@string/Loading"
-                            android:maxLines="5"
+                            android:maxLines="1"
                             android:textColor="?attr/textcolor"
                             android:textColorHint="?attr/tintcolor"
-                            android:textSize="17sp" />
+                            android:textSize="22sp" />
 
-                        <!-- LinearLayout: ViewGroup -->
-                        <LinearLayout
+                        <!-- TextView: Show Text LastName -->
+                        <TextView
+                            android:id="@+id/textView_show_id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:fontFamily="@font/chur"
+                            android:hint="@string/Loading"
+                            android:maxLines="1"
+                            android:textAllCaps="true"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textSize="16sp" />
 
-                            <!-- TextView: Show Text LastName -->
-                            <TextView
-                                android:id="@+id/textView_show_id"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/chur"
-                                android:hint="@string/Loading"
-                                android:maxLines="5"
-                                android:textAllCaps="true"
-                                android:textColor="?attr/textcolor"
-                                android:textColorHint="?attr/tintcolor"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
 
                     </LinearLayout>
 
                     <!-- LinearLayout: ViewGroup -->
                     <LinearLayout
                         android:id="@+id/verifity_box"
-                        android:layout_width="100dp"
-                        android:layout_height="35dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+
+                        android:layout_weight="1"
                         android:background="@drawable/verifity_box"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -104,8 +155,8 @@
                         <!-- ImageView: Show Check Verified -->
                         <pl.droidsonroids.gif.GifImageView
                             android:id="@+id/gif"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
                             android:layout_marginEnd="4dp"
                             android:src="@drawable/check_gif" />
 
@@ -117,11 +168,11 @@
                             android:fontFamily="@font/chub"
                             android:text="@string/verified"
                             android:textColor="#2EC18A"
-                            android:textSize="12sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,9 +189,9 @@
                         android:layout_marginEnd="2dp"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
-                        card_view:cardBackgroundColor="?attr/cardbackground"
-                        card_view:cardCornerRadius="10dp"
-                        card_view:cardElevation="2dp">
+                        app:cardBackgroundColor="?attr/cardbackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
 
                         <!-- RelativeLayout: ViewGroup -->
                         <RelativeLayout
@@ -152,11 +203,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginBottom="5dp"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="15dp">
 
                                 <!-- TextView: show text Depression -->
                                 <TextView
@@ -164,20 +212,22 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/chub"
-                                    android:text="ผลการทำแบบประเมินครั้งแรก"
+                                    android:text="ผลแบบประเมินครั้งแรก"
                                     android:textAlignment="center"
                                     android:textColor="#F1AE10"
-                                    android:textSize="14sp" />
+                                    android:textSize="16sp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
                                     android:orientation="horizontal">
 
                                     <!-- ImageView: Show Icon -->
                                     <ImageView
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center"
                                         android:src="@drawable/ic_checklist" />
 
                                     <!-- TextView: show text Depression -->
@@ -191,7 +241,7 @@
                                         android:maxLines="1"
                                         android:text="@string/Loading"
                                         android:textColor="#F1AE10"
-                                        android:textSize="12sp" />
+                                        android:textSize="16sp" />
 
                                 </LinearLayout>
 
@@ -203,7 +253,6 @@
 
                     <!-- depression show tab. onClick to depression form -->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_view_inner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -212,9 +261,9 @@
                         android:layout_marginEnd="2dp"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
-                        card_view:cardBackgroundColor="?attr/cardbackground"
-                        card_view:cardCornerRadius="10dp"
-                        card_view:cardElevation="2dp">
+                        app:cardBackgroundColor="?attr/cardbackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
 
                         <!-- RelativeLayout: ViewGroup -->
                         <RelativeLayout
@@ -227,11 +276,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginBottom="5dp"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="15dp">
 
                                 <!-- TextView: show text Depression -->
                                 <TextView
@@ -239,20 +285,22 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/chub"
-                                    android:text="ผลการทำแบบประเมินครั้งล่าสุด"
+                                    android:text="ผลแบบประเมินล่าสุด"
                                     android:textAlignment="center"
                                     android:textColor="#F1AE10"
-                                    android:textSize="14sp" />
+                                    android:textSize="16sp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
                                     android:orientation="horizontal">
 
                                     <!-- ImageView: Show Icon -->
                                     <ImageView
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center"
                                         android:src="@drawable/ic_checklist" />
 
                                     <!-- TextView: show text Depression -->
@@ -266,7 +314,7 @@
                                         android:maxLines="1"
                                         android:text="@string/Loading"
                                         android:textColor="#F1AE10"
-                                        android:textSize="12sp" />
+                                        android:textSize="16sp" />
 
                                 </LinearLayout>
 
@@ -280,13 +328,12 @@
 
                 <!-- night / day mode setting -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_Night_mode"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="5dp"
-                    card_view:cardBackgroundColor="?attr/cardbackground"
-                    card_view:cardElevation="3dp">
+                    app:cardBackgroundColor="?attr/cardbackground"
+                    app:cardElevation="3dp">
 
                     <!-- RelativeLayout: ViewGroup -->
                     <RelativeLayout
@@ -299,23 +346,23 @@
                             android:id="@+id/depression_NightMode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="15dp"
                             android:fontFamily="@font/chub"
                             android:text="เลือกโหมดที่ต้องการ"
                             android:textColor="?attr/textcolor"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                         <!-- TextView: Show text -->
                         <TextView
-                            android:id="@+id/textShDN"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="6dp"
                             android:layout_toEndOf="@+id/depression_NightMode"
                             android:fontFamily="@font/chur"
                             android:text="?attr/nightmode"
                             android:textColor="#F1982D"
-                            android:textSize="16sp" />
+                            android:textSize="18sp" />
 
                         <!-- Switch: Night day mode -->
                         <Switch
@@ -325,6 +372,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="5dp"
+                            android:paddingEnd="5dp"
                             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                     </RelativeLayout>
@@ -384,27 +432,31 @@
 
                         <ImageView
                             android:id="@+id/icon_home"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/homepage" />
 
                         <TextView
+                            android:id="@+id/text_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_home"
                             android:fontFamily="@font/chur"
                             android:text="@string/home"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:id="@+id/arrow_home"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
 
@@ -424,9 +476,9 @@
                         android:padding="15dp">
 
                         <ImageView
-                            android:id="@+id/icon_profile"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:id="@+id/icon_profile1"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_user_profile" />
@@ -434,18 +486,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
-                            android:layout_toEndOf="@+id/icon_profile"
+                            android:layout_toEndOf="@+id/icon_profile1"
                             android:fontFamily="@font/chur"
                             android:text="@string/profile"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
 
@@ -466,8 +520,8 @@
 
                         <ImageView
                             android:id="@+id/icon_hisuser"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_history" />
@@ -475,18 +529,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_hisuser"
                             android:fontFamily="@font/chur"
                             android:text="ประวัติการเข้าใช้งาน"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
                     </RelativeLayout>
@@ -506,8 +562,8 @@
 
                         <ImageView
                             android:id="@+id/icon_hisdepression"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_history" />
@@ -515,18 +571,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_hisdepression"
                             android:fontFamily="@font/chur"
                             android:text="ประวัติการทำแบบประเมิน"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
 
@@ -547,26 +605,29 @@
 
                         <ImageView
                             android:id="@+id/icon_updateemail"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_updateemail" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_updateemail"
                             android:fontFamily="@font/chur"
                             android:text="@string/update_email"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
                     </RelativeLayout>
@@ -586,26 +647,29 @@
 
                         <ImageView
                             android:id="@+id/icon_change_pass"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_changepass" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_change_pass"
                             android:fontFamily="@font/chur"
                             android:text="@string/change_password"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
 
@@ -627,26 +691,29 @@
 
                         <ImageView
                             android:id="@+id/icon_feedback"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/feedback" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_feedback"
                             android:fontFamily="@font/chur"
                             android:text="@string/feedback"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
 
@@ -667,26 +734,29 @@
 
                         <ImageView
                             android:id="@+id/icon_delete"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_deleteprofile" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@+id/icon_delete"
                             android:fontFamily="@font/chur"
                             android:text="@string/delete_profile"
                             android:textColor="?attr/textcolor"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_next" />
 
@@ -700,30 +770,21 @@
 
                 </LinearLayout>
 
-                <!-- btn logout -->
-                <androidx.cardview.widget.CardView
+                <!-- Button: login -->
+                <Button
+                    android:id="@+id/menu_logout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    card_view:cardBackgroundColor="?attr/cardbackground"
-                    card_view:cardCornerRadius="5dp"
-                    card_view:cardElevation="2dp">
-
-                    <Button
-                        android:id="@+id/menu_logout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/flag_transparent"
-                        android:fontFamily="@font/chub"
-                        android:text="ออกจากระบบ"
-                        android:textColor="?attr/textcolor"
-                        android:textSize="18sp" />
-
-                </androidx.cardview.widget.CardView>
+                    android:background="@drawable/button_state_list_animator"
+                    android:elevation="5dp"
+                    android:fontFamily="@font/chub"
+                    android:text="ออกจากระบบ"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

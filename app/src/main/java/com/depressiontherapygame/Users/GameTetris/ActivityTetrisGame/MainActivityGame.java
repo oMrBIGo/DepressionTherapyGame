@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -48,8 +51,9 @@ public class MainActivityGame extends AppBaseActivity {
     @BindView(R.id.iv_sound)
     AppCompatImageView ivSound;
 
+    private ImageButton buttonBack;
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLevel;
     private ProgressBar progressBar;
     private String lastname, email;
 
@@ -61,6 +65,8 @@ public class MainActivityGame extends AppBaseActivity {
         setContentView(R.layout.activity_main_game);
         ButterKnife.bind(this);
 
+        final Animation animation = AnimationUtils.loadAnimation(MainActivityGame.this, R.anim.button_bounce_home);
+
         if (mNetworkUtils.isConnected()) {
         } else {
         }
@@ -68,8 +74,19 @@ public class MainActivityGame extends AppBaseActivity {
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivityGame.this, HomeActivity.class));
+                finish();
+                buttonBack.setEnabled(false);
+                buttonBack.setAnimation(animation);
+            }
+        });
+
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLevel = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
@@ -139,12 +156,13 @@ public class MainActivityGame extends AppBaseActivity {
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
+                    String image = ""+snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLevel.setText("ปัจจุบัน "+level);
 
-                    String image = ""+snapshot.child("image").getValue();
+
 
                     //set image, using Picasso
                     Picasso.get().load(image).into(imageView);

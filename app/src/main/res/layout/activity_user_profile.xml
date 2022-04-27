@@ -7,7 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundcolor"
@@ -43,7 +42,118 @@
                 android:orientation="vertical">
 
                 <!-- include: Show layout Header [activity_user_profile.xml]  -->
-                <include layout="@layout/activity_home_header" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <!-- Button: click menu to [SettingActivity.java] -->
+                    <ImageButton
+                        android:id="@+id/buttonBack"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bg_round"
+                        android:backgroundTint="?attr/cardbackground"
+                        android:elevation="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_back_menu"
+                        card_view:tint="?attr/tintcolor" />
+
+                    <!-- LinearLayout: Group TextProfile -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
+
+                        <TextView
+                            android:id="@+id/lastname_home"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/waving_hand"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/Loading"
+                            android:maxLines="1"
+                            android:textAlignment="center"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textSize="22sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <!-- TextView: Show profileTv give from Firebase -> RealTime -> lastname -->
+                            <TextView
+                                android:id="@+id/lv_home"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/chub"
+                                android:hint="@string/Loading"
+                                android:maxLines="1"
+                                android:textAlignment="center"
+                                android:textColor="?attr/textcolor"
+                                android:textColorHint="?attr/tintcolor"
+                                android:textSize="16sp"
+                                android:visibility="visible" />
+
+                            <ImageView
+                                android:id="@+id/level"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginStart="5dp"
+                                android:src="@drawable/level_up"
+                                android:visibility="visible" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- RelativeLayout: Group [activity_home_header.xml] -->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <!-- CircleImageView: Show profileIv -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="10dp"
+                            android:elevation="5dp"
+                            android:src="@drawable/profile_image"
+                            app:civ_border_color="?attr/cardbackground"
+                            app:civ_border_width="3dp" />
+
+                        <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/icon_profile"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:elevation="5dp"
+                            android:src="@drawable/profile_image"
+                            app:civ_border_color="?attr/cardbackground"
+                            app:civ_border_width="3dp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
 
                 <!-- LinearLayout: ViewGroup -->
                 <LinearLayout
@@ -52,30 +162,54 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_roundlr"
+                        android:backgroundTint="?attr/cardbackground"
+                        android:elevation="10dp"
+                        android:fontFamily="@font/chub"
+                        android:paddingStart="20dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="5dp"
+                        android:text="หน้าโปรไฟล์"
+                        android:textAlignment="center"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="24sp" />
+
                     <!-- RelativeLayout: ViewGroup UploadProfile -->
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="30dp">
+                        android:layout_marginTop="10dp">
 
-                        <!-- CircleImageView: Show Image Profile default -->
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="150dp"
                             android:layout_height="158dp"
-                            android:layout_centerInParent="true"
-                            android:src="@drawable/teamwork"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="20dp"
+                            android:elevation="10dp"
+                            android:src="@drawable/profile_image"
                             app:civ_border_color="?attr/cardbackground"
                             app:civ_border_width="3dp" />
 
-                        <!-- CircleImageView: Show Image Profile Firebase Realtime -> ผู้ใช้งาน -> [ID] -> image/* -->
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/imageView_Profile"
                             android:layout_width="150dp"
                             android:layout_height="158dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/man"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:elevation="10dp"
+                            android:src="@drawable/profile_image"
                             app:civ_border_color="?attr/cardbackground"
                             app:civ_border_width="3dp" />
+
                     </RelativeLayout>
 
                     <!-- TextView: Show upload profile -->
@@ -101,26 +235,25 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textColor="?attr/textcolor"
                         android:textColorHint="?attr/textcolor"
-                        android:textSize="28sp" />
+                        android:textSize="26sp" />
 
                 </LinearLayout>
 
                 <!-- CardView: ViewGroup Show Profile text and button editProfile and go to [HomeActivity.java] -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_inner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
                     card_view:cardBackgroundColor="?attr/cardbackground"
                     card_view:cardCornerRadius="20dp"
-                    card_view:cardElevation="3dp">
+                    card_view:cardElevation="6dp">
 
                     <!-- LinearLayout: ViewGroup -->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -133,11 +266,10 @@
                             android:text="@string/setProfile"
                             android:textAlignment="center"
                             android:textColor="?attr/textcolor"
-                            android:textSize="25sp" />
+                            android:textSize="26sp" />
 
                         <!-- CardView: ViewGroup Show My Profile LastName and Email and PhoneNUmber  -->
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/card_view_inner1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -147,7 +279,7 @@
                             android:layout_marginBottom="20dp"
                             card_view:cardBackgroundColor="?attr/cardbackgroundtab"
                             card_view:cardCornerRadius="20dp"
-                            card_view:cardElevation="2dp">
+                            card_view:cardElevation="6dp">
 
                             <!-- LinearLayout: ViewGroup -->
                             <LinearLayout
@@ -155,7 +287,10 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:orientation="vertical"
-                                android:padding="10dp">
+                                android:paddingStart="10dp"
+                                android:paddingTop="15dp"
+                                android:paddingEnd="10dp"
+                                android:paddingBottom="15dp">
 
                                 <!-- LinearLayout: ViewGroup Show LastName -->
                                 <LinearLayout
@@ -185,7 +320,7 @@
                                         android:maxLines="5"
                                         android:textColor="?attr/textcolor"
                                         android:textColorHint="?attr/textcolor"
-                                        android:textSize="15sp" />
+                                        android:textSize="18sp" />
 
                                 </LinearLayout>
 
@@ -225,7 +360,7 @@
                                         android:maxLines="5"
                                         android:textColor="?attr/textcolor"
                                         android:textColorHint="?attr/textcolor"
-                                        android:textSize="15sp" />
+                                        android:textSize="18sp" />
 
                                 </LinearLayout>
 
@@ -265,7 +400,7 @@
                                         android:maxLines="5"
                                         android:textColor="?attr/textcolor"
                                         android:textColorHint="?attr/textcolor"
-                                        android:textSize="15sp" />
+                                        android:textSize="18sp" />
 
                                 </LinearLayout>
 
@@ -273,50 +408,47 @@
 
                         </androidx.cardview.widget.CardView>
 
-                        <!-- CardView: Button edit Profile -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="300dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            card_view:cardBackgroundColor="#FFC107"
-                            card_view:cardCornerRadius="10dp"
-                            card_view:cardElevation="2dp">
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingStart="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingEnd="30dp"
+                            android:paddingBottom="10dp">
 
-                            <!-- Button: Click next to [UpdateProfileActivity.java] -->
                             <Button
                                 android:id="@+id/button_editProfile"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:background="@drawable/flag_transparent"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/button_state_list_animator"
+                                android:elevation="2dp"
                                 android:fontFamily="@font/chub"
+                                android:stateListAnimator="@null"
                                 android:text="@string/edit_profile_text"
                                 android:textColor="@color/white"
-                                android:textSize="18sp" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <!-- CardView: Button Upload Image Profile -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="30dp"
-                            card_view:cardBackgroundColor="@color/green"
-                            card_view:cardCornerRadius="10dp"
-                            card_view:cardElevation="2dp">
+                                android:textSize="16sp" />
 
                             <Button
                                 android:id="@+id/button_home"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:background="@drawable/flag_transparent"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@drawable/button_state_list_animator_white"
+                                android:elevation="2dp"
                                 android:fontFamily="@font/chub"
+                                android:stateListAnimator="@null"
                                 android:text="@string/back_to_home_text"
-                                android:textColor="@color/white"
-                                android:textSize="18sp" />
+                                android:textColor="?attr/textcolor"
+                                android:textSize="16sp" />
 
-                        </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
                     </LinearLayout>
 

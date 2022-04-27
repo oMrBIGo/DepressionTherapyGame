@@ -3,10 +3,12 @@ package com.depressiontherapygame.Users.Consult.Fragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +47,10 @@ public class MyConsultFragment extends Fragment {
     List<ModelPost> postList;
     AdapterPosts adapterPosts;
 
+    private SearchView searchView;
+
+    TextView non_text;
+
     public MyConsultFragment() {
         // Required empty public constructor
     }
@@ -66,45 +72,44 @@ public class MyConsultFragment extends Fragment {
         user = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("ผู้ใช้งาน");
-
-        //init view
-        profileIv = view.findViewById(R.id.profileIv);
-        lastnameTv = view.findViewById(R.id.lastnameTv);
-
-        Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                //check until required data get
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    //get data
-                    String lastname = ""+ds.child("lastname").getValue();
-                    String image = ""+ds.child("image").getValue();
-
-                    //set data
-                    lastnameTv.setText(lastname);
-                    try {
-                        //if image is received then set
-                        Picasso.get().load(image).into(profileIv);
-                    } catch (Exception e) {
-                        //if there is any exception while getting image then set default
-                        Picasso.get().load(R.drawable.man).into(profileIv);
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        non_text = view.findViewById(R.id.non_text);
 
         postsRecyclerView = view.findViewById(R.id.recycler_posts1);
         postList = new ArrayList<>();
 
         loadMyPosts();
+
+        //SearchView
+        searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                //if search query is not empty then search
+                if (!TextUtils.isEmpty(s)) {
+                    //search text contains text, search it
+                    searchPosts(s);
+                } else {
+                    //search text empty, get all Posts
+                    loadMyPosts();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //if search query is not empty then search
+                if (!TextUtils.isEmpty(s)) {
+                    //search text contains text, search it
+                    searchPosts(s);
+                } else {
+                    //search text empty, get all Posts
+                    loadMyPosts();
+                }
+                return false;
+            }
+        });
+
+
         return view;
     }
 
@@ -143,6 +148,43 @@ public class MyConsultFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    private void searchPosts(String searchQuery) {
+        //path of all posts
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("คำปรึกษา");
+        //get all data from this ref
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    ModelPost modelPost = ds.getValue(ModelPost.class);
+
+                    if (modelPost.getpTitle().toLowerCase().contains(searchQuery.toLowerCase()) ||
+                            modelPost.getpDescr().toLowerCase().contains(searchQuery.toLowerCase())) {
+                        postList.add(modelPost);
+                        non_text.setVisibility(View.GONE);
+                        postsRecyclerView.setVisibility(View.VISIBLE);
+                    } else {
+                        non_text.setVisibility(View.VISIBLE);
+                        postsRecyclerView.setVisibility(View.GONE);
+                    }
+
+
+                    //adapter
+                    adapterPosts = new AdapterPosts(getActivity(), postList);
+                    //set adapter to recyclerview
+                    postsRecyclerView.setAdapter(adapterPosts);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
     }
 
 }

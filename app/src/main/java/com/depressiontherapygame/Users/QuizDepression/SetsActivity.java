@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class SetsActivity extends AppCompatActivity {
 
     SharedPref sharedPref;
     private ImageView imageView;
-    private TextView textViewWelcome, textViewEmail;
+    private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
     private String lastname, email;
     private FirebaseAuth authProfile;
@@ -67,18 +68,18 @@ public class SetsActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         textViewWelcome = findViewById(R.id.lastname_home);
-        textViewEmail = findViewById(R.id.email_home);
+        textViewLv = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
-        ImageView imageView = findViewById(R.id.BtnBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SetsActivity.this, CategoryActivity.class);
                 startActivity(intent);
                 finish();
-                imageView.setEnabled(false);
+                buttonBack.setEnabled(false);
             }
         });
 
@@ -106,11 +107,11 @@ public class SetsActivity extends AppCompatActivity {
                 ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
-                    String email = "" + snapshot.child("email").getValue();
+                    String level = "" + snapshot.child("level").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
-                    textViewEmail.setText(email);
+                    textViewLv.setText("ปัจจุบัน "+level);
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(130, 130).into(imageView);
