@@ -43,6 +43,7 @@ import com.squareup.picasso.Picasso;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
+    FirebaseAuth authProfile;
     private EditText editTextPasswordCurrent, editTextPasswordNew, editTextPasswordConfirmNew;
     private TextView textViewAuthenticated;
     private Button buttonChangePassword, buttonReAuthenticate;
@@ -75,7 +76,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         buttonChangePassword = findViewById(R.id.ButtonChangePassword);
         buttonChangePasswordCardView = findViewById(R.id.ButtonChangePasswordCardView);
 
-        FirebaseAuth authProfile = FirebaseAuth.getInstance();
+        authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         icon_profile = findViewById(R.id.icon_profile);
