@@ -45,8 +45,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/bg_round"
-                    android:backgroundTint="?attr/cardbackground"
+                    android:background="@drawable/button_state_back"
                     android:elevation="10dp"
                     android:padding="5dp"
                     android:src="@drawable/ic_back_menu"
@@ -65,7 +64,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:background="@drawable/bg_round"
                         android:elevation="5dp"
                         android:fontFamily="@font/chub"
                         android:padding="10dp"
@@ -73,7 +71,7 @@
                         android:text="แก้ไขอีเมล"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         card_view:tint="?attr/tintcolor" />
 
                 </LinearLayout>

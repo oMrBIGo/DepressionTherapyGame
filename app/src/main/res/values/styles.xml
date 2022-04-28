@@ -25,6 +25,7 @@
         <item name="textdialog">#686868</item>
         <item name="dialogbackgroundcolor">#FAFFFFFF</item>
         <item name="dialogboxcolor">#F2F6F6F6</item>
+        <item name="buttonBackClickOn">#FFFFFF</item>
 
     </style>
 
@@ -53,6 +54,7 @@
         <item name="textdialog">@color/white</item>
         <item name="dialogbackgroundcolor">#FA31373E</item>
         <item name="dialogboxcolor">#CD151A22</item>
+        <item name="buttonBackClickOn">#C3C3C3</item>
 
     </style>
 

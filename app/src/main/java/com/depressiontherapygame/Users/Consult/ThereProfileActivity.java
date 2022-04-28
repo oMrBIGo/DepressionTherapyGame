@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.Consult.Model.ModelPost;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
+import com.depressiontherapygame.Users.Update.UpdateEmailActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -86,6 +89,8 @@ public class ThereProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
         uid = intent.getStringExtra("uid");
 
+        final Animation animation = AnimationUtils.loadAnimation(ThereProfileActivity.this, R.anim.button_bounce_home);
+
         ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +98,7 @@ public class ThereProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(ThereProfileActivity.this, DashboardActivity.class));
                 finish();
                 ButtonBack.setEnabled(false);
+                ButtonBack.startAnimation(animation);
             }
         });
 

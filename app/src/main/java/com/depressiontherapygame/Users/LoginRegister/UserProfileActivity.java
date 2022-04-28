@@ -152,7 +152,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserProfileActivity.this, SettingActivity.class);
                 startActivity(intent);
                 finish();
-                buttonBack.setAnimation(animation);
+                buttonBack.startAnimation(animation);
                 buttonBack.setEnabled(false);
             }
         });

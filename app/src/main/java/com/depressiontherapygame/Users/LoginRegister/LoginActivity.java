@@ -86,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_bounce);
+
         init_screen();
 
         /* dialog show */
@@ -128,6 +130,8 @@ public class LoginActivity extends AppCompatActivity {
         edittextEmail.setText(textEmail);
         edittextPassword.setText(textPassword);
 
+
+
         /* Button Click: next to [RegisterActivity.java] */
         TextView nextReg = (TextView) findViewById(R.id.nextRegister);
         nextReg.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                backBtn.startAnimation(animation);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

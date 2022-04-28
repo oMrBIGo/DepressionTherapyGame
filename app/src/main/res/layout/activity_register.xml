@@ -12,7 +12,6 @@
     android:background="?attr/background"
     tools:context=".Users.LoginRegister.RegisterActivity">
 
-    <!-- ImageView: buttonBack to [MainActivity.java] -->
     <ImageButton
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
@@ -21,13 +20,11 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_round"
+        android:background="@drawable/button_state_back"
         android:elevation="6dp"
         android:padding="10dp"
         android:src="@drawable/ic_back_menu"
         app:tint="?attr/tintcolor" />
-
-    <!-- ScrollView: ViewGroup [activity_register.xml] Swipe[up - down] -->
 
     <!-- ProgressBar: Show Loading  -->
     <ScrollView

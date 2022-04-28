@@ -13,6 +13,8 @@ import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.HomeActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
 import com.depressiontherapygame.R;
@@ -85,12 +88,16 @@ public class AddPostActivity extends AppCompatActivity {
         //Progressbar
         progressBar = findViewById(R.id.progressBar);
 
+        final Animation animation = AnimationUtils.loadAnimation(AddPostActivity.this, R.anim.button_bounce_home);
+
         buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AddPostActivity.this, DashboardActivity.class));
                 finish();
+                buttonBack.startAnimation(animation);
+                buttonBack.setEnabled(false);
             }
         });
 

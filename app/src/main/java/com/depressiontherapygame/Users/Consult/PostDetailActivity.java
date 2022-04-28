@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -120,6 +122,8 @@ public class PostDetailActivity extends AppCompatActivity {
         sendBtn = findViewById(R.id.sendBtn);
         cAvatarIv = findViewById(R.id.cAvatarIv);
 
+        final Animation animation = AnimationUtils.loadAnimation(PostDetailActivity.this, R.anim.button_bounce_home);
+
         ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +131,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 startActivity(new Intent(PostDetailActivity.this, DashboardActivity.class));
                 finish();
                 ButtonBack.setEnabled(false);
+                ButtonBack.startAnimation(animation);
             }
         });
 

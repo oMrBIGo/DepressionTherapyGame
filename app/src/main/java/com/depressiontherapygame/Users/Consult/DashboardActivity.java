@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -92,12 +94,16 @@ public class DashboardActivity extends AppCompatActivity {
         openNavDialog();
         showUserProfile();
 
+        final Animation animation = AnimationUtils.loadAnimation(DashboardActivity.this, R.anim.button_bounce_home);
+
         ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DashboardActivity.this, HomeActivity.class));
                 finish();
+                ButtonBack.startAnimation(animation);
+                ButtonBack.setEnabled(false);
             }
         });
 

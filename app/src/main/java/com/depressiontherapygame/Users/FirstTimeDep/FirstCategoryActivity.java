@@ -4,6 +4,8 @@ package com.depressiontherapygame.Users.FirstTimeDep;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -58,6 +60,8 @@ public class FirstCategoryActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
+        final Animation animation = AnimationUtils.loadAnimation(FirstCategoryActivity.this, R.anim.button_bounce_home);
+
         ImageButton ButtonBack = (ImageButton) findViewById(R.id.buttonBack);
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +69,7 @@ public class FirstCategoryActivity extends AppCompatActivity {
                 startActivity(new Intent(FirstCategoryActivity.this, FirstMainActivity.class));
                 finish();
                 ButtonBack.setEnabled(false);
+                ButtonBack.startAnimation(animation);
             }
         });
 

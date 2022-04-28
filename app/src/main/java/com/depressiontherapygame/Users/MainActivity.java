@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
-        openNavDialog();
-        if (settings.getBoolean("my_first_time", true)) {
 
+        if (settings.getBoolean("my_first_time", true)) {
+            openNavDialog();
             settings.edit().putBoolean("my_first_time", false).commit();
         }
 

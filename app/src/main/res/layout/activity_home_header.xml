@@ -23,12 +23,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_round"
-            android:backgroundTint="?attr/cardbackground"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_state_back"
             android:elevation="10dp"
             android:padding="5dp"
             android:src="@drawable/ic_grid_view"
@@ -106,7 +102,7 @@
                 android:elevation="5dp"
                 android:src="@drawable/profile_image"
                 app:civ_border_color="?attr/cardbackground"
-                app:civ_border_width="3dp"/>
+                app:civ_border_width="3dp" />
 
             <!-- CircleImageView: Show profileIv give from Firebase -> RealTime -> image/* ] -->
             <de.hdodenhof.circleimageview.CircleImageView

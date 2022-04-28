@@ -73,7 +73,7 @@ public class CategoryActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 buttonBack.setEnabled(false);
-                buttonBack.setAnimation(animation);
+                buttonBack.startAnimation(animation);
             }
         });
 

@@ -122,6 +122,7 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
                 startActivity(intent);
                 finish();
                 buttonBack.setAnimation(animation);
+                buttonBack.setEnabled(false);
             }
         });
 

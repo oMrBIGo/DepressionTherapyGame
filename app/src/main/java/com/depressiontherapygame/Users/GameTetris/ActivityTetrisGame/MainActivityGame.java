@@ -81,7 +81,7 @@ public class MainActivityGame extends AppBaseActivity {
                 startActivity(new Intent(MainActivityGame.this, HomeActivity.class));
                 finish();
                 buttonBack.setEnabled(false);
-                buttonBack.setAnimation(animation);
+                buttonBack.startAnimation(animation);
             }
         });
 

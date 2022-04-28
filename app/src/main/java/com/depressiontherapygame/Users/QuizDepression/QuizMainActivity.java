@@ -90,7 +90,7 @@ public class QuizMainActivity extends AppCompatActivity {
 
         init_screen();
 
-
+        final Animation animation = AnimationUtils.loadAnimation(QuizMainActivity.this, R.anim.button_bounce_home);
 
         ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +100,7 @@ public class QuizMainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 buttonBack.setEnabled(false);
+                buttonBack.startAnimation(animation);
 
             }
         });

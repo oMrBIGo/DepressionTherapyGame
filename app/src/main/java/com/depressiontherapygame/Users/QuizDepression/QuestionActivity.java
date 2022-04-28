@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.ArrayMap;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -118,6 +120,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
+        final Animation animation = AnimationUtils.loadAnimation(QuestionActivity.this, R.anim.button_bounce_home);
+
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +130,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 finish();
                 buttonBack.setEnabled(false);
+                buttonBack.startAnimation(animation);
+
             }
         });
 

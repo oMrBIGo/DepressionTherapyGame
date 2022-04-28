@@ -12,13 +12,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
@@ -78,16 +82,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         showUserProfile(firebaseUser);
 
+        final Animation animation = AnimationUtils.loadAnimation(ChangePasswordActivity.this, R.anim.button_bounce_home);
 
-
-        ImageView backBtn = (ImageView) findViewById(R.id.buttonBack);
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ChangePasswordActivity.this, SettingActivity.class);
                 startActivity(intent);
                 finish();
-                backBtn.setEnabled(false);
+                buttonBack.setEnabled(false);
+                buttonBack.startAnimation(animation);
             }
         });
 

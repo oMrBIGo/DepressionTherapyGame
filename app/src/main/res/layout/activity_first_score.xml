@@ -147,7 +147,7 @@
                 android:stateListAnimator="@null"
                 android:text="@string/back_to_home_text"
                 android:textColor="?attr/textcolor"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 

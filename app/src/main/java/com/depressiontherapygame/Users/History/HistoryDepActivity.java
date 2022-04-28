@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -82,6 +84,8 @@ public class HistoryDepActivity extends AppCompatActivity {
 
         loadHisDep();
 
+        final Animation animation = AnimationUtils.loadAnimation(HistoryDepActivity.this, R.anim.button_bounce_home);
+
         ImageView buttonBack = (ImageView) findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +94,7 @@ public class HistoryDepActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 buttonBack.setEnabled(false);
+                buttonBack.startAnimation(animation);
             }
         });
 

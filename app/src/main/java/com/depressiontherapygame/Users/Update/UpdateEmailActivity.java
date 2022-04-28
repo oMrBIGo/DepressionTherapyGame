@@ -16,7 +16,10 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import android.widget.Toast;
 
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.History.HistoryDepActivity;
+import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
 
@@ -74,14 +78,17 @@ public class UpdateEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_email);
         init_screen();
 
-        ImageView imageView = findViewById(R.id.buttonBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        final Animation animation = AnimationUtils.loadAnimation(UpdateEmailActivity.this, R.anim.button_bounce_home);
+
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UpdateEmailActivity.this, SettingActivity.class);
                 startActivity(intent);
                 finish();
-                imageView.setEnabled(false);
+                buttonBack.startAnimation(animation);
+                buttonBack.setEnabled(false);
             }
         });
 

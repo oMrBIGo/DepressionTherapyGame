@@ -93,12 +93,16 @@ public class FirstMainActivity extends AppCompatActivity {
             }
         });
 
+        final Animation animation = AnimationUtils.loadAnimation(FirstMainActivity.this, R.anim.button_bounce_home);
+
         ImageButton buttonBack = (ImageButton) findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FirstMainActivity.this, FirstUserProfileActivity.class));
                 finish();
+                buttonBack.setEnabled(false);
+                buttonBack.startAnimation(animation);
             }
         });
 

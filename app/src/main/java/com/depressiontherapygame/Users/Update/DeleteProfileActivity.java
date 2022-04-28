@@ -16,7 +16,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -93,14 +96,17 @@ public class DeleteProfileActivity extends AppCompatActivity {
 
         icon_profile = findViewById(R.id.icon_profile);
 
-        ImageView imageView = findViewById(R.id.buttonBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        final Animation animation = AnimationUtils.loadAnimation(DeleteProfileActivity.this, R.anim.button_bounce_home);
+
+        ImageButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DeleteProfileActivity.this, SettingActivity.class);
                 startActivity(intent);
                 finish();
-                imageView.setEnabled(false);
+                buttonBack.startAnimation(animation);
+                buttonBack.setEnabled(false);
             }
         });
 

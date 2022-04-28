@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -72,6 +74,8 @@ public class SetsActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.icon_profile);
 
+        final Animation animation = AnimationUtils.loadAnimation(SetsActivity.this, R.anim.button_bounce_home);
+
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +84,7 @@ public class SetsActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 buttonBack.setEnabled(false);
+                buttonBack.startAnimation(animation);
             }
         });
 

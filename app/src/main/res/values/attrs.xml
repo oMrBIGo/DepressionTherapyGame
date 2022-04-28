@@ -21,5 +21,6 @@
         <attr name="textdialog" format="color"/>
         <attr name="dialogbackgroundcolor" format="color"/>
         <attr name="dialogboxcolor" format="color"/>
+        <attr name="buttonBackClickOn" format="color"/>
     </declare-styleable>
 </resources>

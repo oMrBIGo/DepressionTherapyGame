@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -85,12 +87,16 @@ public class HistoryLoginActivity extends AppCompatActivity {
         //Progressbar
         progressBar = findViewById(R.id.progressBar);
 
+        final Animation animation = AnimationUtils.loadAnimation(HistoryLoginActivity.this, R.anim.button_bounce_home);
+
         buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HistoryLoginActivity.this, SettingActivity.class));
                 finish();
+                buttonBack.startAnimation(animation);
+                buttonBack.setEnabled(false);
             }
         });
     }
