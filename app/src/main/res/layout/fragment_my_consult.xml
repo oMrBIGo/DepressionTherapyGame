@@ -16,24 +16,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_roundheader"
-                android:backgroundTint="?attr/cardbackground"
-                android:elevation="3dp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/chub"
-                android:paddingStart="20dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="5dp"
-                android:text="คำปรึกษาของฉัน"
-                android:textAlignment="center"
-                android:textColor="?attr/textcolor"
-                android:textSize="24sp" />
-
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
@@ -50,22 +32,22 @@
             <!-- RecyclerView: User specific posts-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_posts1"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/header" />
+                android:layout_below="@id/header"
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/non_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/chub"
                 android:text="ไม่พบข้อมูล"
                 android:textAlignment="center"
-                android:fontFamily="@font/chub"
                 android:textColor="?attr/textcolor"
-                android:layout_marginTop="20dp"
-                android:visibility="gone"
-                android:textSize="22sp"/>
+                android:textSize="22sp"
+                android:visibility="gone" />
 
 
         </LinearLayout>
