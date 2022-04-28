@@ -229,10 +229,68 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_roundheader"
+                    android:elevation="4dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/menu_form"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp">
+
+                        <ImageView
+                            android:id="@+id/icon_form"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/logo_white" />
+
+                        <TextView
+                            android:id="@+id/text_form"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/icon_form"
+                            android:fontFamily="@font/chub"
+                            android:text="แบบประเมินความพึงพอใจสำหรับผู้ใช้งานเกมบำบัดภาวะซึมเศร้าในวัยรุ่น"
+                            android:textColor="?attr/textcolor"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/ButtonForm"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingEnd="20dp"
+                        android:paddingStart="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="2dp"
+                        android:background="@drawable/button_state_list_animator"
+                        android:fontFamily="@font/chub"
+                        android:stateListAnimator="@null"
+                        android:text="คลิกที่นี่เพื่อทำแบบประเมินความพึงพอใจ"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/chub"
+                    android:layout_marginTop="10dp"
                     android:text="@string/Introduction"
                     android:textAlignment="center"
                     android:textColor="?attr/textcolor"

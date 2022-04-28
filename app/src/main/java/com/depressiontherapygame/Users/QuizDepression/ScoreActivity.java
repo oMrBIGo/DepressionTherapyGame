@@ -76,6 +76,8 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
         /* dialog show */
         dialog = new Dialog(this);
 
+        openDepForm();
+
         FirebaseAuth authProfile = FirebaseAuth.getInstance();
         final FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
@@ -94,6 +96,18 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
 
         /* animation Button */
         final Animation animation = AnimationUtils.loadAnimation(ScoreActivity.this, R.anim.button_bounce_home);
+
+        Button ButtonForm = (Button) findViewById(R.id.ButtonForm);
+        ButtonForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://forms.gle/YootYZTYnt96xQ3z5");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
 
         TextView score = findViewById(R.id.score);
         TextView result = findViewById(R.id.form_score);
@@ -264,6 +278,30 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
         }
 
     }
+
+    /* open Dialog Show Dep01 */
+    private void openDepForm() {
+        /* set dialog [depq01_dialog.xml] */
+        dialog.setContentView(R.layout.dep_form_dialog);
+        /* sey dialog background Transparent */
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        /* init view button in dialog */
+        Button confirm = dialog.findViewById(R.id.confirm);
+
+        /* button click reject preliminary agreement */
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://forms.gle/YootYZTYnt96xQ3z5");
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+        /* dialog show */
+        dialog.show();
+    }
+
 
     /* open Dialog Show Dep01 */
     private void openDepDialog01() {

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+[** CREATE : 11/02/2022 **]
+[** UPDATE : 11/02/2022 **]
+[** DEVELOPER BY NATHIT PANROD  **]
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <!-- LinearLayout: Group dialog -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- LinearLayout: Group Depression -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!-- CardView: ViewGroup dialog -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="?attr/dialogbackgroundcolor"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="15dp">
+
+                <!-- LinearLayout: ViewGroup -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo_white"/>
+
+                    <!-- TextView: Show Title Depression -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/chub"
+                        android:textAlignment="center"
+                        android:text="แบบประเมินความพึงพอใจสำหรับ
+                        ผู้ใช้งานเกมบำบัดภาวะซึมเศร้าในวัยรุ่น"
+                        android:textColor="?attr/textcolor"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/teal_200"/>
+
+                    <!-- ScrollView: Show slide Description -->
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <!-- LinearLayout: Description -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+
+                            <!-- TextView: Show Title Description -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|end"
+                                android:fontFamily="@font/chur"
+                                android:text=" แบบสอบถามนี้มีจุดมุ่งหมายเพื่อสำรวจความคิดเห็นของผู้ใช้งานโดยความคิดเห็นของ
+ท่านจะเป็นประโยชน์ต่อการพัฒนาเกมบำบัดภาวะซึมเศร้าในวัยรุ่น และการพิจารณาคำตอบนั้นไม่มี
+ผิดหรือถูก เพราะเป็นการแสดงความคิดเห็นส่วนบุคคลจะไม่มีผลกระทบใด ๆ ทั้งสิ้นต่อตัวท่านเอง"
+                                android:textColor="?attr/textcolor"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                        <Button
+                            android:id="@+id/confirm"
+                            android:layout_width="250dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button_state_list_animator"
+                            android:fontFamily="@font/chub"
+                            android:padding="5dp"
+                            android:elevation="5dp"
+                            android:layout_marginTop="10dp"
+                            android:text="ประเมินความพึงพอใจ"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
