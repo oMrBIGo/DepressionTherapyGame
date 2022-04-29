@@ -52,8 +52,6 @@ public class ThereProfileActivity extends AppCompatActivity {
     ImageView profile_icon;
     TextView nameTv;
 
-
-
     ImageView profileIv;
     TextView lastnameTv, levelTv;
 
@@ -80,8 +78,6 @@ public class ThereProfileActivity extends AppCompatActivity {
         levelTv = findViewById(R.id.lv_home);
 
         postsRecyclerView = findViewById(R.id.recycler_posts1);
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         showUserProfile();
 

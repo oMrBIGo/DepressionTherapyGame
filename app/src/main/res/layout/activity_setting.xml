@@ -167,7 +167,7 @@
                             android:fontFamily="@font/chub"
                             android:text="@string/verified"
                             android:textColor="#2EC18A"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 

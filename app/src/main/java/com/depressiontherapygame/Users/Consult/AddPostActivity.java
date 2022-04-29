@@ -117,10 +117,12 @@ public class AddPostActivity extends AppCompatActivity {
         if (isUpdateKey.equals("editPost")) {
             //update
             title.setText("แก้ไขคำปรึกษา");
+            uploadBtn.setText("ยืนยันแก้ไขคำปรึกษา");
             loadPostData(editPostId);
         } else {
             //add
             title.setText("เพิ่มคำปรึกษา");
+            uploadBtn.setText("ยืนยันเพิ่มคำปรึกษา");
         }
 
         //get some info of current user to include in post

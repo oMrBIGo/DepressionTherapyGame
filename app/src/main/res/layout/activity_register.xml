@@ -26,7 +26,6 @@
         android:src="@drawable/ic_back_menu"
         app:tint="?attr/tintcolor" />
 
-    <!-- ProgressBar: Show Loading  -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

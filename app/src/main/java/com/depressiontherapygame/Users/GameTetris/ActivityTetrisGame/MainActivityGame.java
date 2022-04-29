@@ -162,8 +162,6 @@ public class MainActivityGame extends AppBaseActivity {
                     textViewWelcome.setText(lastname);
                     textViewLevel.setText("ปัจจุบัน "+level);
 
-
-
                     //set image, using Picasso
                     Picasso.get().load(image).into(imageView);
                     if (level.toString().equals("เลเวล1")) {
