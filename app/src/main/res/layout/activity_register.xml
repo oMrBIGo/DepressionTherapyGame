@@ -167,7 +167,6 @@
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/custom_lastname_icon"
                             android:drawablePadding="15dp"
-                            android:elevation="1dp"
                             android:fontFamily="@font/chub"
                             android:hint="@string/last_name"
                             android:inputType="textPersonName"
@@ -214,7 +213,6 @@
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/custom_email_icon"
                             android:drawablePadding="15dp"
-                            android:elevation="1dp"
                             android:fontFamily="@font/chub"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
@@ -253,8 +251,7 @@
                         app:boxCornerRadiusTopStart="20dp"
                         app:endIconMode="clear_text"
                         app:endIconTint="#B4B4B4"
-                        app:hintEnabled="false"
-                        >
+                        app:hintEnabled="false">
 
                         <!-- TextInputEdittext: input phone number -->
                         <com.google.android.material.textfield.TextInputEditText
@@ -263,7 +260,6 @@
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/custom_phone_icon"
                             android:drawablePadding="15dp"
-                            android:elevation="1dp"
                             android:fontFamily="@font/chub"
                             android:hint="@string/phone_number"
                             android:inputType="phone"

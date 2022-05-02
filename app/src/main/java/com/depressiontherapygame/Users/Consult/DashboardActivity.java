@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -49,6 +50,7 @@ public class DashboardActivity extends AppCompatActivity {
     Dialog dialog;
     SharedPref sharedPref;
 
+    final String PREFS_NAME = "MyPrefDashboard";
     FloatingActionButton fab;
 
     @Override
@@ -91,7 +93,13 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        openNavDialog();
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("first_time", true)) {
+            openNavDialog();
+            settings.edit().putBoolean("first_time", false).commit();
+        }
+
         showUserProfile();
 
         final Animation animation = AnimationUtils.loadAnimation(DashboardActivity.this, R.anim.button_bounce_home);
