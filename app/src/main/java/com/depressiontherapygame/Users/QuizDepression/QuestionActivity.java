@@ -70,6 +70,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private CardView cardView1, cardView2, cardView3, cardView4;
 
+
+    Integer total = 0;
+
     SharedPref sharedPref;
 
     @Override
@@ -247,25 +250,25 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             Option1.setEnabled(false);
+            score = quizQuestsList.get(QuizNumber).getCorrectAns4();
         } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns2()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score++;
+            score = quizQuestsList.get(QuizNumber).getCorrectAns1();
             Option2.setEnabled(false);
         } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns3()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score++;
-            score++;
+            score = quizQuestsList.get(QuizNumber).getCorrectAns2();
             Option3.setEnabled(false);
         } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns4()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score++;
-            score++;
-            score++;
+            score = quizQuestsList.get(QuizNumber).getCorrectAns3();
             Option4.setEnabled(false);
         }
+
+        total = total + score;
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -299,29 +302,29 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         } else {
             final FirebaseUser firebaseUser = authProfile.getCurrentUser();
             String depression = "";
-            if (score < 7) {
+            if (total < 7) {
                 depression = "ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าระดับน้อยมาก";
-            } else if (score < 13) {
+            } else if (total < 13) {
                 depression = "มีอาการของโรคซึมเศร้า ระดับน้อย";
-            } else if (score < 18) {
+            } else if (total < 18) {
                 depression = "มีอาการของโรคซึมเศร้า ระดับปานกลาง";
             } else {
                 depression = "มีอาการของโรคซึมเศร้า ระดับรุนแรง";
             }
 
-            if (score < firstscore) {
+            if (total < firstscore) {
                 BeforeDepression = "ระดับความซึมเศร้าของคุณลดลง";
-            } else if (score == firstscore) {
+            } else if (total == firstscore) {
                 BeforeDepression = "ระดับความซึมเศร้าของคุณเท่าเดิม";
-            } else if (score > firstscore) {
+            } else if (total > firstscore) {
                 BeforeDepression = "ระดับความซึมเศร้าของคุณไม่ดีขึ้นเลย";
             } else {
                 BeforeDepression = "ไม่สามารถคำนวณได้";
             }
 
-            // Go to Score Activity
+            // Go to total Activity
             HashMap<String, Object> result = new HashMap<>();
-            result.put("score", score);
+            result.put("score", total);
             result.put("depression", depression);
             result.put("BeforeDepression", BeforeDepression);
 
@@ -335,7 +338,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             HashMap<String, Object> hashMap = new HashMap<>();
             //put info in hashmap
             hashMap.put("cId", timeStamp);
-            hashMap.put("score", score);
+            hashMap.put("score", total);
             hashMap.put("depression", depression);
             hashMap.put("logintime", timeStamp);
             hashMap.put("uid", uid);
@@ -364,7 +367,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void onSuccess(Void unused) {
                             Intent intent = new Intent(QuestionActivity.this, ScoreActivity.class);
-                            intent.putExtra("SCORE", String.valueOf(score) + " คะแนน");
+                            intent.putExtra("SCORE", String.valueOf(total) + " คะแนน");
                             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             intent.putExtra("RESULT", finalDepression);
                             intent.putExtra("RESULTFirst", firstDepression);
