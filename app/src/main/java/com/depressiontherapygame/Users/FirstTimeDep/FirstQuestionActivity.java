@@ -56,7 +56,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
     private ImageView imageView;
     private TextView textViewWelcome, textViewLv;
     private ProgressBar progressBar;
-    private String lastname, email;
     private FirebaseAuth authProfile;
     private List<QuizQuest> quizQuestsList;
     private ImageButton buttonBack;
@@ -171,10 +170,12 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
                                     quesDoc.getString("B"),
                                     quesDoc.getString("C"),
                                     quesDoc.getString("D"),
+
                                     Integer.valueOf(quesDoc.getString("ANSWER1")),
                                     Integer.valueOf(quesDoc.getString("ANSWER2")),
                                     Integer.valueOf(quesDoc.getString("ANSWER3")),
                                     Integer.valueOf(quesDoc.getString("ANSWER4")),
+
                                     Integer.valueOf(quesDoc.getString("CURRENT1ANS")),
                                     Integer.valueOf(quesDoc.getString("CURRENT2ANS")),
                                     Integer.valueOf(quesDoc.getString("CURRENT3ANS")),
@@ -210,25 +211,25 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void checkAnswer(int selectedOption, View view) {
 
-        if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns1()) {
+        if (selectedOption == quizQuestsList.get(0).getAns1Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            score = quizQuestsList.get(0).getCorrectAns1();
             Option1.setEnabled(false);
-            score = quizQuestsList.get(QuizNumber).getAns1Str();
-        } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns2()) {
+        } else if (selectedOption == quizQuestsList.get(0).getAns2Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score = quizQuestsList.get(QuizNumber).getAns2Str();
+            score = quizQuestsList.get(0).getCorrectAns2();
             Option2.setEnabled(false);
-        } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns3()) {
+        } else if (selectedOption == quizQuestsList.get(0).getAns3Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score = quizQuestsList.get(QuizNumber).getAns3Str();
+            score = quizQuestsList.get(0).getCorrectAns3();
             Option3.setEnabled(false);
-        } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns4()) {
+        } else if (selectedOption == quizQuestsList.get(0).getAns4Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score = quizQuestsList.get(QuizNumber).getAns4Str();
+            score = quizQuestsList.get(0).getCorrectAns4();
             Option4.setEnabled(false);
         }
 

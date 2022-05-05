@@ -68,21 +68,19 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int setNo;
     private FirebaseFirestore firestore;
 
-
     int total = 0;
 
     SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         sharedPref = new SharedPref(this);
         if (sharedPref.loadNightModeState() == true) {
             setTheme(R.style.darkTheme);
         } else setTheme(R.style.AppTheme);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
         init_screen();
 
         quizQuest = findViewById(R.id.QuizQuest);
