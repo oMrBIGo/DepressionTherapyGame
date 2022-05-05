@@ -7,10 +7,31 @@ public class QuizQuest {
     String optionB;
     String optionC;
     String optionD;
+    int ans1Str;
+    int ans2Str;
+    int ans3Str;
+    int ans4Str;
     int correctAns1;
     int correctAns2;
     int correctAns3;
     int correctAns4;
+
+
+    public QuizQuest(String question, String optionA, String optionB, String optionC, String optionD, int correctAns1, int correctAns2, int correctAns3, int correctAns4, int ans1Str, int ans2Str, int ans3Str, int ans4Str) {
+        this.question = question;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.ans1Str = ans1Str;
+        this.ans2Str = ans2Str;
+        this.ans3Str = ans3Str;
+        this.ans4Str = ans4Str;
+        this.correctAns1 = correctAns1;
+        this.correctAns2 = correctAns2;
+        this.correctAns3 = correctAns3;
+        this.correctAns4 = correctAns4;
+    }
 
     public String getQuestion() {
         return question;
@@ -52,6 +73,37 @@ public class QuizQuest {
         this.optionD = optionD;
     }
 
+    public int getAns1Str() {
+        return ans1Str;
+    }
+
+    public void setAns1Str(int ans1Str) {
+        this.ans1Str = ans1Str;
+    }
+
+    public int getAns2Str() {
+        return ans2Str;
+    }
+
+    public void setAns2Str(int ans2Str) {
+        this.ans2Str = ans2Str;
+    }
+
+    public int getAns3Str() {
+        return ans3Str;
+    }
+
+    public void setAns3Str(int ans3Str) {
+        this.ans3Str = ans3Str;
+    }
+
+    public int getAns4Str() {
+        return ans4Str;
+    }
+
+    public void setAns4Str(int ans4Str) {
+        this.ans4Str = ans4Str;
+    }
 
     public int getCorrectAns1() {
         return correctAns1;
@@ -82,18 +134,6 @@ public class QuizQuest {
     }
 
     public void setCorrectAns4(int correctAns4) {
-        this.correctAns4 = correctAns4;
-    }
-
-    public QuizQuest(String question, String optionA, String optionB, String optionC, String optionD, int correctAns1, int correctAns2 , int correctAns3 , int correctAns4) {
-        this.question = question;
-        this.optionA = optionA;
-        this.optionB = optionB;
-        this.optionC = optionC;
-        this.optionD = optionD;
-        this.correctAns1 = correctAns1;
-        this.correctAns2 = correctAns2;
-        this.correctAns3 = correctAns3;
         this.correctAns4 = correctAns4;
     }
 }

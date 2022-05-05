@@ -54,7 +54,8 @@ import java.net.SocketException;
 import java.util.Enumeration;
 import java.util.HashMap;
 
-public class RegisterActivity extends AppCompatActivity {
+public class
+RegisterActivity extends AppCompatActivity {
 
     /* View */
     private TextInputEditText lastname, email, password, phone;

@@ -50,7 +50,6 @@ public class DashboardActivity extends AppCompatActivity {
     Dialog dialog;
     SharedPref sharedPref;
 
-    final String PREFS_NAME = "MyPrefDashboard";
     FloatingActionButton fab;
 
     @Override
@@ -93,12 +92,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-
-        if (settings.getBoolean("first_time", true)) {
-            openNavDialog();
-            settings.edit().putBoolean("first_time", false).commit();
-        }
+        openNavDialog();
 
         showUserProfile();
 

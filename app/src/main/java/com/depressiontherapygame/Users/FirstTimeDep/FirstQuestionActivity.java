@@ -72,6 +72,8 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
 
     SharedPref sharedPref;
 
+    int total = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = new SharedPref(this);
@@ -172,7 +174,11 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
                                     Integer.valueOf(quesDoc.getString("ANSWER1")),
                                     Integer.valueOf(quesDoc.getString("ANSWER2")),
                                     Integer.valueOf(quesDoc.getString("ANSWER3")),
-                                    Integer.valueOf(quesDoc.getString("ANSWER4"))
+                                    Integer.valueOf(quesDoc.getString("ANSWER4")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT1ANS")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT2ANS")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT3ANS")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT4ANS"))
                             ));
 
                         }
@@ -208,25 +214,25 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             Option1.setEnabled(false);
+            score = quizQuestsList.get(QuizNumber).getAns1Str();
         } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns2()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score++;
+            score = quizQuestsList.get(QuizNumber).getAns2Str();
             Option2.setEnabled(false);
         } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns3()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score++;
-            score++;
+            score = quizQuestsList.get(QuizNumber).getAns3Str();
             Option3.setEnabled(false);
         } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns4()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score++;
-            score++;
-            score++;
+            score = quizQuestsList.get(QuizNumber).getAns4Str();
             Option4.setEnabled(false);
         }
+
+        total = total + score;
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -260,18 +266,18 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
         } else {
             final FirebaseUser firebaseUser = authProfile.getCurrentUser();
             String depression = "";
-            if (score < 7) {
+            if (total < 7) {
                 depression = "ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าระดับน้อยมาก";
-            } else if (score < 13) {
+            } else if (total < 13) {
                 depression = "มีอาการของโรคซึมเศร้า ระดับน้อย";
-            } else if (score < 18) {
+            } else if (total < 18) {
                 depression = "มีอาการของโรคซึมเศร้า ระดับปานกลาง";
             } else {
                 depression = "มีอาการของโรคซึมเศร้า ระดับรุนแรง";
             }
-            // Go to Score Activity
+            // Go to total Activity
             HashMap<String, Object> result = new HashMap<>();
-            result.put("firstscore", score);
+            result.put("firstscore", total);
             result.put("firstdepression", depression);
 
             FirebaseUser user = authProfile.getCurrentUser();
@@ -284,7 +290,7 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
             HashMap<String, Object> hashMap = new HashMap<>();
             //put info in hashmap
             hashMap.put("cId", timeStamp);
-            hashMap.put("score", score);
+            hashMap.put("score", total);
             hashMap.put("depression", depression);
             hashMap.put("logintime", timeStamp);
             hashMap.put("uid", uid);
@@ -313,7 +319,7 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
                         @Override
                         public void onSuccess(Void unused) {
                             Intent intent = new Intent(FirstQuestionActivity.this, FirstScoreActivity.class);
-                            intent.putExtra("SCORE", String.valueOf(score) + " คะแนน");
+                            intent.putExtra("SCORE", String.valueOf(total) + " คะแนน");
                             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             intent.putExtra("RESULT", finalDepression);
                             startActivity(intent);

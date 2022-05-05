@@ -68,10 +68,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int setNo;
     private FirebaseFirestore firestore;
 
-    private CardView cardView1, cardView2, cardView3, cardView4;
 
-
-    Integer total = 0;
+    int total = 0;
 
     SharedPref sharedPref;
 
@@ -86,11 +84,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         init_screen();
-
-        cardView1 = findViewById(R.id.cardViewBtn1);
-        cardView2 = findViewById(R.id.cardViewBtn2);
-        cardView3 = findViewById(R.id.cardViewBtn3);
-        cardView4 = findViewById(R.id.cardViewBtn4);
 
         quizQuest = findViewById(R.id.QuizQuest);
         qCount = findViewById(R.id.QuizNumber);
@@ -181,10 +174,16 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                                     quesDoc.getString("B"),
                                     quesDoc.getString("C"),
                                     quesDoc.getString("D"),
+
                                     Integer.valueOf(quesDoc.getString("ANSWER1")),
                                     Integer.valueOf(quesDoc.getString("ANSWER2")),
                                     Integer.valueOf(quesDoc.getString("ANSWER3")),
-                                    Integer.valueOf(quesDoc.getString("ANSWER4"))
+                                    Integer.valueOf(quesDoc.getString("ANSWER4")),
+
+                                    Integer.valueOf(quesDoc.getString("CURRENT1ANS")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT2ANS")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT3ANS")),
+                                    Integer.valueOf(quesDoc.getString("CURRENT4ANS"))
                             ));
 
                         }
@@ -246,25 +245,25 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void checkAnswer(int selectedOption, View view) {
 
-        if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns1()) {
+        if (selectedOption == quizQuestsList.get(0).getAns1Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            score = quizQuestsList.get(0).getCorrectAns1();
             Option1.setEnabled(false);
-            score = quizQuestsList.get(QuizNumber).getCorrectAns4();
-        } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns2()) {
+        } else if (selectedOption == quizQuestsList.get(0).getAns2Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score = quizQuestsList.get(QuizNumber).getCorrectAns1();
+            score = quizQuestsList.get(0).getCorrectAns2();
             Option2.setEnabled(false);
-        } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns3()) {
+        } else if (selectedOption == quizQuestsList.get(0).getAns3Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score = quizQuestsList.get(QuizNumber).getCorrectAns2();
+            score = quizQuestsList.get(0).getCorrectAns3();
             Option3.setEnabled(false);
-        } else if (selectedOption == quizQuestsList.get(QuizNumber).getCorrectAns4()) {
+        } else if (selectedOption == quizQuestsList.get(0).getAns4Str()) {
             //Right Answer
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            score = quizQuestsList.get(QuizNumber).getCorrectAns3();
+            score = quizQuestsList.get(0).getCorrectAns4();
             Option4.setEnabled(false);
         }
 
