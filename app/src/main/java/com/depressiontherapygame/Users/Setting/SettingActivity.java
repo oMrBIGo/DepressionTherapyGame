@@ -43,6 +43,7 @@ import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.HomeActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
+import com.depressiontherapygame.Users.SplashActivity;
 import com.depressiontherapygame.Users.Update.ChangePasswordActivity;
 import com.depressiontherapygame.Users.Update.DeleteProfileActivity;
 import com.depressiontherapygame.Users.Update.UpdateEmailActivity;
@@ -352,7 +353,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 authProfile.signOut();
-                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+                Intent intent = new Intent(SettingActivity.this, SplashActivity.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(SettingActivity.this, "คุณได้ออกจากระบบแล้ว", Toast.LENGTH_SHORT).show();
@@ -415,8 +416,6 @@ public class SettingActivity extends AppCompatActivity {
                     textViewWelcome.setText("ชื่อผู้ใช้: " + lastname);
                     dep.setText(depression);
                     firstdep.setText(firstdepression);
-
-
 
                     //set image, using Picasso
                     Picasso.get().load(image).resize(100,130).into(profileIv);
