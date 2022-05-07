@@ -1,5 +1,7 @@
 package com.depressiontherapygame.Users.FirstTimeDep;
 
+import static com.depressiontherapygame.Users.FirstTimeDep.FirstMainActivity.selected_cat_index;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -135,7 +137,7 @@ public class FirstSetsActivity extends AppCompatActivity {
 
         setsIDs.clear();
 
-        firestore.collection("QUIZ").document(FirstMainActivity.catList.get(FirstMainActivity.selected_cat_index).getId())
+        firestore.collection("QUIZ").document(FirstMainActivity.catList.get(selected_cat_index).getId())
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
