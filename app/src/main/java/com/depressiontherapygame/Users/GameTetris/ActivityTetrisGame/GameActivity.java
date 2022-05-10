@@ -25,7 +25,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -36,12 +38,18 @@ import com.depressiontherapygame.Users.GameTetris.db.databasehelper.DatabaseHelp
 import com.depressiontherapygame.Users.GameTetris.db.tebles.GameLevel;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.GameTetris.utils.Consts;
+import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
+import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -77,6 +85,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     @BindView(R.id.tv_score)
     AppCompatTextView tvScore;
 
+    String lastname, image;
 
     int NUM_ROWS = 0;
     int NUM_COLUMNS = 0;
@@ -903,6 +912,51 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
 
     }
 
+    private void TopScore(){
+        final FirebaseUser firebaseUser = authProfile.getCurrentUser();
+        String uid = firebaseUser.getUid();
+        /* Extracting USer Reference from Database for "Register Users" */
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
+        referenceProfile.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ModelUserShow modelUserShow = snapshot.getValue(ModelUserShow.class);
+                if (modelUserShow != null) {
+                    lastname = "" + snapshot.child("lastname").getValue();
+                    image = "" + snapshot.child("image").getValue();
+
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("lastname", lastname);
+                    hashMap.put("image", image);
+                    hashMap.put("uid", uid);
+                    hashMap.put("level", level);
+                    hashMap.put("score", oldScore);
+
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("TopScore");
+                    reference.child(uid).updateChildren(hashMap)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -930,6 +984,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             AppCompatTextView tvLevel = mLevelUpDialog.findViewById(R.id.tv_level);
             AppCompatTextView tvLevelNext = mLevelUpDialog.findViewById(R.id.tv_next_level);
             tvLevel.setText(MessageFormat.format("เลเวล {0}", selectedLevel - 1));
+            TopScore();
             tvLevelNext.setText(MessageFormat.format("ไปด่านเลเวล {0}", selectedLevel));
             llRestart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -965,7 +1020,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             mExitDialog.setCancelable(false);
             mExitDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             LinearLayout llExit = mExitDialog.findViewById(R.id.ll_exit);
-
+            TopScore();
             llExit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -1044,7 +1099,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
 
             LinearLayout llRestart = mGameOverDialog.findViewById(R.id.ll_restart);
             LinearLayout llHome = mGameOverDialog.findViewById(R.id.ll_home);
-
+            TopScore();
             llRestart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

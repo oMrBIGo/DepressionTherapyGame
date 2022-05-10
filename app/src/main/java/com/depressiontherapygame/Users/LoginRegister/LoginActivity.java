@@ -283,8 +283,8 @@ public class LoginActivity extends AppCompatActivity {
                         edittextEmail.setError("ไม่มีชื่อผู้ใช้อยู่ในระบบ กรุณาลงทะเบียนใหม่อีกครั้ง");
                         edittextEmail.requestFocus();
                     } catch (FirebaseAuthInvalidCredentialsException e) {
-                        edittextEmail.setError("มีข้อมูลบางอย่างไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง");
-                        edittextEmail.requestFocus();
+                        edittextPassword.setError("มีข้อมูลบางอย่างไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง");
+                        edittextPassword.requestFocus();
                     } catch (Exception e) {
                         Log.e(TAG, e.getMessage());
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -49,14 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         dialog = new Dialog(this);
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-
-
-        if (settings.getBoolean("my_first_time", true)) {
-            openNavDialog();
-            settings.edit().putBoolean("my_first_time", false).commit();
-        }
-
+        openNavDialog();
         init_screen();
 
         imageView = findViewById(R.id.Logo);

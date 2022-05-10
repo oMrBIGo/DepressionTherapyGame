@@ -7,148 +7,154 @@
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- Access Network State Permission -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name="com.depressiontherapygame.Users.GameTetris.Application"
+        android:name=".Users.GameTetris.Application"
         android:allowBackup="true"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="com.depressiontherapygame.Users.FirstTimeDep.FirstScoreActivity"
+            android:name=".Users.GameTetris.ActivityTetrisGame.LeaderboardActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            android:theme="@style/ThemeGame"/>
         <activity
-            android:name="com.depressiontherapygame.Users.FirstTimeDep.FirstQuestionActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.FirstTimeDep.FirstSetsActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.FirstUserProfileActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.FirstTimeDep.FirstCategoryActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.FirstTimeDep.FirstMainActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.History.HistoryDepActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.History.HistoryLoginActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name="com.depressiontherapygame.Users.Consult.PostDetailActivity"
+            android:name=".Users.FirstTimeDep.FirstScoreActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.Consult.ThereProfileActivity"
+            android:name=".Users.FirstTimeDep.FirstQuestionActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.Consult.AddPostActivity"
+            android:name=".Users.FirstTimeDep.FirstSetsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.Consult.DashboardActivity"
+            android:name=".Users.FirstUserProfileActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.Update.UpdateEmailActivity"
+            android:name=".Users.FirstTimeDep.FirstCategoryActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.QuizDepression.SetsActivity"
+            android:name=".Users.FirstTimeDep.FirstMainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.QuizDepression.CategoryActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.depressiontherapygame.Users.QuizDepression.ScoreActivity"
+            android:name=".Users.History.HistoryDepActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.QuizDepression.QuestionActivity"
+            android:name=".Users.History.HistoryLoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.QuizDepression.QuizMainActivity"
+            android:name=".Users.Consult.PostDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.GameTetris.ActivityTetrisGame.SettingActivityGame"
+            android:name=".Users.Consult.ThereProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.Consult.AddPostActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.Consult.DashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.Update.UpdateEmailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.QuizDepression.SetsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.QuizDepression.CategoryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.QuizDepression.ScoreActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.QuizDepression.QuestionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.QuizDepression.QuizMainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.GameTetris.ActivityTetrisGame.SettingActivityGame"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeGame" />
         <activity
-            android:name="com.depressiontherapygame.Users.GameTetris.ActivityTetrisGame.MainActivityGame"
+            android:name=".Users.GameTetris.ActivityTetrisGame.MainActivityGame"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeGame" />
         <activity
-            android:name="com.depressiontherapygame.Users.GameTetris.ActivityTetrisGame.GameActivity"
+            android:name=".Users.GameTetris.ActivityTetrisGame.GameActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeGame" />
         <activity
-            android:name="com.depressiontherapygame.Users.GameTetris.ActivityTetrisGame.LevelActivity"
+            android:name=".Users.GameTetris.ActivityTetrisGame.LevelActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeGame" />
         <activity
-            android:name="com.depressiontherapygame.Users.Update.ChangePasswordActivity"
+            android:name=".Users.Update.ChangePasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.Update.DeleteProfileActivity"
+            android:name=".Users.Update.DeleteProfileActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.LoginRegister.UserProfileActivity"
+            android:name=".Users.LoginRegister.UserProfileActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.Setting.SettingActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:name=".Users.Setting.SettingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.HomeActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:name=".Users.HomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.LoginRegister.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:name=".Users.LoginRegister.RegisterActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.LoginRegister.LoginActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity android:name="com.depressiontherapygame.Users.MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:name=".Users.LoginRegister.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.depressiontherapygame.Users.SplashActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:name=".Users.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -156,15 +162,14 @@
             </intent-filter>
         </activity>
 
-
         <service
-            android:name="com.depressiontherapygame.Users.GameTetris.services.MusicPlayerService"
+            android:name=".Users.GameTetris.services.MusicPlayerService"
             android:enabled="true"
             android:exported="false"
             android:screenOrientation="portrait" />
 
         <receiver
-            android:name="com.depressiontherapygame.Users.GameTetris.services.MusicIntentReceiver"
+            android:name=".Users.GameTetris.services.MusicIntentReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />

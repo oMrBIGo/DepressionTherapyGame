@@ -62,6 +62,7 @@ public class ShowConsultFragment extends Fragment {
         layoutManager.setReverseLayout(true);
         //set layout to recyclerview
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
         //init post list
         postList = new ArrayList<>();
 

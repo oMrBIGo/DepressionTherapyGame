@@ -41,6 +41,8 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.droidsonroids.gif.GifImageButton;
+import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivityGame extends AppBaseActivity {
 
@@ -84,6 +86,17 @@ public class MainActivityGame extends AppBaseActivity {
                 finish();
                 buttonBack.setEnabled(false);
                 buttonBack.startAnimation(animation);
+            }
+        });
+
+        GifImageView Leaderboard = (GifImageView) findViewById(R.id.Leaderboard);
+        Leaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivityGame.this, LeaderboardActivity.class));
+                finish();
+                Leaderboard.setEnabled(false);
+                Leaderboard.startAnimation(animation);
             }
         });
 
