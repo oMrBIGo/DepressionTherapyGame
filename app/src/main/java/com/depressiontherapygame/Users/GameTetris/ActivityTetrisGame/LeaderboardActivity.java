@@ -22,12 +22,15 @@ import com.depressiontherapygame.Users.History.HistoryDepActivity;
 import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.Setting.SettingActivity;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -41,10 +44,12 @@ public class LeaderboardActivity extends AppCompatActivity {
     ImageView icon_profile;
     RecyclerView recyclerView;
     LeaderAdapter leaderAdapter;
-    List<LeaderModel> leaderModelList;
+    List<LeaderModel> leaderModelList = new ArrayList<>();
+    DatabaseReference databaseReference;
     private TextView textViewWelcome, textViewLevel;
     private ProgressBar progressBar;
     ImageView buttonBack;
+    private long score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,9 @@ public class LeaderboardActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("TopScore");
+
         textViewWelcome = findViewById(R.id.lastname_home);
         textViewLevel = findViewById(R.id.lv_home);
         progressBar = findViewById(R.id.progressBar);
@@ -76,48 +84,54 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         init_screen();
 
-        recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(layoutManager);
 
-        leaderModelList = new ArrayList<>();
-
-        recyclerView.setAdapter(leaderAdapter);
-
-        loadLeaderBoard();
-    }
-
-    private void loadLeaderBoard() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("TopScore");
-
-        reference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                leaderModelList.clear();
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    LeaderModel model = ds.getValue(LeaderModel.class);
 
-                    leaderModelList.add(model);
-
-                    int newIndex = 0;
-                    leaderModelList.add(newIndex,model);
-                    leaderAdapter.notifyItemInserted(newIndex);
-                    recyclerView.smoothScrollToPosition(newIndex);
-
-                    leaderAdapter = new LeaderAdapter(LeaderboardActivity.this, leaderModelList);
-                    leaderAdapter.notifyDataSetChanged();
-                    recyclerView.setAdapter(leaderAdapter);
+                if (snapshot.exists()) {
+                    score = snapshot.getChildrenCount();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                    score = 0;
             }
         });
+
+        recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        Query SortScore = databaseReference.orderByChild("score");
+
+        FirebaseRecyclerOptions<LeaderModel> options =
+                new FirebaseRecyclerOptions.Builder<LeaderModel>()
+                .setQuery(SortScore, LeaderModel.class)
+                .build();
+
+        leaderAdapter = new LeaderAdapter(options, this);
+        recyclerView.setAdapter(leaderAdapter);
+
+
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        leaderAdapter.startListening();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        leaderAdapter.stopListening();
+    }
+
 
     private void showUserProfile(FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();

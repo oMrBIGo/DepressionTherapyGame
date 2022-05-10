@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.GameTetris.Model.LeaderModel;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
@@ -18,61 +22,54 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.MyHolder> {
+public class LeaderAdapter extends FirebaseRecyclerAdapter<LeaderModel, LeaderAdapter.viewHolder> {
 
     Context context;
-    List<LeaderModel> modelList;
-    private DatabaseReference LeaderRef;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
 
-    public LeaderAdapter(Context context, List<LeaderModel> modelList) {
+    public LeaderAdapter(@NonNull FirebaseRecyclerOptions<LeaderModel> options, Context context) {
+        super(options);
         this.context = context;
-        this.modelList = modelList;
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull viewHolder holder, int position, @NonNull LeaderModel model) {
+        String lastname = model.getLastname();
+        String level = model.getLevel();
+        Picasso.get().load(model.getImage()).into(holder.icon_profile);
+        int score = model.getScore();
+        holder.setData(lastname, level, score);
+
     }
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_leaderboard_layout, parent, false);
-        return new MyHolder(view);
+        return new viewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        String StName = modelList.get(position).getLastname();
-        String StLevel = modelList.get(position).getLevel();
-        int StScore = modelList.get(position).getScore();
-        String StImage = modelList.get(position).getImage();
-
-        holder.tvName.setText("ชื่อผู้ใช้: "+StName);
-        holder.tvLevel.setText("เลเวล: "+StLevel);
-        holder.tvScore.setText("คะแนน: "+StScore);
-
-        try {
-            Picasso.get().load(StImage).placeholder(R.drawable.profile_image).into(holder.icon_profile);
-        } catch (Exception e) {
-
-        }
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return modelList.size();
-    }
-
-    public class MyHolder extends RecyclerView.ViewHolder {
+    public class viewHolder extends RecyclerView.ViewHolder {
 
         TextView tvName, tvLevel, tvScore;
         CircleImageView icon_profile;
 
-        public MyHolder(@NonNull View itemView) {
+        public viewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tvName);
             tvLevel = itemView.findViewById(R.id.tvLevel);
             tvScore = itemView.findViewById(R.id.tvScore);
             icon_profile = itemView.findViewById(R.id.icon_profile);
+        }
 
+        public void setData(String lastname, String level, int score) {
+            tvName.setText(lastname);
+            tvLevel.setText(level);
+            tvScore.setText(String.valueOf(score));
         }
     }
+
 }
