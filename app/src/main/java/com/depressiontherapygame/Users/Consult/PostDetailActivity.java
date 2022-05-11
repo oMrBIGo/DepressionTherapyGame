@@ -1,6 +1,9 @@
 package com.depressiontherapygame.Users.Consult;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
@@ -23,6 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -375,6 +380,7 @@ public class PostDetailActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(PostDetailActivity.this, "คอมเม้นต์แล้ว...", Toast.LENGTH_SHORT).show();
                         commentEt.setText("");
+                        notification(myLastName);
                         updateCommentCount();
                     }
                 })
@@ -387,6 +393,26 @@ public class PostDetailActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+    public void notification(String myLastName) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel =
+                    new NotificationChannel("n", "n", NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = (NotificationManager) getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+                .setContentText("[ข้อความใหม่] เกมบำบัดภาวะซึมเศร้าในวัยรุ่น")
+                .setSmallIcon(R.drawable.logo_white)
+                .setAutoCancel(true)
+                .setContentText("คุณ " + myLastName + " ได้คอมเม้นต์คำปรึกษาของคุณ");
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(999, builder.build());
+    }
+
+
 
 
     private void updateCommentCount() {

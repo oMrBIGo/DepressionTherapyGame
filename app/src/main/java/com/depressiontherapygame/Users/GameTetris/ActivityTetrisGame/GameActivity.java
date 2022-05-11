@@ -912,7 +912,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
 
     }
 
-    private void TopScore(){
+    private void TopScore() {
         final FirebaseUser firebaseUser = authProfile.getCurrentUser();
         String uid = firebaseUser.getUid();
         /* Extracting USer Reference from Database for "Register Users" */
@@ -1030,9 +1030,22 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
                     finish();
                 }
             });
+            LinearLayout llRestart = mExitDialog.findViewById(R.id.ll_restart);
+            llRestart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mLevelUpDialog.isShowing())
+                        mLevelUpDialog.dismiss();
 
-            mExitDialog.show();
+                    gamePaused = false;
+                    //  onReplayClick();
+                }
+            });
+            if (!mLevelUpDialog.isShowing())
+                mLevelUpDialog.show();
         }
+
+        mExitDialog.show();
     }
 
     /**
