@@ -66,6 +66,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
     private TextView textViewWelcome;
     private TextView textViewLastname;
     private TextView textViewEmail;
+    private TextView textViewAge;
     private TextView textViewPhone;
     private TextView textViewHeaderL;
     private TextView textViewHeaderE;
@@ -76,9 +77,9 @@ public class FirstUserProfileActivity extends AppCompatActivity {
     SharedPref sharedPref;
     Button buttonEditProfile;
     Dialog dialog;
-    private String textLastname, textPhone;
+    private String textLastname, textPhone, textAge;
     TextView valueText;
-    private EditText editTextUpdateName, editTExtUpdatePhone;
+    private EditText editTextUpdateName, editTExtUpdatePhone, editTExtUpdateAge;
     private CircleImageView Upload;
     private Uri imageUri = null;
     private CardView cardView;
@@ -106,6 +107,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
         textViewWelcome = findViewById(R.id.textView_show_welcome);
         textViewLastname = findViewById(R.id.textView_show_lastname);
         textViewEmail = findViewById(R.id.textView_show_email);
+        textViewAge = findViewById(R.id.textView_show_age);
         textViewPhone = findViewById(R.id.textView_show_phone);
         progressBar = findViewById(R.id.progressBar);
         TextView textProfile = findViewById(R.id.Upload1_Profile);
@@ -440,11 +442,14 @@ public class FirstUserProfileActivity extends AppCompatActivity {
 
         TextInputLayout text_input_lastname = dialog.findViewById(R.id.text_input_lastname);
         TextInputLayout text_input_phone = dialog.findViewById(R.id.text_input_phone);
+        TextInputLayout text_input_age = dialog.findViewById(R.id.text_input_age);
 
         text_input_lastname.setHintEnabled(false);
         text_input_phone.setHintEnabled(false);
+        text_input_age.setHintEnabled(false);
 
         editTextUpdateName = dialog.findViewById(R.id.lastname);
+        editTExtUpdateAge = dialog.findViewById(R.id.age);
         editTExtUpdatePhone = dialog.findViewById(R.id.phone);
 
         Button buttonUpdateProfile = dialog.findViewById(R.id.ButtonUpdateProfile);
@@ -465,9 +470,11 @@ public class FirstUserProfileActivity extends AppCompatActivity {
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
+                    String age = "" + snapshot.child("age").getValue();
 
                     editTextUpdateName.setText(lastname);
                     editTExtUpdatePhone.setText(phone);
+                    editTExtUpdateAge.setText(age);
 
                 } else {
                     Toast.makeText(FirstUserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
@@ -517,12 +524,14 @@ public class FirstUserProfileActivity extends AppCompatActivity {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String email = "" + snapshot.child("email").getValue();
                     String level = "" + snapshot.child("level").getValue();
+                    String age = "" + snapshot.child("age").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewHeaderL.setText(lastname);
                     textViewWelcome.setText(lastname);
                     textViewLastname.setText(lastname);
+                    textViewAge.setText(age + " ปี");
                     textViewHeaderE.setText(level);
                     textViewEmail.setText(email);
                     textViewPhone.setText(phone);
@@ -552,13 +561,21 @@ public class FirstUserProfileActivity extends AppCompatActivity {
     private void updateProfile(final FirebaseUser firebaseUser) {
         //Obtain the data entered by user
         textLastname = editTextUpdateName.getText().toString().trim();
+        textAge = editTExtUpdateAge.getText().toString().trim();
         textPhone = editTExtUpdatePhone.getText().toString().trim();
         String checkPassword = "^" + ".{10}" + "$";
+        String checkAge = "^(?=.*[0-9])(?=\\S+$).{1,2}$";
 
         if (TextUtils.isEmpty(textLastname)) {
             Toast.makeText(FirstUserProfileActivity.this, "กรุณากรอกชื่อ-นามสกุล", Toast.LENGTH_LONG).show();
             editTextUpdateName.setError("กรุณาระบุชื่อเต็ม");
             editTextUpdateName.requestFocus();
+        } else if (TextUtils.isEmpty(textAge)) {
+            editTExtUpdateAge.setError("กรุณากรอกอายุ");
+            editTExtUpdateAge.requestFocus();
+        } else if (!textAge.matches(checkAge)) {
+            editTExtUpdateAge.setError("กรุณากรอกอายุให้ถูกต้อง");
+            editTExtUpdateAge.requestFocus();
         } else if (TextUtils.isEmpty(textPhone)) {
             Toast.makeText(FirstUserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
             editTExtUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
@@ -572,6 +589,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
 
             HashMap<String, Object> result = new HashMap<>();
             result.put("lastname", textLastname);
+            result.put("age", textAge);
             result.put("phone", textPhone);
             //Enter User Data ino the Firebase Realtime Database. Set up dependencies
             //Extract USer reference from Database for "ผู้ใช้งาน"
@@ -596,7 +614,7 @@ public class FirstUserProfileActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(FirstUserProfileActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FirstUserProfileActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     });

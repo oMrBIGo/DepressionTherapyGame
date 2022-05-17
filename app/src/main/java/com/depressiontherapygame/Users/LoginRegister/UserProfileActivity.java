@@ -73,6 +73,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView textViewWelcome;
     private TextView textViewLastname;
     private TextView textViewEmail;
+    private TextView textViewAge;
     private TextView textViewPhone;
     private TextView textViewWelcomeH, textViewLvH;
     private ProgressBar progressBar, progressBar1;
@@ -84,8 +85,8 @@ public class UserProfileActivity extends AppCompatActivity {
     private ImageButton buttonBack;
     Dialog dialog;
     TextView valueText;
-    private EditText editTextUpdateName, editTExtUpdatePhone;
-    private String textLastname, textPhone;
+    private EditText editTextUpdateName, editTextUpdatePhone, editTExtUpdateAge;
+    private String textLastname, textAge, textPhone;
 
     private CircleImageView Upload;
     private Uri imageUri = null;
@@ -112,6 +113,7 @@ public class UserProfileActivity extends AppCompatActivity {
         textViewWelcome = findViewById(R.id.textView_show_welcome);
         textViewLastname = findViewById(R.id.textView_show_lastname);
         textViewEmail = findViewById(R.id.textView_show_email);
+        textViewAge = findViewById(R.id.textView_show_age);
         textViewPhone = findViewById(R.id.textView_show_phone);
         progressBar = findViewById(R.id.progressBar);
         TextView textProfile = findViewById(R.id.Upload1_Profile);
@@ -204,12 +206,14 @@ public class UserProfileActivity extends AppCompatActivity {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String email = "" + snapshot.child("email").getValue();
                     String level = "" + snapshot.child("level").getValue();
+                    String age = "" + snapshot.child("age").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
                     textViewLastname.setText(lastname);
                     textViewEmail.setText(email);
+                    textViewAge.setText(age+ " ปี");
                     textViewPhone.setText(phone);
                     textViewWelcomeH.setText(lastname);
                     textViewLvH.setText("ปัจจุบัน "+level);
@@ -514,13 +518,16 @@ public class UserProfileActivity extends AppCompatActivity {
 
         TextInputLayout text_input_lastname = dialog.findViewById(R.id.text_input_lastname);
         TextInputLayout text_input_phone = dialog.findViewById(R.id.text_input_phone);
+        TextInputLayout text_input_age = dialog.findViewById(R.id.text_input_age);
 
         text_input_lastname.setHintEnabled(false);
         text_input_phone.setHintEnabled(false);
+        text_input_age.setHintEnabled(false);
 
 
         editTextUpdateName = dialog.findViewById(R.id.lastname);
-        editTExtUpdatePhone = dialog.findViewById(R.id.phone);
+        editTExtUpdateAge = dialog.findViewById(R.id.age);
+        editTextUpdatePhone = dialog.findViewById(R.id.phone);
         String userID = firebaseUser.getUid();
         /* Extracting USer Reference from Database for "Register Users" */
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
@@ -531,9 +538,11 @@ public class UserProfileActivity extends AppCompatActivity {
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
+                    String age = "" + snapshot.child("age").getValue();
 
                     editTextUpdateName.setText(lastname);
-                    editTExtUpdatePhone.setText(phone);
+                    editTextUpdatePhone.setText(phone);
+                    editTExtUpdateAge.setText(age);
 
                 } else {
                     Toast.makeText(UserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
@@ -578,26 +587,35 @@ public class UserProfileActivity extends AppCompatActivity {
     private void updateProfile(final FirebaseUser firebaseUser) {
         //Obtain the data entered by user
         textLastname = editTextUpdateName.getText().toString().trim();
-        textPhone = editTExtUpdatePhone.getText().toString().trim();
-        String checkPassword = "^" + ".{10}" + "$";
+        textAge = editTExtUpdateAge.getText().toString().trim();
+        textPhone = editTextUpdatePhone.getText().toString().trim();
+        String checkPhone = "^" + ".{10}" + "$";
+        String checkAge = "^(?=.*[0-9])(?=\\S+$).{1,2}$";
 
         if (TextUtils.isEmpty(textLastname)) {
             Toast.makeText(UserProfileActivity.this, "กรุณากรอกชื่อ-นามสกุล", Toast.LENGTH_LONG).show();
             editTextUpdateName.setError("กรุณาระบุชื่อเต็ม");
             editTextUpdateName.requestFocus();
+        } else if (TextUtils.isEmpty(textAge)) {
+            editTExtUpdateAge.setError("กรุณากรอกอายุ");
+            editTExtUpdateAge.requestFocus();
+        } else if (!textAge.matches(checkAge)) {
+            editTExtUpdateAge.setError("กรุณากรอกอายุให้ถูกต้อง");
+            editTExtUpdateAge.requestFocus();
         } else if (TextUtils.isEmpty(textPhone)) {
             Toast.makeText(UserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
-            editTExtUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
-            editTExtUpdatePhone.requestFocus();
-        } else if (!textPhone.matches(checkPassword)) {
+            editTextUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
+            editTextUpdatePhone.requestFocus();
+        } else if (!textPhone.matches(checkPhone)) {
             Toast.makeText(UserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
-            editTExtUpdatePhone.setError("เบอร์โทรศัพท์ควรมี 10 หลัก");
-            editTExtUpdatePhone.requestFocus();
+            editTextUpdatePhone.setError("เบอร์โทรศัพท์ควรมี 10 หลัก");
+            editTextUpdatePhone.requestFocus();
 
         } else {
 
             HashMap<String, Object> result = new HashMap<>();
             result.put("lastname", textLastname);
+            result.put("age", textAge);
             result.put("phone", textPhone);
             //Enter User Data ino the Firebase Realtime Database. Set up dependencies
             //Extract USer reference from Database for "ผู้ใช้งาน"

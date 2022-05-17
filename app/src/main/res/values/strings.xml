@@ -231,5 +231,7 @@
     <string name="_0">0%</string>
     <string name="login_home">LOGIN | เข้าสู่ระบบ</string>
     <string name="register_home">REGISTER | สมัครสมาชิก</string>
+    <string name="age">กรอกอายุ...</string>
+    <string name="head_age">age | อายุ</string>
 
 </resources>
