@@ -37,6 +37,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/chub"
+            android:textAlignment="center"
             android:text="@string/depressionText01"
             android:textColor="?attr/textcolor"
             android:textSize="23sp" />
@@ -80,26 +81,6 @@
                     android:text="@string/depressionBody01_01"
                     android:textColor="?attr/textcolor"
                     android:textSize="18sp" />
-
-                <!-- TextView: Show Title Description -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/chur"
-                    android:text="@string/depressionBody01_02"
-                    android:textColor="?attr/textcolor"
-                    android:textSize="18sp" />
-
-                <!-- TextView: Show Title Description -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/chub"
-                    android:text="@string/depressionBody01_03"
-                    android:textColor="?attr/textcolor"
-                    android:textSize="17sp" />
 
             </LinearLayout>
 
