@@ -145,7 +145,7 @@
     <string name="depression_title_01">ภาวะโรคซึมเศร้าคืออะไร?</string>
 
     <!-- Depression -->
-    <string name="text01">ความหมายและสาเหตุ</string>
+    <string name="text01">ความหมาย\nสาเหตุ</string>
     <string name="text02">อาการ</string>
     <string name="text03">การรักษา</string>
     <string name="text04">ป้องกัน</string>
