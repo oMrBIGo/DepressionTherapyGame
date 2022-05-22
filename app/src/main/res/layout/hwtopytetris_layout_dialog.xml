@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/chub"
-                    android:text="คลิกที่บล็อคที่กำลังหล่นลงมา \nเพื่อเปลี่ยนองศาของบล็อค"
+                    android:text="คลิกที่บล็อกที่กำลังหล่นลงมา \nเพื่อเปลี่ยนองศาของบล็อก"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/chub"
-                    android:text="ปัดบล็อคไปทางซ้าย หรือ ขวา เพื่อเลื่อนบล็อค"
+                    android:text="ปัดบล็อกไปทางซ้าย หรือ ขวา เพื่อเลื่อนบล็อก"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/chub"
-                    android:text="ปัดบล็อคลงมาเพื่อเร่งความเร็ว \nในการหล่นลงมาของบล็อค"
+                    android:text="ปัดบล็อกลงมาเพื่อเร่งความเร็ว \nในการหล่นลงมาของบล็อก"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
