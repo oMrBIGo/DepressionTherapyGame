@@ -111,7 +111,6 @@ public class FirstMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openTetrisDialog();
-                btnDep.setEnabled(false);
             }
         });
 

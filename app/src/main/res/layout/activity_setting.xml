@@ -783,6 +783,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/button_state_list_animator"
                     android:elevation="5dp"
                     android:fontFamily="@font/chub"

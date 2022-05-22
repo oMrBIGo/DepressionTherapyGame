@@ -561,21 +561,13 @@ public class FirstUserProfileActivity extends AppCompatActivity {
     private void updateProfile(final FirebaseUser firebaseUser) {
         //Obtain the data entered by user
         textLastname = editTextUpdateName.getText().toString().trim();
-        textAge = editTExtUpdateAge.getText().toString().trim();
         textPhone = editTExtUpdatePhone.getText().toString().trim();
         String checkPassword = "^" + ".{10}" + "$";
-        String checkAge = "^(?=.*[0-9])(?=\\S+$).{1,2}$";
 
         if (TextUtils.isEmpty(textLastname)) {
             Toast.makeText(FirstUserProfileActivity.this, "กรุณากรอกชื่อ-นามสกุล", Toast.LENGTH_LONG).show();
             editTextUpdateName.setError("กรุณาระบุชื่อเต็ม");
             editTextUpdateName.requestFocus();
-        } else if (TextUtils.isEmpty(textAge)) {
-            editTExtUpdateAge.setError("กรุณากรอกอายุ");
-            editTExtUpdateAge.requestFocus();
-        } else if (!textAge.matches(checkAge)) {
-            editTExtUpdateAge.setError("กรุณากรอกอายุให้ถูกต้อง");
-            editTExtUpdateAge.requestFocus();
         } else if (TextUtils.isEmpty(textPhone)) {
             Toast.makeText(FirstUserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
             editTExtUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
@@ -589,7 +581,6 @@ public class FirstUserProfileActivity extends AppCompatActivity {
 
             HashMap<String, Object> result = new HashMap<>();
             result.put("lastname", textLastname);
-            result.put("age", textAge);
             result.put("phone", textPhone);
             //Enter User Data ino the Firebase Realtime Database. Set up dependencies
             //Extract USer reference from Database for "ผู้ใช้งาน"

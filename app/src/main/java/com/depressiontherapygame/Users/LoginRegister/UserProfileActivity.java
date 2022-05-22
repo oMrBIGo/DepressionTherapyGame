@@ -312,7 +312,7 @@ public class UserProfileActivity extends AppCompatActivity {
                         //set image, using Picasso
                         Picasso.get()
                                 .load(image)
-                                .placeholder(R.drawable.man)
+                                .placeholder(R.drawable.profile_image)
                                 .into(Upload);
                     }
 
@@ -587,21 +587,13 @@ public class UserProfileActivity extends AppCompatActivity {
     private void updateProfile(final FirebaseUser firebaseUser) {
         //Obtain the data entered by user
         textLastname = editTextUpdateName.getText().toString().trim();
-        textAge = editTExtUpdateAge.getText().toString().trim();
         textPhone = editTextUpdatePhone.getText().toString().trim();
         String checkPhone = "^" + ".{10}" + "$";
-        String checkAge = "^(?=.*[0-9])(?=\\S+$).{1,2}$";
 
         if (TextUtils.isEmpty(textLastname)) {
             Toast.makeText(UserProfileActivity.this, "กรุณากรอกชื่อ-นามสกุล", Toast.LENGTH_LONG).show();
             editTextUpdateName.setError("กรุณาระบุชื่อเต็ม");
             editTextUpdateName.requestFocus();
-        } else if (TextUtils.isEmpty(textAge)) {
-            editTExtUpdateAge.setError("กรุณากรอกอายุ");
-            editTExtUpdateAge.requestFocus();
-        } else if (!textAge.matches(checkAge)) {
-            editTExtUpdateAge.setError("กรุณากรอกอายุให้ถูกต้อง");
-            editTExtUpdateAge.requestFocus();
         } else if (TextUtils.isEmpty(textPhone)) {
             Toast.makeText(UserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
             editTextUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
@@ -615,7 +607,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
             HashMap<String, Object> result = new HashMap<>();
             result.put("lastname", textLastname);
-            result.put("age", textAge);
             result.put("phone", textPhone);
             //Enter User Data ino the Firebase Realtime Database. Set up dependencies
             //Extract USer reference from Database for "ผู้ใช้งาน"

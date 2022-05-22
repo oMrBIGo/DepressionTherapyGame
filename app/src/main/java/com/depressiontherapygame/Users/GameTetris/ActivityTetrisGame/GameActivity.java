@@ -91,7 +91,8 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     int NUM_COLUMNS = 0;
     int SPEED_NORMAL = 500;
     int SPEED_FAST = 50;
-    String difficulty, speed, level;
+    String difficulty, speed;
+    String level = "เลเวล1";
 
     int score;
     boolean gameInProgress, gamePaused, fastSpeedState, currentShapeAlive;
@@ -1034,15 +1035,16 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             llRestart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mLevelUpDialog.isShowing())
-                        mLevelUpDialog.dismiss();
+                    if (mExitDialog.isShowing())
+                        mExitDialog.dismiss();
+                    mp.stop();
 
                     gamePaused = false;
                     //  onReplayClick();
                 }
             });
-            if (!mLevelUpDialog.isShowing())
-                mLevelUpDialog.show();
+            if (!mExitDialog.isShowing())
+                mExitDialog.show();
         }
 
         mExitDialog.show();
@@ -1054,7 +1056,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     private void showExitDialog() {
         gamePaused = true;
         Dialog mExitDialog = new Dialog(GameActivity.this);
-        ((MusicPlayerActivity) GameActivity.this).doUnbindService();
 
         if (mExitDialog.getWindow() != null) {
             mExitDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
@@ -1068,7 +1069,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             mExitDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             LinearLayout llExit = mExitDialog.findViewById(R.id.ll_exit);
             LinearLayout llNo = mExitDialog.findViewById(R.id.ll_no);
-
+            TopScore();
             llNo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

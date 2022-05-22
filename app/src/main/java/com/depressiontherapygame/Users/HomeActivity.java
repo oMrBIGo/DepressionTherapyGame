@@ -577,7 +577,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     //set image, using Picasso
-                    Picasso.get().load(image).into(imageView);
+                    Picasso.get().load(image).resize(100,100).into(imageView);
 
                 }
                 progressBar.setVisibility(View.GONE);
