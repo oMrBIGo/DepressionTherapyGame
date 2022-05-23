@@ -442,14 +442,11 @@ public class FirstUserProfileActivity extends AppCompatActivity {
 
         TextInputLayout text_input_lastname = dialog.findViewById(R.id.text_input_lastname);
         TextInputLayout text_input_phone = dialog.findViewById(R.id.text_input_phone);
-        TextInputLayout text_input_age = dialog.findViewById(R.id.text_input_age);
 
         text_input_lastname.setHintEnabled(false);
         text_input_phone.setHintEnabled(false);
-        text_input_age.setHintEnabled(false);
 
         editTextUpdateName = dialog.findViewById(R.id.lastname);
-        editTExtUpdateAge = dialog.findViewById(R.id.age);
         editTExtUpdatePhone = dialog.findViewById(R.id.phone);
 
         Button buttonUpdateProfile = dialog.findViewById(R.id.ButtonUpdateProfile);
@@ -470,11 +467,9 @@ public class FirstUserProfileActivity extends AppCompatActivity {
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
-                    String age = "" + snapshot.child("age").getValue();
 
                     editTextUpdateName.setText(lastname);
                     editTExtUpdatePhone.setText(phone);
-                    editTExtUpdateAge.setText(age);
 
                 } else {
                     Toast.makeText(FirstUserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",

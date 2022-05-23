@@ -518,15 +518,12 @@ public class UserProfileActivity extends AppCompatActivity {
 
         TextInputLayout text_input_lastname = dialog.findViewById(R.id.text_input_lastname);
         TextInputLayout text_input_phone = dialog.findViewById(R.id.text_input_phone);
-        TextInputLayout text_input_age = dialog.findViewById(R.id.text_input_age);
 
         text_input_lastname.setHintEnabled(false);
         text_input_phone.setHintEnabled(false);
-        text_input_age.setHintEnabled(false);
 
 
         editTextUpdateName = dialog.findViewById(R.id.lastname);
-        editTExtUpdateAge = dialog.findViewById(R.id.age);
         editTextUpdatePhone = dialog.findViewById(R.id.phone);
         String userID = firebaseUser.getUid();
         /* Extracting USer Reference from Database for "Register Users" */
@@ -542,7 +539,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
                     editTextUpdateName.setText(lastname);
                     editTextUpdatePhone.setText(phone);
-                    editTExtUpdateAge.setText(age);
 
                 } else {
                     Toast.makeText(UserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
