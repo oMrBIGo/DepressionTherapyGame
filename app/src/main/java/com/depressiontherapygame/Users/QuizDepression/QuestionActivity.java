@@ -314,7 +314,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             } else if (total == firstscore) {
                 BeforeDepression = "ระดับความซึมเศร้าของคุณเท่าเดิม";
             } else if (total > firstscore) {
-                BeforeDepression = "ระดับความซึมเศร้าของคุณไม่ดีขึ้นเลย";
+                BeforeDepression = "ระดับความซึมเศร้าของคุณแย่ลง";
             } else {
                 BeforeDepression = "ไม่สามารถคำนวณได้";
             }

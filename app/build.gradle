@@ -117,5 +117,8 @@ dependencies {
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 
+    //export pdf
+    implementation 'com.itextpdf:itextg:5.5.10'
+
 
 }
