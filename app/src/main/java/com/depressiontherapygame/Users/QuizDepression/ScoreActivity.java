@@ -156,7 +156,7 @@ public class ScoreActivity extends AppCompatActivity implements RecycAdapter.OnR
         } else if (messageFirst.toString().equals("ระดับความซึมเศร้าของคุณเท่าเดิม")) {
             resultfirst.setTextColor(Color.CYAN);
             cardViewFirstDep.setCardBackgroundColor(Color.parseColor("#1C4B75"));
-        } else if (messageFirst.toString().equals("ระดับความซึมเศร้าของคุณไม่ดีขึ้นเลย")) {
+        } else if (messageFirst.toString().equals("ระดับความซึมเศร้าของคุณแย่ลง")) {
             resultfirst.setTextColor(Color.parseColor("#FF786F"));
             cardViewFirstDep.setCardBackgroundColor(Color.parseColor("#8E0A00"));
         }
