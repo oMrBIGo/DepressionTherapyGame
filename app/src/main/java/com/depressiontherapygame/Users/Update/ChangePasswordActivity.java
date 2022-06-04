@@ -54,6 +54,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
@@ -67,10 +69,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
     SharedPref sharedPref;
 
     ImageView icon_profile;
-
-    private static final String TAG = "INTERSTITIAL_TAG";
-
-    private InterstitialAd mInterstitialAd = null;
 
 
     @Override
@@ -116,7 +114,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
 
-
         if (firebaseUser.equals("")) {
             Toast.makeText(ChangePasswordActivity.this, "มีอะไรบางอย่างผิดปกติ! ไม่พบรายละเอียดข้อมูลของผู้ใช้",
                     Toast.LENGTH_SHORT).show();
@@ -126,87 +123,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         } else {
             reAuthenticateUser(firebaseUser);
         }
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
-                Log.d(TAG, "onInitializationComplete: "+initializationStatus);
-            }
-        });
 
-        MobileAds.setRequestConfiguration(
-                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("TEST_DEVICEPID1","TEST_DEVICEPID2")).build()
-        );
-
-        loadInterstitialAd();
-
-        showInterstitialAd();
-
-    }
-
-    private void loadInterstitialAd() {
-        //AdRequest to load Interstitial Ad
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this, getResources().getString(R.string.interstitial_ad_live), adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                super.onAdFailedToLoad(loadAdError);
-                Log.d(TAG, "onAdFailedToLoad: ");
-                mInterstitialAd = null;
-            }
-
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                super.onAdLoaded(interstitialAd);
-                Log.d(TAG, "onAdLoaded: ");
-                mInterstitialAd = interstitialAd;
-            }
-        });
-
-    }
-
-    private void showInterstitialAd() {
-        if (mInterstitialAd != null) {
-            Log.d(TAG, "showInterstitialAd: Ad Was Loaded");
-            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                @Override
-                public void onAdClicked() {
-                    super.onAdClicked();
-                    Log.d(TAG, "onAdClicked: ");
-                }
-
-                @Override
-                public void onAdDismissedFullScreenContent() {
-                    super.onAdDismissedFullScreenContent();
-                    Log.d(TAG, "onAdDismissedFullScreenContent: ");
-                    mInterstitialAd = null;
-                    loadInterstitialAd();
-                }
-
-                @Override
-                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                    super.onAdFailedToShowFullScreenContent(adError);
-                    Log.d(TAG, "onAdFailedToShowFullScreenContent: ");
-                    mInterstitialAd = null;
-                }
-
-                @Override
-                public void onAdImpression() {
-                    super.onAdImpression();
-                    Log.d(TAG, "onAdImpression: ");
-                }
-
-                @Override
-                public void onAdShowedFullScreenContent() {
-                    super.onAdShowedFullScreenContent();
-                    Log.d(TAG, "onAdShowedFullScreenContent: ");
-                }
-            });
-
-            mInterstitialAd.show(this);
-        } else {
-            Log.d(TAG, "showInterstitialAd: Ad Was Not Loaded...");
-            //You may also do your tasks here if ad is not loaded
-        }
     }
 
     //ReAuthenticate USer before changing password
@@ -260,7 +177,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 buttonChangePassword.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        showInterstitialAd();
                                         changePassword(firebaseUser);
                                     }
                                 });

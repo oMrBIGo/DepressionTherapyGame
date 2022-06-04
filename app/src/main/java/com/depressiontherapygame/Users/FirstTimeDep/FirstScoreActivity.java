@@ -65,10 +65,6 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
 
     SharedPref sharedPref;
 
-    private static final String TAG = "INTERSTITIAL_TAG";
-    
-    private InterstitialAd mInterstitialAd = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = new SharedPref(this);
@@ -145,86 +141,6 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         } else {
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
-        }
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
-                Log.d(TAG, "onInitializationComplete: "+initializationStatus);
-            }
-        });
-
-        MobileAds.setRequestConfiguration(
-                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("","")).build()
-        );
-
-        loadInterstitialAd();
-
-        showInterstitialAd();
-    }
-
-    private void loadInterstitialAd() {
-        //AdRequest to load Interstitial Ad
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this, getResources().getString(R.string.interstitial_ad_live), adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                super.onAdFailedToLoad(loadAdError);
-                Log.d(TAG, "onAdFailedToLoad: ");
-                mInterstitialAd = null;
-            }
-
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                super.onAdLoaded(interstitialAd);
-                Log.d(TAG, "onAdLoaded: ");
-                mInterstitialAd = interstitialAd;
-            }
-        });
-
-    }
-    
-    private void showInterstitialAd() {
-        if (mInterstitialAd != null) {
-            Log.d(TAG, "showInterstitialAd: Ad Was Loaded");
-            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                @Override
-                public void onAdClicked() {
-                    super.onAdClicked();
-                    Log.d(TAG, "onAdClicked: ");
-                }
-
-                @Override
-                public void onAdDismissedFullScreenContent() {
-                    super.onAdDismissedFullScreenContent();
-                    Log.d(TAG, "onAdDismissedFullScreenContent: ");
-                    mInterstitialAd = null;
-                    loadInterstitialAd();
-                    Toast.makeText(FirstScoreActivity.this, "โฆษณาถูกปิด คุณสามารถดำเนินการต่างๆ เช่น เริ่มกิจกรรมได้ที่นี่!", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                    super.onAdFailedToShowFullScreenContent(adError);
-                    Log.d(TAG, "onAdFailedToShowFullScreenContent: ");
-                    mInterstitialAd = null;
-                }
-
-                @Override
-                public void onAdImpression() {
-                    super.onAdImpression();
-                    Log.d(TAG, "onAdImpression: ");
-                }
-
-                @Override
-                public void onAdShowedFullScreenContent() {
-                    super.onAdShowedFullScreenContent();
-                    Log.d(TAG, "onAdShowedFullScreenContent: ");
-                }
-            });
-        } else {
-            Log.d(TAG, "showInterstitialAd: Ad Was Not Loaded...");
-            //You may also do your tasks here if ad is not loaded
         }
     }
 
