@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,6 +28,16 @@ import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.Users.QuizDepression.Adapter.RecycAdapter;
 import com.depressiontherapygame.Users.QuizDepression.Model.RecycModel;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +48,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FirstScoreActivity extends AppCompatActivity implements RecycAdapter.OnReCycListener {
@@ -53,6 +65,10 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
 
     SharedPref sharedPref;
 
+    private static final String TAG = "INTERSTITIAL_TAG";
+    
+    private InterstitialAd mInterstitialAd = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = new SharedPref(this);
@@ -61,6 +77,7 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         } else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_score);
+        
         init_screen();
 
         /* dialog show */
@@ -129,7 +146,88 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
         }
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                Log.d(TAG, "onInitializationComplete: "+initializationStatus);
+            }
+        });
+
+        MobileAds.setRequestConfiguration(
+                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("","")).build()
+        );
+
+        loadInterstitialAd();
+
+        showInterstitialAd();
     }
+
+    private void loadInterstitialAd() {
+        //AdRequest to load Interstitial Ad
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(this, getResources().getString(R.string.interstitial_ad_live), adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.d(TAG, "onAdFailedToLoad: ");
+                mInterstitialAd = null;
+            }
+
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                super.onAdLoaded(interstitialAd);
+                Log.d(TAG, "onAdLoaded: ");
+                mInterstitialAd = interstitialAd;
+            }
+        });
+
+    }
+    
+    private void showInterstitialAd() {
+        if (mInterstitialAd != null) {
+            Log.d(TAG, "showInterstitialAd: Ad Was Loaded");
+            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                    Log.d(TAG, "onAdClicked: ");
+                }
+
+                @Override
+                public void onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent();
+                    Log.d(TAG, "onAdDismissedFullScreenContent: ");
+                    mInterstitialAd = null;
+                    loadInterstitialAd();
+                    Toast.makeText(FirstScoreActivity.this, "โฆษณาถูกปิด คุณสามารถดำเนินการต่างๆ เช่น เริ่มกิจกรรมได้ที่นี่!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                    super.onAdFailedToShowFullScreenContent(adError);
+                    Log.d(TAG, "onAdFailedToShowFullScreenContent: ");
+                    mInterstitialAd = null;
+                }
+
+                @Override
+                public void onAdImpression() {
+                    super.onAdImpression();
+                    Log.d(TAG, "onAdImpression: ");
+                }
+
+                @Override
+                public void onAdShowedFullScreenContent() {
+                    super.onAdShowedFullScreenContent();
+                    Log.d(TAG, "onAdShowedFullScreenContent: ");
+                }
+            });
+        } else {
+            Log.d(TAG, "showInterstitialAd: Ad Was Not Loaded...");
+            //You may also do your tasks here if ad is not loaded
+        }
+    }
+
 
     private void prepareMovieData() {
         RecycModel reCyc = new RecycModel(R.drawable.depq01);
@@ -148,7 +246,6 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         mList.add(reCyc);
         mAdapter.notifyDataSetChanged();
     }
-
 
     private void showUserProfile(final FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();

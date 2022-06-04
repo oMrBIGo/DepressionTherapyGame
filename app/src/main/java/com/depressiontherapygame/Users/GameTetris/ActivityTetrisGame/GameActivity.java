@@ -17,6 +17,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -40,6 +41,12 @@ import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.GameTetris.utils.Consts;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,6 +60,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -93,6 +101,11 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     int SPEED_FAST = 50;
     String difficulty, speed;
     String level = "เลเวล1";
+
+    private static final String TAG = "BANNER_AD_TAG";
+
+    //declare AdView (Banner Ad)
+    private AdView adView;
 
     int score;
     boolean gameInProgress, gamePaused, fastSpeedState, currentShapeAlive;
@@ -182,6 +195,57 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
 
         /* Initialize FirebaseAuth */
         authProfile = FirebaseAuth.getInstance();
+
+        //Set your test devices. Check your logcat output for the hashed device ID to
+        //get test ads a physical device. e.g.
+        MobileAds.setRequestConfiguration(
+                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("", "")).build()
+        );
+
+        //init banner ad
+        adView = findViewById(R.id.adView);
+        //ad request
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        //setUp ad listener
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                Log.d(TAG, "onAdClicked: ");
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                Log.d(TAG, "onAdClosed: ");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.e(TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+                Log.d(TAG, "onAdImpression: ");
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d(TAG, "onAdLoaded: ");
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+                Log.d(TAG, "onAdOpened: ");
+            }
+        });
     }
 
     private void init() {
@@ -313,6 +377,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             gamePaused = true;
             PaintMatrix();
         }
+
     }
 
     @Override
@@ -321,7 +386,19 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
         if (gameInProgress) {
             gamePaused = false;
         }
+        if (adView != null) {
+            adView.resume();
+        }
     }
+
+    @Override
+    protected void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
 
     private void ShapesInit() {
         int[][] a = new int[5][5];
@@ -1333,6 +1410,9 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     @Override
     protected void onDestroy() {
         vibrator.cancel();
+        if (adView != null) {
+            adView.destroy();
+        }
         super.onDestroy();
     }
 

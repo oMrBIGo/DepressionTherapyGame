@@ -60,7 +60,6 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-
                     </LinearLayout>
 
                     <!-- RelativeLayout: Group [activity_home_header.xml] -->
@@ -792,6 +791,8 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
+                <include layout="@layout/ads"/>
+
             </LinearLayout>
 
         </ScrollView>
@@ -807,5 +808,6 @@
             android:padding="10dp"
             android:visibility="gone" />
     </RelativeLayout>
+
 
 </LinearLayout>

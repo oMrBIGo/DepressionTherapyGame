@@ -360,7 +360,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="60dp"
                 android:background="@drawable/bg_roundbtn"
                 android:backgroundTint="?attr/cardbackgroundtab"
                 android:elevation="3dp"
@@ -396,9 +396,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
                                 android:fontFamily="@font/chub"
                                 android:text="คำปรึกษา"
-                                android:layout_marginTop="5dp"
                                 android:textColor="?attr/textcolor"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />

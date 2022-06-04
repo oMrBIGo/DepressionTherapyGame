@@ -86,7 +86,6 @@
     <string name="nextLogin">หากคุณได้ลงทะเบียนไว้แล้ว <u>โปรดคลิกที่นี่เพื่อเข้าสู่ระบบ</u></string>
 
     <!-- Tetris game -->
-    <string name="ad_mob_id" translatable="false">ca-app-pub-7897516872608980~7992869737</string>
     <string name="select_level">เลเวลด่านปัจจุบัน</string>
     <string name="play">เล่นเกม</string>
     <string name="exit">ออกจากเกม</string>
@@ -235,5 +234,16 @@
     <string name="register_home">REGISTER | สมัครสมาชิก</string>
     <string name="age">กรอกอายุ...</string>
     <string name="head_age">age | อายุ</string>
+
+    <!-- AdMods -->
+    <!-- test id = ca-app-pub-3940256099942544~3347511713 -->
+    <!-- id = ca-app-pub-4373414553731579~9295573304 -->
+    <string name="ad_mob_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!-- test banner = ca-app-pub-3940256099942544/6300978111 -->
+    <!-- banner = ca-app-pub-4373414553731579/8720858236 -->
+    <string name="banner_ad_live">ca-app-pub-3940256099942544/6300978111</string>
+    <!-- test interstitial_ad = ca-app-pub-3940256099942544/1033173712 -->
+    <!-- interstitial_ad = ca-app-pub-4373414553731579/3987691712 -->
+    <string name="interstitial_ad_live">ca-app-pub-3940256099942544/1033173712</string>
 
 </resources>

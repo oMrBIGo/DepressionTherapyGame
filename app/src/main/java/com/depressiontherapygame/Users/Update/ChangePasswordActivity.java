@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,12 +23,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.FirstTimeDep.FirstScoreActivity;
 import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.Setting.SettingActivity;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -41,6 +53,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
+
 public class ChangePasswordActivity extends AppCompatActivity {
 
     FirebaseAuth authProfile;
@@ -53,6 +67,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
     SharedPref sharedPref;
 
     ImageView icon_profile;
+
+    private static final String TAG = "INTERSTITIAL_TAG";
+
+    private InterstitialAd mInterstitialAd = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +126,87 @@ public class ChangePasswordActivity extends AppCompatActivity {
         } else {
             reAuthenticateUser(firebaseUser);
         }
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                Log.d(TAG, "onInitializationComplete: "+initializationStatus);
+            }
+        });
+
+        MobileAds.setRequestConfiguration(
+                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("TEST_DEVICEPID1","TEST_DEVICEPID2")).build()
+        );
+
+        loadInterstitialAd();
+
+        showInterstitialAd();
+
+    }
+
+    private void loadInterstitialAd() {
+        //AdRequest to load Interstitial Ad
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(this, getResources().getString(R.string.interstitial_ad_live), adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.d(TAG, "onAdFailedToLoad: ");
+                mInterstitialAd = null;
+            }
+
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                super.onAdLoaded(interstitialAd);
+                Log.d(TAG, "onAdLoaded: ");
+                mInterstitialAd = interstitialAd;
+            }
+        });
+
+    }
+
+    private void showInterstitialAd() {
+        if (mInterstitialAd != null) {
+            Log.d(TAG, "showInterstitialAd: Ad Was Loaded");
+            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                    Log.d(TAG, "onAdClicked: ");
+                }
+
+                @Override
+                public void onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent();
+                    Log.d(TAG, "onAdDismissedFullScreenContent: ");
+                    mInterstitialAd = null;
+                    loadInterstitialAd();
+                }
+
+                @Override
+                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                    super.onAdFailedToShowFullScreenContent(adError);
+                    Log.d(TAG, "onAdFailedToShowFullScreenContent: ");
+                    mInterstitialAd = null;
+                }
+
+                @Override
+                public void onAdImpression() {
+                    super.onAdImpression();
+                    Log.d(TAG, "onAdImpression: ");
+                }
+
+                @Override
+                public void onAdShowedFullScreenContent() {
+                    super.onAdShowedFullScreenContent();
+                    Log.d(TAG, "onAdShowedFullScreenContent: ");
+                }
+            });
+
+            mInterstitialAd.show(this);
+        } else {
+            Log.d(TAG, "showInterstitialAd: Ad Was Not Loaded...");
+            //You may also do your tasks here if ad is not loaded
+        }
     }
 
     //ReAuthenticate USer before changing password
@@ -160,6 +260,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 buttonChangePassword.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
+                                        showInterstitialAd();
                                         changePassword(firebaseUser);
                                     }
                                 });

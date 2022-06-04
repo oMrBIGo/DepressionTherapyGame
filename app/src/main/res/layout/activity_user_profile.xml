@@ -454,7 +454,7 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingStart="30dp"
-                            android:paddingTop="10dp"
+
                             android:paddingEnd="30dp"
                             android:paddingBottom="10dp">
 
@@ -497,6 +497,8 @@
             </LinearLayout>
 
         </ScrollView>
+
+        <include layout="@layout/ads"/>
 
     </RelativeLayout>
 

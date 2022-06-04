@@ -213,6 +213,8 @@
 
     </LinearLayout>
 
+    <include layout="@layout/ads"/>
+
     <!-- ProgressBar: Show Loading  -->
     <ProgressBar
         android:id="@+id/progressBar"
