@@ -427,7 +427,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/chur"
-                            android:text="คำปรึกษานี้ผู้ใช้งานสามารถสร้างโพสต์เพื่อปรึกษากับแพทย์หรือผู้ใช้งานได้"
+                            android:text="คำปรึกษานี้ผู้ใช้งานสามารถสร้างโพสต์เพื่อปรึกษากับผู้ใช้งานได้"
                             android:textColor="?attr/textcolor"
                             android:textSize="18sp" />
 
