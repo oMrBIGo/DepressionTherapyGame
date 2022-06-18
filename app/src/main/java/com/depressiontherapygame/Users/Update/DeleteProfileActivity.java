@@ -204,9 +204,7 @@ public class DeleteProfileActivity extends AppCompatActivity {
         builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(DeleteProfileActivity.this, UserProfileActivity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
 

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,12 +23,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.depressiontherapygame.Users.FirstTimeDep.FirstScoreActivity;
 import com.depressiontherapygame.Users.History.HistoryLoginActivity;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.Setting.SettingActivity;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -41,6 +53,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class ChangePasswordActivity extends AppCompatActivity {
 
     FirebaseAuth authProfile;
@@ -53,6 +69,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     SharedPref sharedPref;
 
     ImageView icon_profile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +114,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
 
-
         if (firebaseUser.equals("")) {
             Toast.makeText(ChangePasswordActivity.this, "มีอะไรบางอย่างผิดปกติ! ไม่พบรายละเอียดข้อมูลของผู้ใช้",
                     Toast.LENGTH_SHORT).show();
@@ -107,6 +123,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         } else {
             reAuthenticateUser(firebaseUser);
         }
+
     }
 
     //ReAuthenticate USer before changing password

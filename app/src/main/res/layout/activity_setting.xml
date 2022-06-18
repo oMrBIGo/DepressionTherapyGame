@@ -60,7 +60,6 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-
                     </LinearLayout>
 
                     <!-- RelativeLayout: Group [activity_home_header.xml] -->
@@ -783,6 +782,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/button_state_list_animator"
                     android:elevation="5dp"
                     android:fontFamily="@font/chub"
@@ -790,6 +790,8 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
+                <include layout="@layout/ads"/>
 
             </LinearLayout>
 
@@ -806,5 +808,6 @@
             android:padding="10dp"
             android:visibility="gone" />
     </RelativeLayout>
+
 
 </LinearLayout>

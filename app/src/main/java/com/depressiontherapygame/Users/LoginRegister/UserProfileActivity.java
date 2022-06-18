@@ -45,6 +45,12 @@ import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.Users.Setting.SettingActivity;
 import com.depressiontherapygame.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -63,6 +69,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -73,6 +80,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView textViewWelcome;
     private TextView textViewLastname;
     private TextView textViewEmail;
+    private TextView textViewAge;
     private TextView textViewPhone;
     private TextView textViewWelcomeH, textViewLvH;
     private ProgressBar progressBar, progressBar1;
@@ -84,14 +92,17 @@ public class UserProfileActivity extends AppCompatActivity {
     private ImageButton buttonBack;
     Dialog dialog;
     TextView valueText;
-    private EditText editTextUpdateName, editTExtUpdatePhone;
-    private String textLastname, textPhone;
+    private EditText editTextUpdateName, editTextUpdatePhone, editTExtUpdateAge;
+    private String textLastname, textAge, textPhone;
 
     private CircleImageView Upload;
     private Uri imageUri = null;
     private CardView cardView;
 
-    private static final String TAG = "PROFILE_EDIT_TAG";
+    private static final String TAG = "BANNER_AD_TAG";
+
+    //declare AdView (Banner Ad)
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +123,7 @@ public class UserProfileActivity extends AppCompatActivity {
         textViewWelcome = findViewById(R.id.textView_show_welcome);
         textViewLastname = findViewById(R.id.textView_show_lastname);
         textViewEmail = findViewById(R.id.textView_show_email);
+        textViewAge = findViewById(R.id.textView_show_age);
         textViewPhone = findViewById(R.id.textView_show_phone);
         progressBar = findViewById(R.id.progressBar);
         TextView textProfile = findViewById(R.id.Upload1_Profile);
@@ -189,7 +201,82 @@ public class UserProfileActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
         }
+        //Set your test devices. Check your logcat output for the hashed device ID to
+        //get test ads a physical device. e.g.
+        MobileAds.setRequestConfiguration(
+                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("", "")).build()
+        );
+
+        //init banner ad
+        adView = findViewById(R.id.adView);
+        //ad request
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        //setUp ad listener
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                Log.d(TAG, "onAdClicked: ");
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                Log.d(TAG, "onAdClosed: ");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.e(TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+                Log.d(TAG, "onAdImpression: ");
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d(TAG, "onAdLoaded: ");
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+                Log.d(TAG, "onAdOpened: ");
+            }
+        });
     }
+
+    @Override
+    protected void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        if (adView != null) {
+            adView.resume();
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
+
 
     /* show User Profile */
     private void showUserProfile(final FirebaseUser firebaseUser) {
@@ -204,12 +291,14 @@ public class UserProfileActivity extends AppCompatActivity {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String email = "" + snapshot.child("email").getValue();
                     String level = "" + snapshot.child("level").getValue();
+                    String age = "" + snapshot.child("age").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
                     String image = "" + snapshot.child("image").getValue();
 
                     textViewWelcome.setText(lastname);
                     textViewLastname.setText(lastname);
                     textViewEmail.setText(email);
+                    textViewAge.setText(age+ " ปี");
                     textViewPhone.setText(phone);
                     textViewWelcomeH.setText(lastname);
                     textViewLvH.setText("ปัจจุบัน "+level);
@@ -308,7 +397,7 @@ public class UserProfileActivity extends AppCompatActivity {
                         //set image, using Picasso
                         Picasso.get()
                                 .load(image)
-                                .placeholder(R.drawable.man)
+                                .placeholder(R.drawable.profile_image)
                                 .into(Upload);
                     }
 
@@ -520,7 +609,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
         editTextUpdateName = dialog.findViewById(R.id.lastname);
-        editTExtUpdatePhone = dialog.findViewById(R.id.phone);
+        editTextUpdatePhone = dialog.findViewById(R.id.phone);
         String userID = firebaseUser.getUid();
         /* Extracting USer Reference from Database for "Register Users" */
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
@@ -531,9 +620,10 @@ public class UserProfileActivity extends AppCompatActivity {
                 if (modelUserShow != null) {
                     String lastname = "" + snapshot.child("lastname").getValue();
                     String phone = "" + snapshot.child("phone").getValue();
+                    String age = "" + snapshot.child("age").getValue();
 
                     editTextUpdateName.setText(lastname);
-                    editTExtUpdatePhone.setText(phone);
+                    editTextUpdatePhone.setText(phone);
 
                 } else {
                     Toast.makeText(UserProfileActivity.this, "มีอะไรบางอย่างผิดปกติ!",
@@ -578,8 +668,8 @@ public class UserProfileActivity extends AppCompatActivity {
     private void updateProfile(final FirebaseUser firebaseUser) {
         //Obtain the data entered by user
         textLastname = editTextUpdateName.getText().toString().trim();
-        textPhone = editTExtUpdatePhone.getText().toString().trim();
-        String checkPassword = "^" + ".{10}" + "$";
+        textPhone = editTextUpdatePhone.getText().toString().trim();
+        String checkPhone = "^" + ".{10}" + "$";
 
         if (TextUtils.isEmpty(textLastname)) {
             Toast.makeText(UserProfileActivity.this, "กรุณากรอกชื่อ-นามสกุล", Toast.LENGTH_LONG).show();
@@ -587,12 +677,12 @@ public class UserProfileActivity extends AppCompatActivity {
             editTextUpdateName.requestFocus();
         } else if (TextUtils.isEmpty(textPhone)) {
             Toast.makeText(UserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
-            editTExtUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
-            editTExtUpdatePhone.requestFocus();
-        } else if (!textPhone.matches(checkPassword)) {
+            editTextUpdatePhone.setError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
+            editTextUpdatePhone.requestFocus();
+        } else if (!textPhone.matches(checkPhone)) {
             Toast.makeText(UserProfileActivity.this, "กรุณาใส่หมายเลขโทรศัพท์มือถือของคุณอีกครั้ง", Toast.LENGTH_LONG).show();
-            editTExtUpdatePhone.setError("เบอร์โทรศัพท์ควรมี 10 หลัก");
-            editTExtUpdatePhone.requestFocus();
+            editTextUpdatePhone.setError("เบอร์โทรศัพท์ควรมี 10 หลัก");
+            editTextUpdatePhone.requestFocus();
 
         } else {
 

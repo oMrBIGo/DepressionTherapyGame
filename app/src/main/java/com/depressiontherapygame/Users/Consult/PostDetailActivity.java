@@ -1,9 +1,15 @@
 package com.depressiontherapygame.Users.Consult;
 
+import static android.content.ContentValues.TAG;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +29,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +40,10 @@ import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.MainActivity;
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +52,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -58,6 +69,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
     boolean mProcessComment = false;
     boolean mProcessLike = false;
+
     //views
     ImageView uPictureIv;
     TextView uLastNameTv, pTimeTv, pTitleTv, pDescriptionTv, pLikesTv, pCommentsTv;
@@ -77,7 +89,9 @@ public class PostDetailActivity extends AppCompatActivity {
     ImageButton sendBtn;
     ImageView cAvatarIv;
 
+
     FirebaseAuth firebaseAuth;
+
 
     ImageView profileIv;
     TextView lastnameTv, levelTv;
@@ -388,6 +402,26 @@ public class PostDetailActivity extends AppCompatActivity {
                 });
     }
 
+    /*
+    public void notification(String myLastName) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel =
+                    new NotificationChannel("n", "n", NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = (NotificationManager) getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "n")
+                .setContentText("[ข้อความใหม่] เกมบำบัดภาวะซึมเศร้าในวัยรุ่น")
+                .setSmallIcon(R.drawable.logo_white)
+                .setAutoCancel(true)
+                .setContentText("คุณ " + myLastName + " ได้คอมเม้นต์คำปรึกษาของคุณ");
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(999, builder.build());
+    }
+
+     */
 
     private void updateCommentCount() {
         //whenever user adds comment increase the comment count as we did for like count

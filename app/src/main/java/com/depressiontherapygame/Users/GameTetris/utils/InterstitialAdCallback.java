@@ -1,6 +1,7 @@
 package com.depressiontherapygame.Users.GameTetris.utils;
 
-import com.google.android.gms.ads.InterstitialAd;
+
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 /**
  * Created by agile-01 on 11/14/2016.

@@ -38,6 +38,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/chub"
             android:text="@string/depressionText06"
+            android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="23sp" />
 
@@ -68,6 +69,15 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/chur"
                     android:text="@string/depressionBody05"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp" />
+
+                <!-- TextView: Show Title Description -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chur"
+                    android:text="@string/depressionBody05_01"
                     android:textColor="?attr/textcolor"
                     android:textSize="18sp" />
 

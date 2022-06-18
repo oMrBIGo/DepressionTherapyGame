@@ -178,6 +178,7 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <!-- TextView: show email -->
                     <TextView
                         android:layout_width="wrap_content"
@@ -216,6 +217,54 @@
                             android:fontFamily="@font/chub"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
+                            android:textColor="?attr/textcolor"
+                            android:textColorHint="?attr/tintcolor"
+                            android:textCursorDrawable="@null"
+                            android:textSize="16sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- TextView: show Age -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chub"
+                        android:text="@string/head_age"
+                        android:textColor="?attr/textcolormain"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+
+                    <!-- TextInputLayout: input age -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_age"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxBackgroundColor="?attr/cardbackground"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxCornerRadiusBottomStart="20dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        app:boxCornerRadiusTopStart="20dp"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#B4B4B4"
+                        app:hintEnabled="false">
+
+                        <!-- TextInputEdittext: input phone number -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/age"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_age"
+                            android:drawablePadding="15dp"
+                            android:fontFamily="@font/chub"
+                            android:hint="@string/age"
+                            android:maxEms="3"
+                            android:inputType="phone"
                             android:textColor="?attr/textcolor"
                             android:textColorHint="?attr/tintcolor"
                             android:textCursorDrawable="@null"

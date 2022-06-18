@@ -2,10 +2,16 @@ package com.depressiontherapygame.Users.Consult.Adapter;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Build;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,13 +69,6 @@ public class AdapterComments extends RecyclerView.Adapter<AdapterComments.MyHold
         String comment = commentList.get(i).getComment();
         String timestamp = commentList.get(i).getTimestamp();
 
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("hh:mm");
-        Date d1 = null;
-        try {
-            d1 = df.parse("16:37");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         //convert timestamp to dd/mm/yyyy hh:mm am/pm
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         calendar.setTimeInMillis(Long.parseLong(timestamp));

@@ -372,6 +372,46 @@
                                     android:layout_marginTop="10dp"
                                     android:background="?cardbackground" />
 
+                                <!-- LinearLayout: ViewGroup Show age -->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <!-- ImageView: Show Icon PhoneNumber -->
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:src="@drawable/ic_age" />
+
+                                    <!-- TextView: Show My phoneNumber -->
+                                    <TextView
+                                        android:id="@+id/textView_show_age"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@font/chur"
+                                        android:hint="@string/Loading"
+                                        android:maxLines="5"
+                                        android:textColor="?attr/textcolor"
+                                        android:textColorHint="?attr/textcolor"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+                                <!-- View: Show Line -->
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:background="?cardbackground" />
+
                                 <!-- LinearLayout: ViewGroup Show PhoneNumber -->
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -414,7 +454,7 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingStart="30dp"
-                            android:paddingTop="10dp"
+
                             android:paddingEnd="30dp"
                             android:paddingBottom="10dp">
 
@@ -457,6 +497,8 @@
             </LinearLayout>
 
         </ScrollView>
+
+        <include layout="@layout/ads"/>
 
     </RelativeLayout>
 

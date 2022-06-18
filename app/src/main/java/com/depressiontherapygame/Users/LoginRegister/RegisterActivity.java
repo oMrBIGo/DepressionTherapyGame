@@ -9,6 +9,7 @@ package com.depressiontherapygame.Users.LoginRegister;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,7 +59,7 @@ public class
 RegisterActivity extends AppCompatActivity {
 
     /* View */
-    private TextInputEditText lastname, email, password, phone;
+    private TextInputEditText lastname, email, age, password, phone;
     private ProgressBar progressBar;
     private ImageView imageView;
     private TextView textShDN;
@@ -71,6 +72,7 @@ RegisterActivity extends AppCompatActivity {
     ImageButton backBtn;
     Button ButtonReg;
     int score, firstscore;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,8 +111,9 @@ RegisterActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         lastname = findViewById(R.id.lastname);
         email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
+        age = findViewById(R.id.age);
         phone = findViewById(R.id.phone);
+        password = findViewById(R.id.password);
 
         databaseUsers = FirebaseDatabase.getInstance().getReference("ผู้ใช้งาน");
         /* Button Click: next to [LoginActivity.java] */
@@ -149,9 +152,11 @@ RegisterActivity extends AppCompatActivity {
                 /* Input String lastname, email, password [Pass 6+], phoneNumber */
                 String textLastname = lastname.getText().toString().trim();
                 String textEmail = email.getText().toString().trim();
+                String textAge = age.getText().toString().trim();
                 String textPassword = password.getText().toString().trim();
                 String textPhone = phone.getText().toString().trim();
                 String checkPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,20}$";
+                String checkAge = "^(?=.*[0-9])(?=\\S+$).{1,2}$";
 
                 if (mCheckBoxRemember.isChecked()) {
                     if (TextUtils.isEmpty(textLastname)) {
@@ -160,6 +165,12 @@ RegisterActivity extends AppCompatActivity {
                     } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
                         email.setError("กรุณากรอกอีเมลให้ถูกต้อง");
                         email.requestFocus();
+                    } else if (TextUtils.isEmpty(textAge)) {
+                        age.setError("กรุณากรอกอายุ");
+                        age.requestFocus();
+                    } else if (!textAge.matches(checkAge)) {
+                        age.setError("กรุณากรอกอายุให้ถูกต้อง");
+                        age.requestFocus();
                     } else if (textPhone.length() != 10) {
                         phone.setError("เบอร์โทรศัพท์ควรมี 10 หลัก");
                         phone.requestFocus();
@@ -169,7 +180,7 @@ RegisterActivity extends AppCompatActivity {
                         password.setError("กรุณากรอกรหัสผ่านที่ประกอบไปด้วย อักษรพิมพ์เล็ก อักษรพิมพ์ใหญ่ ตัวเลขและอักขระพิเศษ รวมกันอย่างน้อย 8 ตัวขึ้นไป เช่น Abc1234#");
                         password.requestFocus();
                     } else {
-                        registerUser(textLastname, textEmail, textPhone, textPassword);
+                        registerUser(textLastname, textEmail, textAge, textPhone, textPassword);
                     }
                 } else {
                     if (TextUtils.isEmpty(textLastname)) {
@@ -178,6 +189,12 @@ RegisterActivity extends AppCompatActivity {
                     } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
                         email.setError("กรุณากรอกอีเมลให้ถูกต้อง");
                         email.requestFocus();
+                    } else if (TextUtils.isEmpty(textAge)) {
+                        age.setError("กรุณากรอกอายุ");
+                        age.requestFocus();
+                    } else if (!textAge.matches(checkAge)) {
+                        age.setError("กรุณากรอกอายุให้ถูกต้อง");
+                        age.requestFocus();
                     } else if (textPhone.length() != 10) {
                         phone.setError("เบอร์โทรศัพท์ควรมี 10 หลัก");
                         phone.requestFocus();
@@ -237,7 +254,7 @@ RegisterActivity extends AppCompatActivity {
     }
 
     /* Register user using the credentials given */
-    private void registerUser(final String textLastname, final String textEmail, final String textPhone, final String textPassword) {
+    private void registerUser(final String textLastname, final String textEmail, final String textAge, final String textPhone, final String textPassword) {
         progressBar.setVisibility(View.VISIBLE);
         /* Create User Profile */
         authProfile.createUserWithEmailAndPassword(textEmail, textPassword)
@@ -261,6 +278,7 @@ RegisterActivity extends AppCompatActivity {
                             hashMap.put("phone", textPhone); //will add later (e.g. edit profile)
                             hashMap.put("image", "ยังไม่ได้อัปโหลดรูปโปรไฟล์"); //will add later (e.g. edit profile)
                             hashMap.put("score", score);
+                            hashMap.put("age", textAge);
                             hashMap.put("depression", "ยังไม่ได้ทำแบบประเมิน");
                             hashMap.put("firstscore", firstscore);
                             hashMap.put("firstdepression", "ยังไม่ได้ทำแบบประเมิน");
@@ -372,6 +390,7 @@ RegisterActivity extends AppCompatActivity {
 
     /* onBackPressed */
     int backPressed = 0;
+
     @Override
     public void onBackPressed() {
         backPressed++;

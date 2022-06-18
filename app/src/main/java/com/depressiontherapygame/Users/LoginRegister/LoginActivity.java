@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseReference databaseUsers;
     SharedPref sharedPref;
     private static final String TAG = "LoginActivity";
-    String textLastname, textPhone, depression, firstdepression, BeforeDepression, level, TimeNow;
+    String textLastname, textAge,textPhone, depression, firstdepression, BeforeDepression, level, TimeNow;
     int score, firstscore;
     Dialog dialog;
     private Button ButtonPasswordResetEmail;
@@ -184,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
                         edittextPassword.requestFocus();
                     } else {
                         progressBar.setVisibility(View.VISIBLE);
-                        loginUser(textLastname, textEmail, textPhone, textPassword, score, depression, firstscore, firstdepression, BeforeDepression, level);
+                        loginUser(textLastname, textEmail, textPhone, textPassword, textAge, score, depression, firstscore, firstdepression, BeforeDepression, level);
                     }
                 } else {
                     editor.putBoolean("checked", false);
@@ -201,7 +201,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         getSharedPreferences(FILE_EMAIL, MODE_PRIVATE).edit().clear().commit();
                         progressBar.setVisibility(View.VISIBLE);
-                        loginUser(textLastname, textEmail, textPhone, textPassword, score, depression, firstscore, firstdepression, BeforeDepression, level);
+                        loginUser(textLastname, textEmail, textPhone, textPassword, textAge, score, depression, firstscore, firstdepression, BeforeDepression, level);
                     }
                 }
             }
@@ -226,7 +226,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /* login user using the credentials given */
-    private void loginUser(final String textLastname, final String textEmail, final String textPhone, final String textPassword, int score, final String depression, int firstscore, final String firstdepression, final String BeforeDepression, final String level) {
+    private void loginUser(final String textLastname, final String textEmail, final String textPhone, final String textPassword,final String textAge, int score, final String depression, int firstscore, final String firstdepression, final String BeforeDepression, final String level) {
         final Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_bounce);
         authProfile.signInWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -245,6 +245,7 @@ public class LoginActivity extends AppCompatActivity {
                         hashMap.put("uid", uid);
                         hashMap.put("email", textEmail);
                         hashMap.put("lastname", textLastname); /* will add later (e.g. edit profile) */
+                        hashMap.put("age", textAge);
                         hashMap.put("phone", textPhone); /* will add later (e.g. edit profile) */
                         hashMap.put("image", ""); /* will add later (e.g. edit profile) */
                         hashMap.put("score", score);

@@ -62,6 +62,15 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
+                <!-- TextView: Show Title Description -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/chur"
+                    android:text="@string/depressionBody02_09"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp" />
 
                 <!-- TextView: Show Title Description -->
                 <TextView
@@ -141,6 +150,7 @@
                     android:text="@string/depressionBody02_07"
                     android:textColor="?attr/textcolor"
                     android:textSize="18sp" />
+
 
                 <!-- TextView: Show Title Description -->
                 <TextView

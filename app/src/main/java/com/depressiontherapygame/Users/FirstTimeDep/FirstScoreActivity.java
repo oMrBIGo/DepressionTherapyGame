@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,6 +28,16 @@ import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.NightMode.SharedPref;
 import com.depressiontherapygame.Users.QuizDepression.Adapter.RecycAdapter;
 import com.depressiontherapygame.Users.QuizDepression.Model.RecycModel;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +48,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FirstScoreActivity extends AppCompatActivity implements RecycAdapter.OnReCycListener {
@@ -61,6 +73,7 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         } else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_score);
+        
         init_screen();
 
         /* dialog show */
@@ -131,6 +144,7 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         }
     }
 
+
     private void prepareMovieData() {
         RecycModel reCyc = new RecycModel(R.drawable.depq01);
         mList.add(reCyc);
@@ -148,7 +162,6 @@ public class FirstScoreActivity extends AppCompatActivity implements RecycAdapte
         mList.add(reCyc);
         mAdapter.notifyDataSetChanged();
     }
-
 
     private void showUserProfile(final FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();

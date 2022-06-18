@@ -67,6 +67,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/chur"
+                    android:text="@string/depressionBody077"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="18sp" />
+
+                <!-- TextView: Show Title Description -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chur"
                     android:text="@string/depressionBody07"
                     android:textColor="?attr/textcolor"
                     android:textSize="18sp" />

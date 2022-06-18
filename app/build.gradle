@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.depressiontherapygame"
         minSdk 21
-        targetSdk 31
-        versionCode 29
+        targetSdk 32
+        versionCode 43
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -62,15 +62,15 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:29.0.1')
     implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-auth:21.0.2'
-    implementation 'com.firebaseui:firebase-ui-auth:4.3.2'
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
+    implementation 'com.firebaseui:firebase-ui-auth:8.0.1'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
     implementation 'com.google.firebase:firebase-storage:20.0.1'
-    implementation 'com.google.firebase:firebase-database:20.0.4'
-    implementation 'com.google.firebase:firebase-firestore:24.0.2'
-    implementation 'com.google.firebase:firebase-core:20.1.0'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
+    implementation 'com.google.firebase:firebase-firestore:24.1.2'
+    implementation 'com.google.firebase:firebase-core:21.0.0'
     implementation 'com.google.android.gms:play-services-auth:20.0.1'
-    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+    implementation 'com.google.firebase:firebase-messaging:23.0.4'
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -92,6 +92,7 @@ dependencies {
     //region #Dimension
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
     //endregion
     //Gson
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -103,11 +104,11 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Google Ads
-    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
 
     //room database
-    implementation 'androidx.room:room-runtime:2.1.0-alpha06'
-    annotationProcessor 'androidx.room:room-compiler:2.1.0-alpha06'
+    implementation 'androidx.room:room-runtime:2.5.0-alpha02'
+    annotationProcessor 'androidx.room:room-compiler:2.5.0-alpha02'
     implementation 'com.github.daolq3012:AssetSQLiteOpenHelper:V1.0.1'
 
     //ktx
@@ -115,6 +116,9 @@ dependencies {
 
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+    //export pdf
+    implementation 'com.itextpdf:itextg:5.5.10'
 
 
 }
