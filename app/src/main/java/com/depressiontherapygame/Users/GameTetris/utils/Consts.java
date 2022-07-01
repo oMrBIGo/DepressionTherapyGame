@@ -17,6 +17,10 @@ public class Consts {
         String LEVEL_COMPLETE = "complete";
         String LEVEL_NOT_COMPLETE = "not_complete";
         String LEVEL_LOCK = "locked";
+
+        String PRIVACY_URL = "https://firebasestorage.googleapis.com/v0/b/agile-projects-6b727.appspot.com/o/Bricks%20Puzzle%2Fprivacy_policy.html?alt=media&token=48680fb7-c15d-45c8-b423-84e049f72262";
+        String TERMS_AND_CONDITION_URL = "https://firebasestorage.googleapis.com/v0/b/agile-projects-6b727.appspot.com/o/Bricks%20Puzzle%2Fterms_and_conditions.html?alt=media&token=1de012a2-6af9-4406-a3d0-80a51aa4d389";
+
     }
 
     /**

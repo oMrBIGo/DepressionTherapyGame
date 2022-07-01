@@ -161,6 +161,4 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/ads"/>
-
 </RelativeLayout>

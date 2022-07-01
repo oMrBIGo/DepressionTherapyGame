@@ -213,7 +213,7 @@
 
     </LinearLayout>
 
-    <include layout="@layout/ads"/>
+    <include layout="@layout/common_ad_layout"/>
 
     <!-- ProgressBar: Show Loading  -->
     <ProgressBar

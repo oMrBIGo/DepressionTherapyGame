@@ -791,8 +791,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <include layout="@layout/ads"/>
-
             </LinearLayout>
 
         </ScrollView>

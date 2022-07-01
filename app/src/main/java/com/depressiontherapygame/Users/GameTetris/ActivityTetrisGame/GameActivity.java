@@ -34,19 +34,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.view.GestureDetectorCompat;
 
+import com.depressiontherapygame.Users.GameTetris.Application;
 import com.depressiontherapygame.Users.GameTetris.base.AppBaseActivity;
 import com.depressiontherapygame.Users.GameTetris.db.databasehelper.DatabaseHelper;
 import com.depressiontherapygame.Users.GameTetris.db.tebles.GameLevel;
 import com.depressiontherapygame.R;
+import com.depressiontherapygame.Users.GameTetris.utils.AdsWrapper;
 import com.depressiontherapygame.Users.GameTetris.utils.Consts;
+import com.depressiontherapygame.Users.GameTetris.utils.InterstitialAdCallback;
 import com.depressiontherapygame.Users.LoginRegister.Model.ModelUserShow;
 import com.depressiontherapygame.Users.LoginRegister.UserProfileActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,6 +94,8 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     AppCompatTextView tvLevel;
     @BindView(R.id.tv_score)
     AppCompatTextView tvScore;
+    @BindView(R.id.adView)
+    AdView adView;
 
     String lastname, image;
 
@@ -104,8 +108,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
 
     private static final String TAG = "BANNER_AD_TAG";
 
-    //declare AdView (Banner Ad)
-    private AdView adView;
 
     int score;
     boolean gameInProgress, gamePaused, fastSpeedState, currentShapeAlive;
@@ -124,6 +126,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     private DatabaseHelper databaseHelper;
     private Vibrator vibrator;
     private int oldScore;
+    private InterstitialAd mInterstitialAd;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -196,56 +199,13 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
         /* Initialize FirebaseAuth */
         authProfile = FirebaseAuth.getInstance();
 
-        //Set your test devices. Check your logcat output for the hashed device ID to
-        //get test ads a physical device. e.g.
-        MobileAds.setRequestConfiguration(
-                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("", "")).build()
-        );
+        if (mNetworkUtils.isConnected()) {
+            adView.setVisibility(View.VISIBLE);
+            Application.getInstance().getAdsWrapper().loadBannerAd(adView);
+        } else {
+            adView.setVisibility(View.GONE);
+        }
 
-        //init banner ad
-        adView = findViewById(R.id.adView);
-        //ad request
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
-        //setUp ad listener
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdClicked() {
-                super.onAdClicked();
-                Log.d(TAG, "onAdClicked: ");
-            }
-
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                Log.d(TAG, "onAdClosed: ");
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                super.onAdFailedToLoad(loadAdError);
-                Log.e(TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
-            }
-
-            @Override
-            public void onAdImpression() {
-                super.onAdImpression();
-                Log.d(TAG, "onAdImpression: ");
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.d(TAG, "onAdLoaded: ");
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-                Log.d(TAG, "onAdOpened: ");
-            }
-        });
     }
 
     private void init() {
@@ -381,17 +341,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (gameInProgress) {
-            gamePaused = false;
-        }
-        if (adView != null) {
-            adView.resume();
-        }
-    }
-
-    @Override
     protected void onPause() {
         if (adView != null) {
             adView.pause();
@@ -399,6 +348,32 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
         super.onPause();
     }
 
+    @Override
+    protected void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+        if (gameInProgress) {
+            gamePaused = false;
+        }
+        AdsWrapper adsWrapper = Application.getInstance().getAdsWrapper();
+        adsWrapper.loadInterstitialAd(new InterstitialAdCallback() {
+            @Override
+            public void whenLoaded(InterstitialAd interstitialAd) {
+                mInterstitialAd = interstitialAd;
+            }
+        });
+    }
 
     private void ShapesInit() {
         int[][] a = new int[5][5];
@@ -987,7 +962,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
     }
 
     private void TopScore() {
@@ -1046,6 +1020,11 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
      * Show level up dialog
      */
     private void showLevelUpDialog() {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+            if (mNetworkUtils.isConnected()) {
+                mInterstitialAd.show();
+            }
+        }
 
         if (mLevelUpDialog.getWindow() != null) {
             mLevelUpDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
@@ -1063,6 +1042,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             AppCompatTextView tvLevelNext = mLevelUpDialog.findViewById(R.id.tv_next_level);
             tvLevel.setText(MessageFormat.format("เลเวล {0}", selectedLevel - 1));
             TopScore();
+
             tvLevelNext.setText(MessageFormat.format("ไปด่านเลเวล {0}", selectedLevel));
             llRestart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1080,7 +1060,11 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     }
 
     private void showLevelEndDialog() {
-
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+            if (mNetworkUtils.isConnected()) {
+                mInterstitialAd.show();
+            }
+        }
         gamePaused = true;
         Dialog mExitDialog = new Dialog(GameActivity.this);
         ((MusicPlayerActivity) GameActivity.this).doUnbindService();
@@ -1096,6 +1080,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             window.setAttributes(wlp);
             mExitDialog.setContentView(R.layout.dialog_level_end);
             mExitDialog.setCancelable(false);
+
             mExitDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             LinearLayout llExit = mExitDialog.findViewById(R.id.ll_exit);
             TopScore();
@@ -1131,6 +1116,11 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
      * Show Exit Dialog
      */
     private void showExitDialog() {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+            if (mNetworkUtils.isConnected()) {
+                mInterstitialAd.show();
+            }
+        }
         gamePaused = true;
         Dialog mExitDialog = new Dialog(GameActivity.this);
 
@@ -1143,6 +1133,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             window.setAttributes(wlp);
             mExitDialog.setContentView(R.layout.dialog_exit);
             mExitDialog.setCancelable(false);
+
             mExitDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             LinearLayout llExit = mExitDialog.findViewById(R.id.ll_exit);
             LinearLayout llNo = mExitDialog.findViewById(R.id.ll_no);
@@ -1174,6 +1165,11 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
      * Show Game Over Dialog
      */
     private void showGameOverDialog() {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+            if (mNetworkUtils.isConnected()) {
+                mInterstitialAd.show();
+            }
+        }
 
         Dialog mGameOverDialog = new Dialog(GameActivity.this);
 
@@ -1183,6 +1179,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
             WindowManager.LayoutParams wlp = window.getAttributes();
             mGameOverDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             wlp.gravity = Gravity.CENTER;
+
             window.setAttributes(wlp);
             mGameOverDialog.setContentView(R.layout.dialog_game_over);
             mGameOverDialog.setCancelable(false);
@@ -1405,15 +1402,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
 
     private boolean inRange(double angle, float init, float end) {
         return (angle >= init) && (angle < end);
-    }
-
-    @Override
-    protected void onDestroy() {
-        vibrator.cancel();
-        if (adView != null) {
-            adView.destroy();
-        }
-        super.onDestroy();
     }
 
     @OnClick({R.id.tv_score})

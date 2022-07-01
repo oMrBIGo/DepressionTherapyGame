@@ -125,6 +125,7 @@ public class PrefUtils {
     public boolean checkKeyAvailable(String key) {
         SharedPreferences sharedPrefs = mContext.getSharedPreferences(DEFAULT_PREFS, Context.MODE_PRIVATE);
         return sharedPrefs.contains(key);
+
     }
 
 

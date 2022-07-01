@@ -39,6 +39,5 @@
         android:padding="10dp"
         android:visibility="gone" />
 
-    <include layout="@layout/ads"/>
 
 </RelativeLayout>

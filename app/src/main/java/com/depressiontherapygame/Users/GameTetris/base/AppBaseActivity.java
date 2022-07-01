@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.depressiontherapygame.R;
 import com.depressiontherapygame.Users.GameTetris.ActivityTetrisGame.MusicPlayerActivity;
+import com.depressiontherapygame.Users.GameTetris.utils.AdsWrapper;
 import com.depressiontherapygame.Users.GameTetris.utils.NetworkUtils;
 
 /**
@@ -28,6 +29,7 @@ public class AppBaseActivity extends MusicPlayerActivity {
 
     public SoundPool spSound;
     public int imove;
+    public AdsWrapper adsWrapper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class AppBaseActivity extends MusicPlayerActivity {
         mNetworkUtils = new NetworkUtils(AppBaseActivity.this);
         spSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         imove = spSound.load(this, R.raw.smashing, 1);
+        adsWrapper = new AdsWrapper.Builder().with(this).addTestDeviceIds(new String[]{"FC0135B6D6269BE7C5D5669065FBF72F"}).build();
     }
 
     /**

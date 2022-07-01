@@ -498,8 +498,6 @@
 
         </ScrollView>
 
-        <include layout="@layout/ads"/>
-
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

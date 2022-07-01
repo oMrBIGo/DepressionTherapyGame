@@ -7,22 +7,15 @@
     android:background="@drawable/splash"
     android:gravity="center|top"
     android:orientation="vertical"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context=".Users.GameTetris.ActivityTetrisGame.GameActivity">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_live"></com.google.android.gms.ads.AdView>
+    tools:context=".Users.GameTetris.ActivityTetrisGame.GameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
         android:orientation="horizontal"
+        android:paddingTop="30dp"
         android:paddingStart="30dp"
         android:paddingEnd="30dp">
 
@@ -133,6 +126,8 @@
             android:orientation="vertical" />
 
     </FrameLayout>
+
+    <include layout="@layout/common_ad_layout"/>
 
 
 </LinearLayout>

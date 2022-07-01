@@ -236,8 +236,9 @@
     <string name="head_age">age | อายุ</string>
 
     <!-- AdMods -->
-    <string name="ad_mob_id">ca-app-pub-4373414553731579~9295573304</string>
-    <string name="banner_ad_live">ca-app-pub-4373414553731579/8720858236</string>
+    <string name="ad_mob_id" translatable="false">ca-app-pub-4373414553731579~9295573304</string>
+    <string name="banner_ad_live" translatable="false">ca-app-pub-4373414553731579/8720858236</string>
+    <string name="interstitial_id" translatable="false">ca-app-pub-4373414553731579/8472501679</string>
 
 
 </resources>
