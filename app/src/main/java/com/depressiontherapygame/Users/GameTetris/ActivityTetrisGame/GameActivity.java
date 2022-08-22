@@ -1022,7 +1022,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     private void showLevelUpDialog() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             if (mNetworkUtils.isConnected()) {
-                mInterstitialAd.show();
+
             }
         }
 
@@ -1062,7 +1062,7 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     private void showLevelEndDialog() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             if (mNetworkUtils.isConnected()) {
-                mInterstitialAd.show();
+
             }
         }
         gamePaused = true;
@@ -1118,7 +1118,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     private void showExitDialog() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             if (mNetworkUtils.isConnected()) {
-                mInterstitialAd.show();
             }
         }
         gamePaused = true;
@@ -1167,7 +1166,6 @@ public class GameActivity extends AppBaseActivity implements GestureDetector.OnG
     private void showGameOverDialog() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             if (mNetworkUtils.isConnected()) {
-                mInterstitialAd.show();
             }
         }
 

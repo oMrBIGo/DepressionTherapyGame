@@ -213,7 +213,8 @@
 
     </LinearLayout>
 
-    <include layout="@layout/common_ad_layout"/>
+    <include layout="@layout/common_ad_layout"
+        android:visibility="gone"/>
 
     <!-- ProgressBar: Show Loading  -->
     <ProgressBar

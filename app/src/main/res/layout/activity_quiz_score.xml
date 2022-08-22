@@ -235,8 +235,8 @@
                     android:background="@drawable/bg_roundheader"
                     android:elevation="4dp"
                     android:padding="5dp"
+                    android:visibility="gone"
                     android:orientation="vertical">
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -286,6 +286,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:background="@drawable/bg_roundheader"
                     android:elevation="4dp"
                     android:layout_marginTop="10dp"
@@ -450,6 +451,7 @@
                         android:layout_gravity="center"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
+                        android:visibility="gone"
                         card_view:cardBackgroundColor="?attr/cardbackground"
                         card_view:cardCornerRadius="20dp"
                         card_view:cardElevation="1dp">
